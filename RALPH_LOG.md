@@ -23,3 +23,11 @@
 - ScreenshotFrame: 16:10 회색 프레임 + "screenshot" 라벨, products.json image 경로 있으면 표시(실물은 사람이 /public/shots/ 투입) — 가짜 UI 생성 없음.
 - [결정] 시안의 제품별 창작 카피(파이프라인 4단·버전·SHA·용량·기능 제목/설명)는 products.json에 근거가 없어 미렌더. 기능 3은 features 문장 그대로, 스펙 표는 specs 그대로. 시안 파이프라인 밴드는 ICD Refinery 전용 데모 콘텐츠로 판단, 데이터 근거 없어 템플릿에서 제외.
 - DoD: pnpm build 성공, /products/{9 slug}/ 전부 정적 생성.
+
+## W4 — /products 인덱스 + /method + /contact (2026-08-01)
+- /products: Index 시안 정본(마스트헤드·tally → 동사/상태 필터 + 행 테이블 → "Carry it in on a stick." 배포 노트 밴드). Version/Size 열은 데이터 부재로 제외, Build 열은 다운로드 유무 기반(Download/Details).
+- [결정] PRD "5동사 그룹, 검색 불요" vs 시안의 필터+플랫 테이블 → 충돌 심판 규정대로 시안 승(필터 구현, 검색은 없음).
+- /method: Philosophy 시안 정본(선언 → 방법론 4절 → 권위의 순서 3셀 → 거부 5 → 맺음) + PRD 요구 인프라 사실 밴드(CONTEXT.md 기재 사실만: 3900X CI 팜·로컬 LLM 실측 벤치·Jetson Orin MAVLink 테스트베드).
+- [결정] /method 본문 카피는 시안 원문 사용(사람 산출 시안 카피 — Ralph 창작 아님). 단 시안의 "Vectors per tool 180–620" 등 검증 불가 수치 노트는 제외.
+- /contact: 폼 없음 — mailto(makseong@gmail.com) + GitHub(Kim-Hakseong) 링크만. [결정] 이메일은 소유자 계정 메일로 주입.
+- DoD: pnpm build 성공, 전 페이지(/,/products,/products×9,/method,/contact) export.
