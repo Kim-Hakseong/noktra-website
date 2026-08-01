@@ -1,0 +1,111 @@
+/* ============================================================
+   NOKTRA — styles/tokens.css
+   유일 기준: design-mockups/NOKTRA Token Sheet.dc.html 에서 추출.
+   임의 값 발명 금지 — 시안의 D(dark)/L(light) 팔레트 원문 값.
+   보조 상태 값(ok/amber/mute line·fill, probe-ink)은
+   Home v2 시안 THEMES 정의에서 추출.
+   ============================================================ */
+
+:root[data-theme="dark"] {
+  /* Accent — one family */
+  --accent: #31A9BC;
+  --accent-hi: #7FD2DE;
+  --btn-fg: #06181C;
+  --probe-ink: #7FD2DE;
+
+  /* Grounds */
+  --bg: #0B0E0F;
+  --bg-hero: #0C0F10;
+  --bg-catalog: #101416;
+  --bg-pillars: #0B0E0F;
+  --bg-philosophy: #0E1113;
+  --bg-footer: #090B0C;
+  --surface: #151A1C;
+
+  /* Lines */
+  --line: #1C2325;
+  --line-soft: #202829;
+  --line-hover: #34464A;
+
+  /* Text — four steps */
+  --text: #EDEFF0;
+  --text-strong: #F4F6F6;
+  --text-mid: #96A0A3;
+  --text-dim: #66706F;
+  --text-faint: #4F5859;
+
+  /* Status semantics — meaning only */
+  --ok-line: #1E7C8C;
+  --ok-fill: rgba(30, 124, 140, 0.16);
+  --ok-text: #59C3D2;
+  --amber: #B9862F;
+  --amber-line: #6A5122;
+  --amber-fill: rgba(185, 134, 47, 0.14);
+  --amber-text: #D2A253;
+  --mute: #7E8588;
+  --mute-line: #39423F;
+  --mute-fill: rgba(126, 133, 136, 0.12);
+  --mute-text: #8A9396;
+
+  /* Theme switch */
+  --tg-d-bg: #1A2123;
+  --tg-d-fg: #E4E8E8;
+  --tg-l-bg: transparent;
+  --tg-l-fg: #5E6769;
+}
+
+:root[data-theme="light"] {
+  /* Accent — one family */
+  --accent: #12707F;
+  --accent-hi: #0B5462;
+  --btn-fg: #FAFCFC;
+  --probe-ink: #0F4A55;
+
+  /* Grounds */
+  --bg: #F3F2EE;
+  --bg-hero: #EEEDE8;
+  --bg-catalog: #E9E7E1;
+  --bg-pillars: #F3F2EE;
+  --bg-philosophy: #EEEDE8;
+  --bg-footer: #E3E1DA;
+  --surface: #FBFAF8;
+
+  /* Lines */
+  --line: #D6D2CA;
+  --line-soft: #E0DCD4;
+  --line-hover: #A9B3B2;
+
+  /* Text — four steps */
+  --text: #1A1E1F;
+  --text-strong: #0E1213;
+  --text-mid: #555E5F;
+  --text-dim: #7E8583;
+  --text-faint: #9AA09D;
+
+  /* Status semantics — meaning only */
+  --ok-line: #9CC3CA;
+  --ok-fill: rgba(18, 112, 127, 0.09);
+  --ok-text: #0E6070;
+  --amber: #A5761F;
+  --amber-line: #D6BE92;
+  --amber-fill: rgba(165, 118, 31, 0.10);
+  --amber-text: #7E5A12;
+  --mute: #8D9391;
+  --mute-line: #CFCBC3;
+  --mute-fill: rgba(90, 96, 96, 0.07);
+  --mute-text: #646B69;
+
+  /* Theme switch */
+  --tg-d-bg: transparent;
+  --tg-d-fg: #8B918F;
+  --tg-l-bg: #DEDAD2;
+  --tg-l-fg: #14181A;
+}
+
+/* Layout constants — Token Sheet */
+:root {
+  --container: 1440px;
+  --gutter: 100px;
+  --hairline: 1px;
+  --radius: 0;
+}

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #0B0E0F; }
+  a { color: #31A9BC; text-decoration: none; }
+  a:hover { color: #7FD2DE; }
+  ::selection { background: #1E7C8C; color: #F3F4F5; }
+</style>
+</helmet>
+
+<div style="--accent: {{ accent }}; --accent-hi: {{ accentHi }}; --btn-fg: {{ btnFg }}; --probe: {{ probeRadius }}px; --probe-ink: {{ probeInk }}; --bg: {{ bg }}; --bg-hero: {{ bgHero }}; --bg-catalog: {{ bgCatalog }}; --bg-pillars: {{ bgPillars }}; --bg-philosophy: {{ bgPhilosophy }}; --bg-footer: {{ bgFooter }}; --surface: {{ surface }}; --line: {{ line }}; --line-soft: {{ lineSoft }}; --line-hover: {{ lineHover }}; --text: {{ text }}; --text-strong: {{ textStrong }}; --text-mid: {{ textMid }}; --text-dim: {{ textDim }}; --text-faint: {{ textFaint }}; --ok-line: {{ okLine }}; --ok-fill: {{ okFill }}; --ok-text: {{ okText }}; --amber: {{ amber }}; --amber-line: {{ amberLine }}; --amber-fill: {{ amberFill }}; --amber-text: {{ amberText }}; --amber-hi: {{ amberHi }}; --mute: {{ mute }}; --mute-line: {{ muteLine }}; --mute-fill: {{ muteFill }}; --mute-text: {{ muteText }}; --mute-hi: {{ muteHi }}; --tg-d-bg: {{ tgDarkBg }}; --tg-d-fg: {{ tgDarkFg }}; --tg-l-bg: {{ tgLightBg }}; --tg-l-fg: {{ tgLightFg }}; background: var(--bg, #0B0E0F); color: var(--text, #EDEFF0); font-family: 'IBM Plex Sans', system-ui, sans-serif; min-width: 1240px; transition: background 260ms ease, color 260ms ease;">
+
+  <header style="position: sticky; top: 0; z-index: 40; background: var(--bg, #0B0E0F); border-bottom: 1px solid var(--line, #1C2325);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 0 100px; height: 68px; display: flex; align-items: center; justify-content: space-between;">
+      <div style="display: flex; align-items: baseline; gap: 14px;">
+        <span style="font-family: Newsreader, Georgia, serif; font-size: 25px; letter-spacing: 0.16em; color: var(--text-strong, #F1F3F3);">NOKTRA</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: var(--text-dim, #66706F); text-transform: uppercase;">Verification Instruments</span>
+      </div>
+      <nav style="display: flex; align-items: center; gap: 34px;">
+        <a href="#products" style="font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-mid, #C3CACB);" style-hover="color: var(--accent, #31A9BC);">Products</a>
+        <a href="#pillars" style="font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-mid, #C3CACB);" style-hover="color: var(--accent, #31A9BC);">Method</a>
+        <a href="#philosophy" style="font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-mid, #C3CACB);" style-hover="color: var(--accent, #31A9BC);">Philosophy</a>
+        <a href="#downloads" style="font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-mid, #C3CACB);" style-hover="color: var(--accent, #31A9BC);">Downloads</a>
+        <div style="display: flex; border: 1px solid var(--line-hover, #262F31); height: 28px;">
+          <span onClick="{{ setDark }}" style="display: flex; align-items: center; padding: 0 11px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; cursor: pointer; background: var(--tg-d-bg, #1A2123); color: var(--tg-d-fg, #E4E8E8);">DARK</span>
+          <span onClick="{{ setLight }}" style="display: flex; align-items: center; padding: 0 11px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; cursor: pointer; background: var(--tg-l-bg, transparent); color: var(--tg-l-fg, #5E6769);">LIGHT</span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section data-screen-label="Hero" ref="{{ heroRef }}" style="position: relative; overflow: hidden; background: var(--bg-hero, #0C0F10); border-bottom: 1px solid var(--line, #1C2325);">
+
+    <div style="position: absolute; inset: 0; z-index: 0; pointer-events: none; padding: 118px 100px 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 2.35; letter-spacing: 0.06em; color: var(--probe-ink, #7FD2DE); white-space: pre; -webkit-mask-image: radial-gradient(circle var(--probe, 300px) at var(--mx, 76%) var(--my, 62%), #000 0%, rgba(0,0,0,0.55) 52%, transparent 78%); mask-image: radial-gradient(circle var(--probe, 300px) at var(--mx, 76%) var(--my, 62%), #000 0%, rgba(0,0,0,0.55) 52%, transparent 78%);">
+      <div style="opacity: 0.5;">0x1A2C  ALT_BARO        UINT16  m       [0, 65535]      SCALE 1.0     OK</div>
+      <div style="opacity: 0.5;">0x1A2E  ALT_RADAR       UINT16  m       [0, 4095]       SCALE 0.5     OK</div>
+      <div style="opacity: 0.5;">0x1A30  IAS             INT16   kt      [-512, 511]     SCALE 0.25    OK</div>
+      <div style="opacity: 0.5;">0x1A34  ATT_PITCH       INT16   deg     [-180, 180]     SCALE 0.01    OK</div>
+      <div style="opacity: 0.5;">0x1A36  ATT_ROLL        INT16   deg     [-180, 180]     SCALE 0.01    OK</div>
+      <div style="opacity: 0.5;">0x1A38  ATT_YAW         INT16   deg     [-180, 180]     SCALE 0.01    OK</div>
+      <div style="opacity: 0.5;">0x1A40  ENG1_N1         UINT16  %       [0, 120]        SCALE 0.05    OK</div>
+      <div style="opacity: 0.5;">0x1A42  ENG1_EGT        UINT16  degC    [0, 1200]       SCALE 0.1     OK</div>
+      <div style="opacity: 0.5;">0x1A46  FUEL_QTY_L      UINT16  kg      [0, 8000]       SCALE 1.0     OK</div>
+      <div style="opacity: 0.5;">0x1A48  FUEL_QTY_R      UINT16  kg      [0, 8000]       SCALE 1.0     OK</div>
+      <div style="opacity: 0.5;">0x1A50  BUS_28V         UINT8   V       [0, 40]         SCALE 0.2     OK</div>
+      <div style="opacity: 0.5;">0x1A52  MODE_WORD       BITF    —       8 FLAGS         GOLDEN VEC    OK</div>
+      <div style="opacity: 0.5;">0x1A54  CRC16           UINT16  —       CCITT-FALSE     VERIFIED      OK</div>
+      <div style="opacity: 0.5;">0x1A58  FRAME_COUNT     UINT32  —       [0, 2^32-1]     MONOTONIC     OK</div>
+      <div style="opacity: 0.5;">0x1A5C  TIME_IRIG       UINT48  us      IRIG-106 CH10   LOCKED        OK</div>
+      <div style="opacity: 0.5;">0x1A62  SECS_MSG        S6F11   —       EVENT REPORT    DECODED       OK</div>
+      <div style="opacity: 0.5;">0x1A66  MTBF_EST        FLOAT32 h       PARTS COUNT     AUDIT TRAIL   OK</div>
+    </div>
+
+    <div style="position: relative; z-index: 2; max-width: 1440px; margin: 0 auto; padding: 0 100px;">
+
+      <div style="display: flex; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid var(--line, #1A2123); font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.18em; color: var(--text-dim, #66706F); text-transform: uppercase;">
+        <span>AIR-GAPPED · LOCAL AI ONLY · NO TELEMETRY</span>
+        <span style="display: flex; gap: 26px;">
+          <span>9 TOOLS</span>
+          <span>5 VERBS</span>
+          <span style="color: var(--text-mid, #A9B2B5);">SYSTEM READY</span>
+        </span>
+      </div>
+
+      <div style="padding: 92px 0 0; display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 80px; align-items: end; pointer-events: none;">
+        <div style="min-width: 0;">
+          <div style="font-family: Newsreader, Georgia, serif; font-weight: 400; font-size: clamp(104px, 11.4vw, 156px); line-height: 0.88; letter-spacing: 0.045em; color: var(--text-strong, #F4F6F6);">NOKTRA</div>
+          <div style="margin-top: 34px; font-family: Newsreader, Georgia, serif; font-size: 42px; line-height: 1.24; letter-spacing: -0.005em; color: var(--text-mid, #C9D0D1); max-width: 720px; text-wrap: pretty;">Verification tools that work in the dark.</div>
+        </div>
+        <div style="border-left: 1px solid var(--line-hover, #232B2E); padding-left: 28px; padding-bottom: 8px;">
+          <p style="margin: 0; font-size: 14.5px; line-height: 1.72; color: var(--text-mid, #98A2A5); text-wrap: pretty;">Nine desktop instruments for defense, aerospace, industrial and semiconductor test engineering. Built to run on networks that never touch the internet.</p>
+          <div style="margin-top: 22px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; color: var(--text-dim, #5E6769); text-transform: uppercase;">nox — night · offline · deterministic</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 210px; border-top: 1px solid var(--line-soft, #1F272A); padding-top: 18px; display: flex; justify-content: space-between; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; color: var(--text-faint, #4F5859); text-transform: uppercase;">
+        <span>{{ probeHint }}</span>
+        <span style="color: var(--accent, #31A9BC);">PROBE · <span style="color: var(--text-dim, #6C7679);">{{ probeReadout }}</span></span>
+      </div>
+
+      <div style="padding: 34px 0 92px; display: flex; align-items: center; gap: 18px;">
+        <a href="#products" style="display: inline-flex; align-items: center; height: 46px; padding: 0 30px; background: var(--accent, #31A9BC); color: var(--btn-fg, #06181C); font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; border: 1px solid var(--accent, #31A9BC);" style-hover="background: var(--accent-hi, #7FD2DE); border-color: var(--accent-hi, #7FD2DE); color: var(--btn-fg, #06181C);">Browse the nine tools</a>
+        <a href="#philosophy" style="display: inline-flex; align-items: center; height: 46px; padding: 0 30px; color: var(--text, #D3D9DA); font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; border: 1px solid var(--line-hover, #2A3336);" style-hover="border-color: var(--text-dim, #4B5658); color: var(--text-strong, #FFFFFF);">Proof, not consensus</a>
+        <span style="margin-left: auto; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; color: var(--text-dim, #5E6769);">WIN64 · SINGLE-FILE · NO RUNTIME INSTALL</span>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="products" data-screen-label="Instrument index" style="background: var(--bg-catalog, #101416); border-bottom: 1px solid var(--line, #1C2325);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 88px 100px 96px;">
+
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; padding-bottom: 34px;">
+        <div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.2em; color: var(--text-dim, #5E6769); text-transform: uppercase;">Instrument index</div>
+          <h2 style="margin: 14px 0 0; font-family: Newsreader, Georgia, serif; font-weight: 400; font-size: 52px; line-height: 1.1; letter-spacing: -0.01em; color: var(--text-strong, #EFF1F1);">Nine instruments, five verbs.</h2>
+        </div>
+        <p style="margin: 0; max-width: 360px; font-size: 14px; line-height: 1.7; color: var(--text-mid, #8B9598); text-wrap: pretty;">Select a line to read its specification. Every build ships as one file with a golden-vector suite.</p>
+      </div>
+
+      <div style="border: 1px solid var(--line-soft, #202829); display: grid; grid-template-columns: 452px minmax(0, 1fr);">
+
+        <div style="border-right: 1px solid var(--line-soft, #202829);">
+          <div style="display: grid; grid-template-columns: 62px minmax(0, 1fr) 96px; padding: 13px 22px; border-bottom: 1px solid var(--line-soft, #202829); font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.18em; color: var(--text-faint, #4F5859); text-transform: uppercase;">
+            <span>Ref</span>
+            <span>Instrument</span>
+            <span style="text-align: right;">State</span>
+          </div>
+          <sc-for list="{{ groups }}" as="group" hint-placeholder-count="5">
+            <div style="padding: 20px 22px 7px; display: flex; align-items: baseline; gap: 12px;">
+              <span style="font-family: Newsreader, Georgia, serif; font-size: 19px; color: var(--text-strong, #E7EAEA);">{{ group.verb }}</span>
+              <span style="flex: 1; height: 1px; background: var(--line-soft, #202829);"></span>
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.16em; color: var(--text-faint, #4F5859);">{{ group.meta }}</span>
+            </div>
+            <sc-for list="{{ group.tools }}" as="tool" hint-placeholder-count="2">
+              <div onClick="{{ tool.select }}" style="display: grid; grid-template-columns: 62px minmax(0, 1fr) 96px; align-items: center; padding: 11px 22px 11px 20px; border-left: 2px solid {{ tool.tick }}; background: {{ tool.rowBg }}; cursor: pointer;" style-hover="background: var(--surface, #151A1C);">
+                <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: var(--text-faint, #4F5859);">{{ tool.id }}</span>
+                <span style="font-size: 15.5px; letter-spacing: -0.005em; color: {{ tool.nameColor }};">{{ tool.name }}</span>
+                <span style="text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.14em; color: {{ tool.stateColor }}; text-transform: uppercase;">{{ tool.state }}</span>
+              </div>
+            </sc-for>
+          </sc-for>
+          <div style="padding: 20px 22px; border-top: 1px solid var(--line-soft, #202829); display: flex; justify-content: space-between; font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.16em; color: var(--text-faint, #4F5859); text-transform: uppercase;">
+            <span>9 refs</span>
+            <span>{{ countLine }}</span>
+          </div>
+        </div>
+
+        <div style="background: var(--surface, #151A1C); display: flex; flex-direction: column;">
+          <div style="display: flex; justify-content: space-between; padding: 13px 34px; border-bottom: 1px solid var(--line-soft, #202829); font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.18em; color: var(--text-faint, #4F5859); text-transform: uppercase;">
+            <span>{{ sel.crumb }}</span>
+            <span style="color: {{ sel.stateColor }};">{{ sel.state }}</span>
+          </div>
+
+          <div style="padding: 40px 34px 0;">
+            <div style="display: flex; align-items: baseline; gap: 16px;">
+              <h3 style="margin: 0; font-family: Newsreader, Georgia, serif; font-weight: 400; font-size: 44px; line-height: 1.06; letter-spacing: -0.01em; color: var(--text-strong, #F1F3F3);">{{ sel.name }}</h3>
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; color: var(--text-faint, #4F5859);">{{ sel.id }}</span>
+            </div>
+            <p style="margin: 20px 0 0; max-width: 560px; font-size: 15.5px; line-height: 1.72; color: var(--text-mid, #96A0A3); text-wrap: pretty;">{{ sel.blurb }}</p>
+          </div>
+
+          <div style="margin-top: 34px; padding: 0 34px;">
+            <sc-for list="{{ sel.specs }}" as="row" hint-placeholder-count="4">
+              <div style="display: flex; align-items: baseline; gap: 14px; padding: 11px 0; border-bottom: 1px dashed var(--line-soft, #202829); font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.08em;">
+                <span style="color: var(--text-dim, #7E8588); text-transform: uppercase;">{{ row.label }}</span>
+                <span style="flex: 1;"></span>
+                <span style="color: var(--text-mid, #C3CACB); text-align: right;">{{ row.value }}</span>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="margin-top: auto; padding: 34px; display: flex; align-items: center; gap: 14px;">
+            <a href="#downloads" style="display: inline-flex; align-items: center; height: 42px; padding: 0 24px; background: var(--accent, #31A9BC); color: var(--btn-fg, #06181C); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; border: 1px solid var(--accent, #31A9BC);" style-hover="background: var(--accent-hi, #7FD2DE); border-color: var(--accent-hi, #7FD2DE);">{{ sel.cta }}</a>
+            <a href="#products" style="display: inline-flex; align-items: center; height: 42px; padding: 0 24px; color: var(--text, #D3D9DA); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; border: 1px solid var(--line-hover, #2A3336);" style-hover="border-color: var(--text-dim, #4B5658); color: var(--text-strong, #FFFFFF);">Specification</a>
+            <span style="margin-left: auto; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--text-faint, #4F5859); text-transform: uppercase;">{{ sel.footnote }}</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="pillars" data-screen-label="Pillars" style="background: var(--bg-pillars, #0B0E0F); border-bottom: 1px solid var(--line, #1C2325);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 84px 100px 88px;">
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.2em; color: var(--text-dim, #5E6769); text-transform: uppercase;">Why these tools are trusted</div>
+      <div style="margin-top: 44px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line-soft, #1D2426); border: 1px solid var(--line-soft, #1D2426);">
+        <div style="background: var(--surface, #0E1214); padding: 38px 34px 42px;">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.18em; color: var(--accent, #31A9BC);">01</div>
+          <h3 style="margin: 20px 0 0; font-family: Newsreader, Georgia, serif; font-weight: 400; font-size: 32px; letter-spacing: -0.01em; color: var(--text-strong, #EFF1F1);">Offline-first</h3>
+          <p style="margin: 14px 0 0; font-size: 14.5px; line-height: 1.72; color: var(--text-mid, #8E989B); text-wrap: pretty;">Designed for air-gapped networks. Any AI runs locally on the engineer's own machine; nothing about your program leaves the room.</p>
+        </div>
+        <div style="background: var(--surface, #0E1214); padding: 38px 34px 42px;">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.18em; color: var(--accent, #31A9BC);">02</div>
+          <h3 style="margin: 20px 0 0; font-family: Newsreader, Georgia, serif; font-weight: 400; font-size: 32px; letter-spacing: -0.01em; color: var(--text-strong, #EFF1F1);">Deterministic verification</h3>
+          <p style="margin: 14px 0 0; font-size: 14.5px; line-height: 1.72; color: var(--text-mid, #8E989B); text-wrap: pretty;">Golden-vector suites and reproducible runs. The same input gives the same verdict today, next quarter, and in the audit.</p>
+        </div>
+        <div style="background: var(--surface, #0E1214); padding: 38px 34px 42px;">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.18em; color: var(--accent, #31A9BC);">03</div>
+          <h3 style="margin: 20px 0 0; font-family: Newsreader, Georgia, serif; font-weight: 400; font-size: 32px; letter-spacing: -0.01em; color: var(--text-strong, #EFF1F1);">Single-file deploy</h3>
+          <p style="margin: 14px 0 0; font-size: 14.5px; line-height: 1.72; color: var(--text-mid, #8E989B); text-wrap: pretty;">One executable, copied onto the target machine. No runtime installs, no package managers, no IT ticket.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="philosophy" data-screen-label="Philosophy strip" style="background: var(--bg-philosophy, #0E1113); border-bottom: 1px solid var(--line, #1C2325);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 96px 100px 100px; display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 90px; align-items: end;">
+      <div style="min-width: 0;">
+        <div style="width: 64px; height: 2px; background: var(--accent, #31A9BC);"></div>
+        <h2 style="margin: 34px 0 0; font-family: Newsreader, Georgia, serif; font-weight: 400; font-size: clamp(72px, 7.6vw, 104px); line-height: 1.0; letter-spacing: -0.02em; color: var(--text-strong, #F4F6F6);">Proof,<br>not consensus.</h2>
+      </div>
+      <div style="padding-bottom: 12px;">
+        <p style="margin: 0; font-size: 15px; line-height: 1.75; color: var(--text-mid, #98A2A5); text-wrap: pretty;">A test that passes because everyone agreed it should is not a test. Every NOKTRA tool ships with golden-vector suites; deterministic checkers judge the result, AI only proposes, and a human approves before anything is released.</p>
+        <a href="#philosophy" style="margin-top: 26px; display: inline-flex; align-items: center; gap: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent, #31A9BC); border-bottom: 1px solid var(--ok-line, #1E7C8C); padding-bottom: 6px;" style-hover="color: var(--accent-hi, #7FD2DE); border-color: var(--accent-hi, #7FD2DE);">Read the method</a>
+      </div>
+    </div>
+  </section>
+
+  <footer id="downloads" data-screen-label="Footer" style="background: var(--bg-footer, #090B0C);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 72px 100px 0;">
+      <div style="display: grid; grid-template-columns: 1fr repeat(3, 200px); gap: 56px;">
+        <div>
+          <div style="font-family: Newsreader, Georgia, serif; font-size: 30px; letter-spacing: 0.16em; color: var(--text-strong, #E7EAEA);">NOKTRA</div>
+          <p style="margin: 16px 0 0; max-width: 300px; font-size: 13.5px; line-height: 1.7; color: var(--text-mid, #798386); text-wrap: pretty;">Verification and test-engineering instruments for work that happens where the internet doesn't reach.</p>
+        </div>
+        <div style="display: grid; gap: 12px; align-content: start;">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--text-dim, #545D5F); text-transform: uppercase;">Catalog</div>
+          <a href="#products" style="font-size: 13.5px; color: var(--text-mid, #A8B1B3);" style-hover="color: var(--text-strong, #FFFFFF);">Define</a>
+          <a href="#products" style="font-size: 13.5px; color: var(--text-mid, #A8B1B3);" style-hover="color: var(--text-strong, #FFFFFF);">Run</a>
+          <a href="#products" style="font-size: 13.5px; color: var(--text-mid, #A8B1B3);" style-hover="color: var(--text-strong, #FFFFFF);">Observe</a>
+          <a href="#products" style="font-size: 13.5px; color: var(--text-mid, #A8B1B3);" style-hover="color: var(--text-strong, #FFFFFF);">Connect</a>
+          <a href="#products" style="font-size: 13.5px; color: var(--text-mid, #A8B1B3);" style-hover="color: var(--text-strong, #FFFFFF);">Assure</a>
+        </div>
+        <div style="display: grid; gap: 12px; align-content: start;">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--text-dim, #545D5F); text-transform: uppercase;">Resources</div>
+          <a href="#downloads" style="font-size: 13.5px; color: var(--text-mid, #A8B1B3);" style-hover="color: var(--text-strong, #FFFFFF);">Downloads</a>
+          <a href="#philosophy" style="font-size: 13.5px; color: var(--text-mid, #A8B1B3);" style-hover="color: var(--text-strong, #FFFFFF);">Philosophy</a>
+          <a href="#products" style="font-size: 13.5px; color: var(--text-mid, #A8B1B3);" style-hover="color: var(--text-strong, #FFFFFF);">Release notes</a>
+          <a href="#products" style="font-size: 13.5px; color: var(--text-mid, #A8B1B3);" style-hover="color: var(--text-strong, #FFFFFF);">GitHub</a>
+        </div>
+        <div style="display: grid; gap: 12px; align-content: start;">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--text-dim, #545D5F); text-transform: uppercase;">Contact</div>
+          <a href="#downloads" style="font-size: 13.5px; color: var(--text-mid, #A8B1B3);" style-hover="color: var(--text-strong, #FFFFFF);">Request a build</a>
+          <a href="#downloads" style="font-size: 13.5px; color: var(--text-mid, #A8B1B3);" style-hover="color: var(--text-strong, #FFFFFF);">Licensing</a>
+          <a href="#downloads" style="font-size: 13.5px; color: var(--text-mid, #A8B1B3);" style-hover="color: var(--text-strong, #FFFFFF);">Security</a>
+        </div>
+      </div>
+      <div style="margin-top: 64px; border-top: 1px solid var(--line, #171D1F); padding: 20px 0 26px; display: flex; justify-content: space-between; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; color: var(--text-faint, #4F5859); text-transform: uppercase;">
+        <span>© 2026 NOKTRA</span>
+        <span>Proof, not consensus.</span>
+        <span>No analytics · No telemetry</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440, &quot;height&quot;: 1000},
+ &quot;probeRadius&quot;: {&quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 300, &quot;min&quot;: 140, &quot;max&quot;: 620, &quot;step&quot;: 10, &quot;unit&quot;: &quot;px&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Hero&quot;},
+ &quot;accentColor&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: null, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#31A9BC&quot;, &quot;#1E7C8C&quot;, &quot;#3FB08F&quot;, &quot;#4C9FD6&quot;], &quot;section&quot;: &quot;Theme&quot;},
+ &quot;showSpecLine&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Catalog&quot;}}">
+const THEMES = {
+  dark: {
+    accent: '#31A9BC', accentHi: '#7FD2DE', btnFg: '#06181C', probeInk: '#7FD2DE',
+    bg: '#0B0E0F', bgHero: '#0C0F10', bgCatalog: '#101416', bgPillars: '#0B0E0F',
+    bgPhilosophy: '#0E1113', bgFooter: '#090B0C', surface: '#151A1C',
+    line: '#1C2325', lineSoft: '#202829', lineHover: '#34464A',
+    text: '#EDEFF0', textStrong: '#F4F6F6', textMid: '#96A0A3', textDim: '#66706F', textFaint: '#4F5859',
+    okLine: '#1E7C8C', okFill: 'rgba(30,124,140,0.16)', okText: '#59C3D2',
+    amber: '#B9862F', amberLine: '#6A5122', amberFill: 'rgba(185,134,47,0.14)', amberText: '#D2A253', amberHi: '#D8A54E',
+    mute: '#7E8588', muteLine: '#39423F', muteFill: 'rgba(126,133,136,0.12)', muteText: '#8A9396', muteHi: '#A9B2B5',
+    tgDarkBg: '#1A2123', tgDarkFg: '#E4E8E8', tgLightBg: 'transparent', tgLightFg: '#5E6769',
+    hint: 'Move the cursor to probe the interface beneath this page'
+  },
+  light: {
+    accent: '#12707F', accentHi: '#0B5462', btnFg: '#FAFCFC', probeInk: '#0F4A55',
+    bg: '#F3F2EE', bgHero: '#EEEDE8', bgCatalog: '#E9E7E1', bgPillars: '#F3F2EE',
+    bgPhilosophy: '#EEEDE8', bgFooter: '#E3E1DA', surface: '#FBFAF8',
+    line: '#D6D2CA', lineSoft: '#E0DCD4', lineHover: '#A9B3B2',
+    text: '#1A1E1F', textStrong: '#0E1213', textMid: '#555E5F', textDim: '#7E8583', textFaint: '#9AA09D',
+    okLine: '#9CC3CA', okFill: 'rgba(18,112,127,0.09)', okText: '#0E6070',
+    amber: '#A5761F', amberLine: '#D6BE92', amberFill: 'rgba(165,118,31,0.10)', amberText: '#7E5A12', amberHi: '#8A6417',
+    mute: '#8D9391', muteLine: '#CFCBC3', muteFill: 'rgba(90,96,96,0.07)', muteText: '#646B69', muteHi: '#6A716F',
+    tgDarkBg: 'transparent', tgDarkFg: '#8B918F', tgLightBg: '#DEDAD2', tgLightFg: '#14181A',
+    hint: 'Move the cursor to read the interface under the page'
+  }
+};
+
+const TOOLS = [
+  { verb: 'Define', meta: '01 · 1 ref', items: [
+    { id: 'NK-01', name: 'ICD Refinery', state: 'Available', tone: 'ok', version: 'v1.4.0',
+      blurb: 'Turns messy, inconsistent interface control documents into a validated canonical spec — local-LLM extraction, deterministic linting, human approval, then codec generation.',
+      specs: [['Extraction', 'Local LLM'], ['Judge', 'Deterministic lint'], ['Output', 'Canonical ICD + codec'], ['Build', 'WIN64 single-file .exe']],
+      cta: 'Download v1.4.0', footnote: 'No runtime install' } ] },
+  { verb: 'Run', meta: '02 · 2 refs', items: [
+    { id: 'NK-02', name: 'SIL Runtime', state: 'In development', tone: 'mute', version: '—',
+      blurb: 'Fixed-step model execution for control software without hardware. VeriStand-class capability, deliberately scoped to MIL and SIL.',
+      specs: [['Solver', 'Fixed-step'], ['Scope', 'MIL / SIL'], ['Hardware', 'Not required'], ['Build', 'Internal preview']],
+      cta: 'Request access', footnote: 'Preview builds only' },
+    { id: 'NK-03', name: 'Test Sequencer', state: 'Beta', tone: 'amber', version: 'v0.9.2',
+      blurb: 'YAML test sequences in, execution and pass/fail out, with a self-contained HTML report for the review package.',
+      specs: [['Input', 'YAML sequence'], ['Verdict', 'Pass / fail per step'], ['Report', 'Self-contained HTML'], ['Build', 'WIN64 single-file .exe']],
+      cta: 'Download beta', footnote: 'Beta · API may change' } ] },
+  { verb: 'Observe', meta: '03 · 2 refs', items: [
+    { id: 'NK-04', name: 'Telemetry Scope', state: 'Available', tone: 'ok', version: 'v2.1.0',
+      blurb: 'Channel-defined live strip-charts with record and timed replay, so a bench run can be re-watched exactly as it happened.',
+      specs: [['Channels', 'User-defined'], ['Modes', 'Live · record · replay'], ['Replay', 'Timed, frame-exact'], ['Build', 'WIN64 single-file .exe']],
+      cta: 'Download v2.1.0', footnote: 'No runtime install' },
+    { id: 'NK-05', name: 'Ch10 Viewer', state: 'Beta', tone: 'amber', version: 'v0.7.1',
+      blurb: 'IRIG 106 flight-test recording viewer — open the Chapter 10 file on the aircraft bench, no server, no conversion step.',
+      specs: [['Standard', 'IRIG 106 Chapter 10'], ['Source', 'Recorder file, direct'], ['Server', 'None required'], ['Build', 'WIN64 single-file .exe']],
+      cta: 'Download beta', footnote: 'Beta · API may change' } ] },
+  { verb: 'Connect', meta: '04 · 2 refs', items: [
+    { id: 'NK-06', name: 'Protocol Bridge', state: 'Available', tone: 'ok', version: 'v1.2.3',
+      blurb: 'Unattended channel mapping across Modbus, UDP, Serial and MQTT — configure once, leave it running on the line.',
+      specs: [['Buses', 'Modbus · UDP · Serial · MQTT'], ['Mapping', 'Channel to channel'], ['Operation', 'Unattended service'], ['Build', 'WIN64 single-file .exe']],
+      cta: 'Download v1.2.3', footnote: 'No runtime install' },
+    { id: 'NK-07', name: 'SECS/GEM Workbench', state: 'Beta', tone: 'amber', version: 'v0.5.4',
+      blurb: 'Semiconductor equipment-to-host protocol decoder and simulator, for fab integration work that cannot wait on a real tool.',
+      specs: [['Protocols', 'SECS-II · GEM · HSMS'], ['Modes', 'Decode · simulate'], ['Target', 'Fab host integration'], ['Build', 'WIN64 single-file .exe']],
+      cta: 'Download beta', footnote: 'Beta · API may change' } ] },
+  { verb: 'Assure', meta: '05 · 2 refs', items: [
+    { id: 'NK-08', name: 'RAM Toolkit', state: 'Available', tone: 'ok', version: 'v3.0.1',
+      blurb: 'Reliability prediction, RBD availability and FMECA with audit-grade math trails — every number traceable to its input.',
+      specs: [['Methods', 'Prediction · RBD · FMECA'], ['Traceability', 'Full math trail'], ['Export', 'Audit package'], ['Build', 'WIN64 single-file .exe']],
+      cta: 'Download v3.0.1', footnote: 'No runtime install' },
+    { id: 'NK-09', name: 'Local Test Copilot', state: 'In development', tone: 'mute', version: '—',
+      blurb: 'Air-gapped C unit-test generation. The local LLM proposes; gcc and gcov judge; the engineer approves what ships.',
+      specs: [['Proposer', 'Local LLM'], ['Judge', 'gcc + gcov'], ['Approval', 'Engineer, always'], ['Build', 'Internal preview']],
+      cta: 'Request access', footnote: 'Preview builds only' } ] }
+];
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.heroRef = React.createRef();
+    let saved = null;
+    try { saved = localStorage.getItem('noktra-theme'); } catch (e) {}
+    this.state = { readout: 'STANDBY', theme: saved === 'light' ? 'light' : 'dark', selected: 'NK-01' };
+    this.setDark = () => this.applyTheme('dark');
+    this.setLight = () => this.applyTheme('light');
+    this.onMove = (e) => {
+      const el = this.heroRef.current;
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      const x = e.clientX - r.left, y = e.clientY - r.top;
+      el.style.setProperty('--mx', x.toFixed(1) + 'px');
+      el.style.setProperty('--my', y.toFixed(1) + 'px');
+      const v = ((x / Math.max(r.width, 1)) * 4.8 + 0.6).toFixed(3) + ' V';
+      if (v !== this.state.readout) this.setState({ readout: v });
+    };
+    this.onLeave = () => {
+      const el = this.heroRef.current;
+      if (!el) return;
+      el.style.removeProperty('--mx');
+      el.style.removeProperty('--my');
+      this.setState({ readout: 'STANDBY' });
+    };
+  }
+  applyTheme(theme) {
+    try { localStorage.setItem('noktra-theme', theme); } catch (e) {}
+    this.setState({ theme }, () => this.paintBody());
+  }
+  paintBody() {
+    document.body.style.background = THEMES[this.state.theme].bg;
+    document.body.style.transition = 'background 260ms ease';
+  }
+  componentDidMount() {
+    this.paintBody();
+    const el = this.heroRef.current;
+    if (!el) return;
+    el.addEventListener('mousemove', this.onMove);
+    el.addEventListener('mouseleave', this.onLeave);
+  }
+  componentWillUnmount() {
+    const el = this.heroRef.current;
+    if (!el) return;
+    el.removeEventListener('mousemove', this.onMove);
+    el.removeEventListener('mouseleave', this.onLeave);
+  }
+  toneColor(tone, t) {
+    if (tone === 'ok') return this.props.accentColor ?? t.accent;
+    if (tone === 'amber') return t.amberText;
+    return t.muteText;
+  }
+  renderVals() {
+    const t = THEMES[this.state.theme] || THEMES.dark;
+    const selId = this.state.selected;
+    let sel = null;
+    const groups = TOOLS.map((g) => ({
+      verb: g.verb,
+      meta: g.meta,
+      tools: g.items.map((it) => {
+        const on = it.id === selId;
+        if (on) sel = it;
+        return {
+          id: it.id,
+          name: it.name,
+          state: it.state,
+          stateColor: this.toneColor(it.tone, t),
+          nameColor: on ? t.textStrong : t.text,
+          tick: on ? (this.props.accentColor ?? t.accent) : 'transparent',
+          rowBg: on ? t.surface : 'transparent',
+          select: () => this.setState({ selected: it.id })
+        };
+      })
+    }));
+    sel = sel || TOOLS[0].items[0];
+    const verb = (TOOLS.find((g) => g.items.indexOf(sel) >= 0) || TOOLS[0]).verb;
+    return Object.assign({}, t, {
+      heroRef: this.heroRef,
+      groups: groups,
+      countLine: sel.id + ' selected',
+      sel: {
+        id: sel.id,
+        name: sel.name,
+        blurb: sel.blurb,
+        state: sel.state,
+        stateColor: this.toneColor(sel.tone, t),
+        crumb: sel.id + '  /  ' + verb + '  /  ' + sel.version,
+        specs: sel.specs.map((r) => ({ label: r[0], value: r[1] })),
+        cta: sel.cta,
+        footnote: sel.footnote
+      },
+      setDark: this.setDark,
+      setLight: this.setLight,
+      probeReadout: this.state.readout,
+      probeHint: t.hint,
+      probeRadius: this.props.probeRadius ?? 300,
+      accent: this.props.accentColor ?? t.accent,
+      showSpecLine: this.props.showSpecLine ?? true
+    });
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #0B0E0F; }
+  a { color: #31A9BC; text-decoration: none; }
+  a:hover { color: #7FD2DE; }
+  ::selection { background: #1E7C8C; color: #F3F4F5; }
+</style>
+</helmet>
+
+<div style="--accent: {{ accent }}; --accent-hi: {{ accentHi }}; --btn-fg: {{ btnFg }}; --bg: {{ bg }}; --bg-hero: {{ bgHero }}; --bg-catalog: {{ bgCatalog }}; --bg-pillars: {{ bgPillars }}; --bg-philosophy: {{ bgPhilosophy }}; --bg-footer: {{ bgFooter }}; --surface: {{ surface }}; --line: {{ line }}; --line-soft: {{ lineSoft }}; --line-hover: {{ lineHover }}; --text: {{ text }}; --text-strong: {{ textStrong }}; --text-mid: {{ textMid }}; --text-dim: {{ textDim }}; --text-faint: {{ textFaint }}; --ok-text: {{ okText }}; --amber-text: {{ amberText }}; --mute-text: {{ muteText }}; --tg-d-bg: {{ tgDarkBg }}; --tg-d-fg: {{ tgDarkFg }}; --tg-l-bg: {{ tgLightBg }}; --tg-l-fg: {{ tgLightFg }}; background: var(--bg, #0B0E0F); color: var(--text, #EDEFF0); font-family: 'IBM Plex Sans', system-ui, sans-serif; min-width: 1240px; transition: background 260ms ease, color 260ms ease;">
+
+  <header style="position: sticky; top: 0; z-index: 40; background: var(--bg, #0B0E0F); border-bottom: 1px solid var(--line, #1C2325);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 0 100px; height: 68px; display: flex; align-items: center; justify-content: space-between;">
+      <div style="display: flex; align-items: baseline; gap: 14px;">
+        <a href="NOKTRA Home v2.dc.html" style="font-family: Newsreader, Georgia, serif; font-size: 25px; letter-spacing: 0.16em; color: var(--text-strong, #F1F3F3);" style-hover="color: var(--accent, #31A9BC);">NOKTRA</a>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: var(--text-dim, #66706F); text-transform: uppercase;">Verification Instruments</span>
+      </div>
+      <nav style="display: flex; align-items: center; gap: 34px;">
+        <a href="NOKTRA Products Index.dc.html#index" style="font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-mid, #C3CACB);" style-hover="color: var(--accent, #31A9BC);">Products</a>
+        <a href="#method" style="font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-mid, #C3CACB);" style-hover="color: var(--accent, #31A9BC);">Method</a>
+        <a href="#top" style="font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent, #31A9BC);">Philosophy</a>
+        <a href="NOKTRA Products Index.dc.html#index" style="font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-mid, #C3CACB);" style-hover="color: var(--accent, #31A9BC);">Downloads</a>
+        <div style="display: flex; border: 1px solid var(--line-hover, #262F31); height: 28px;">
+          <span onClick="{{ setDark }}" style="display: flex; align-items: center; padding: 0 11px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; cursor: pointer; background: var(--tg-d-bg, #1A2123); color: var(--tg-d-fg, #E4E8E8);">DARK</span>
+          <span onClick="{{ setLight }}" style="display: flex; align-items: center; padding: 0 11px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; cursor: pointer; background: var(--tg-l-bg, transparent); color: var(--tg-l-fg, #5E6769);">LIGHT</span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section id="top" data-screen-label="Statement" style="background: var(--bg-hero, #0C0F10); border-bottom: 1px solid var(--line, #1C2325);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 0 100px;">
+      <div style="display: flex; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid var(--line, #1A2123); font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.18em; color: var(--text-dim, #66706F); text-transform: uppercase;">
+        <span>Philosophy &nbsp;/&nbsp; The method</span>
+        <span>Written once · revised when proven wrong</span>
+      </div>
+      <div style="padding: 104px 0 96px; max-width: 1080px;">
+        <div style="width: 64px; height: 2px; background: var(--accent, #31A9BC);"></div>
+        <h1 style="margin: 36px 0 0; font-family: Newsreader, Georgia, serif; font-weight: 400; font-size: clamp(84px, 8.6vw, 118px); line-height: 0.98; letter-spacing: -0.022em; color: var(--text-strong, #F4F6F6);">Proof,<br>not consensus.</h1>
+        <p style="margin: 42px 0 0; max-width: 720px; font-family: Newsreader, Georgia, serif; font-size: 27px; line-height: 1.48; color: var(--text-mid, #C9D0D1); text-wrap: pretty;">A test that passes because everyone agreed it should is not a test. It is a meeting. Verification is the practice of arranging matters so that agreement is unnecessary.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="method" data-screen-label="The method" style="background: var(--bg-catalog, #101416); border-bottom: 1px solid var(--line, #1C2325);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 82px 100px 88px;">
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.2em; color: var(--text-dim, #5E6769); text-transform: uppercase;">The method</div>
+      <sc-for list="{{ sections }}" as="s" hint-placeholder-count="4">
+        <div style="margin-top: 40px; padding-top: 34px; border-top: 1px solid var(--line-soft, #202829); display: grid; grid-template-columns: 260px minmax(0, 1fr) 300px; gap: 64px; align-items: start;">
+          <div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--accent, #31A9BC);">{{ s.no }}</div>
+            <h2 style="margin: 16px 0 0; font-family: Newsreader, Georgia, serif; font-weight: 400; font-size: 32px; line-height: 1.14; letter-spacing: -0.01em; color: var(--text-strong, #EFF1F1); text-wrap: pretty;">{{ s.title }}</h2>
+          </div>
+          <div style="min-width: 0;">
+            <p style="margin: 0; max-width: 640px; font-size: 16.5px; line-height: 1.78; color: var(--text-mid, #96A0A3); text-wrap: pretty;">{{ s.body }}</p>
+            <p style="margin: 20px 0 0; max-width: 640px; font-size: 16.5px; line-height: 1.78; color: var(--text-mid, #96A0A3); text-wrap: pretty;">{{ s.body2 }}</p>
+          </div>
+          <div style="border-left: 1px solid var(--line-soft, #202829); padding-left: 24px; display: grid; gap: 9px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em;">
+            <div style="color: var(--text-faint, #4F5859); text-transform: uppercase;">{{ s.noteLabel }}</div>
+            <sc-for list="{{ s.notes }}" as="note" hint-placeholder-count="3">
+              <div style="display: flex; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px dashed var(--line-soft, #202829);">
+                <span style="color: var(--text-dim, #7E8588);">{{ note.k }}</span>
+                <span style="color: var(--text-mid, #C3CACB); text-align: right;">{{ note.v }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-screen-label="Order of authority" style="background: var(--bg-pillars, #0B0E0F); border-bottom: 1px solid var(--line, #1C2325);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 84px 100px 92px;">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; padding-bottom: 40px;">
+        <h2 style="margin: 0; font-family: Newsreader, Georgia, serif; font-weight: 400; font-size: 46px; line-height: 1.1; letter-spacing: -0.012em; color: var(--text-strong, #EFF1F1);">Order of authority</h2>
+        <p style="margin: 0; max-width: 380px; font-size: 14px; line-height: 1.7; color: var(--text-mid, #8B9598); text-wrap: pretty;">Three parties touch every result. Their order is fixed, and only one of them can say yes.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line-soft, #1D2426); border: 1px solid var(--line-soft, #1D2426);">
+        <div style="background: var(--surface, #0E1214); padding: 36px 32px 40px;">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--text-faint, #4F5859); text-transform: uppercase;">Proposes</div>
+          <h3 style="margin: 18px 0 0; font-family: Newsreader, Georgia, serif; font-weight: 400; font-size: 30px; color: var(--text-strong, #EFF1F1);">Local AI</h3>
+          <p style="margin: 14px 0 0; font-size: 14.5px; line-height: 1.72; color: var(--text-mid, #8E989B); text-wrap: pretty;">Reads documents, drafts candidates, suggests test cases. Runs on the engineer's own machine and is never granted the last word.</p>
+          <div style="margin-top: 22px; padding-top: 14px; border-top: 1px dashed var(--line-soft, #202829); font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.12em; color: var(--mute-text, #8A9396); text-transform: uppercase;">Authority · none</div>
+        </div>
+        <div style="background: var(--surface, #0E1214); padding: 36px 32px 40px;">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--accent, #31A9BC); text-transform: uppercase;">Judges</div>
+          <h3 style="margin: 18px 0 0; font-family: Newsreader, Georgia, serif; font-weight: 400; font-size: 30px; color: var(--text-strong, #EFF1F1);">Deterministic checkers</h3>
+          <p style="margin: 14px 0 0; font-size: 14.5px; line-height: 1.72; color: var(--text-mid, #8E989B); text-wrap: pretty;">Golden vectors, lint rules, compilers, coverage. They cannot be persuaded, and they return the same verdict on the same input forever.</p>
+          <div style="margin-top: 22px; padding-top: 14px; border-top: 1px dashed var(--line-soft, #202829); font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.12em; color: var(--accent, #31A9BC); text-transform: uppercase;">Authority · verdict</div>
+        </div>
+        <div style="background: var(--surface, #0E1214); padding: 36px 32px 40px;">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--text-faint, #4F5859); text-transform: uppercase;">Approves</div>
+          <h3 style="margin: 18px 0 0; font-family: Newsreader, Georgia, serif; font-weight: 400; font-size: 30px; color: var(--text-strong, #EFF1F1);">The engineer</h3>
+          <p style="margin: 14px 0 0; font-size: 14.5px; line-height: 1.72; color: var(--text-mid, #8E989B); text-wrap: pretty;">Reads the verdict, signs the spec, and owns what ships. A tool that removes this step is not saving anyone time; it is moving the blame.</p>
+          <div style="margin-top: 22px; padding-top: 14px; border-top: 1px dashed var(--line-soft, #202829); font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.12em; color: var(--text-mid, #C3CACB); text-transform: uppercase;">Authority · release</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="What we refuse" style="background: var(--bg-catalog, #101416); border-bottom: 1px solid var(--line, #1C2325);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 78px 100px 84px;">
+      <div style="display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 64px; align-items: start;">
+        <div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--text-dim, #5E6769); text-transform: uppercase;">Commitments</div>
+          <h2 style="margin: 16px 0 0; font-family: Newsreader, Georgia, serif; font-weight: 400; font-size: 32px; line-height: 1.14; letter-spacing: -0.01em; color: var(--text-strong, #EFF1F1);">What these tools will not do</h2>
+        </div>
+        <div>
+          <sc-for list="{{ refusals }}" as="r" hint-placeholder-count="5">
+            <div style="display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 40px; padding: 18px 0; border-bottom: 1px solid var(--line-soft, #202829); align-items: baseline;">
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.14em; color: var(--accent, #31A9BC); text-transform: uppercase;">{{ r.k }}</span>
+              <span style="font-size: 15.5px; line-height: 1.68; color: var(--text-mid, #96A0A3); text-wrap: pretty;">{{ r.v }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Closing" style="background: var(--bg-philosophy, #0E1113); border-bottom: 1px solid var(--line, #1C2325);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 92px 100px 100px;">
+      <div style="max-width: 900px;">
+        <p style="margin: 0; font-family: Newsreader, Georgia, serif; font-size: clamp(38px, 3.8vw, 52px); line-height: 1.28; letter-spacing: -0.014em; color: var(--text-strong, #F4F6F6); text-wrap: pretty;">Nothing here needs to be believed. Run the golden vectors on your own machine, with the network unplugged, and see whether the verdict holds.</p>
+        <div style="margin-top: 40px; display: flex; align-items: center; gap: 16px;">
+          <a href="NOKTRA Products Index.dc.html#index" style="display: inline-flex; align-items: center; height: 46px; padding: 0 30px; background: var(--accent, #31A9BC); color: var(--btn-fg, #06181C); font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; border: 1px solid var(--accent, #31A9BC);" style-hover="background: var(--accent-hi, #7FD2DE); border-color: var(--accent-hi, #7FD2DE);">Download a build</a>
+          <a href="NOKTRA Product Detail.dc.html" style="display: inline-flex; align-items: center; height: 46px; padding: 0 30px; color: var(--text, #D3D9DA); font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; border: 1px solid var(--line-hover, #2A3336);" style-hover="border-color: var(--text-dim, #4B5658); color: var(--text-strong, #FFFFFF);">See a datasheet</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer data-screen-label="Footer" style="background: var(--bg-footer, #090B0C);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 72px 100px 0;">
+      <div style="display: grid; grid-template-columns: 1fr repeat(3, 200px); gap: 56px;">
+        <div>
+          <div style="font-family: Newsreader, Georgia, serif; font-size: 30px; letter-spacing: 0.16em; color: var(--text-strong, #E7EAEA);">NOKTRA</div>
+          <p style="margin: 16px 0 0; max-width: 300px; font-size: 13.5px; line-height: 1.7; color: var(--text-mid, #798386); text-wrap: pretty;">Verification and test-engineering instruments for work that happens where the internet doesn't reach.</p>
+        </div>
+        <div style="display: grid; gap: 12px; align-content: start;">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--text-dim, #545D5F); text-transform: uppercase;">Catalog</div>
+          <a href="NOKTRA Products Index.dc.html#index" style="font-size: 13.5px; color: var(--text-mid, #A8B1B3);" style-hover="color: var(--text-strong, #FFFFFF);">Define</a>
+          <a href="NOKTRA Products Index.dc.html#index" style="font-size: 13.5px; color: var(--text-mid, #A8B1B3);" style-hover="color: var(--text-strong, #FFFFFF);">Run</a>
+          <a href="NOKTRA Products Index.dc.html#index" style="font-size: 13.5px; color: var(--text-mid, #A8B1B3);" style-hover="color: var(--text-strong, #FFFFFF);">Observe</a>
+          <a href="NOKTRA Products Index.dc.html#index" style="font-size: 13.5px; color: var(--text-mid, #A8B1B3);" style-hover="color: var(--text-strong, #FFFFFF);">Connect</a>
+          <a href="NOKTRA Products Index.dc.html#index" style="font-size: 13.5px; color: var(--text-mid, #A8B1B3);" style-hover="color: var(--text-strong, #FFFFFF);">Assure</a>
+        </div>
+        <div style="display: grid; gap: 12px; align-content: start;">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--text-dim, #545D5F); text-transform: uppercase;">Resources</div>
+          <a href="NOKTRA Products Index.dc.html#index" style="font-size: 13.5px; color: var(--text-mid, #A8B1B3);" style-hover="color: var(--text-strong, #FFFFFF);">Downloads</a>
+          <a href="#top" style="font-size: 13.5px; color: var(--text-mid, #A8B1B3);" style-hover="color: var(--text-strong, #FFFFFF);">Philosophy</a>
+          <a href="NOKTRA Product Detail.dc.html" style="font-size: 13.5px; color: var(--text-mid, #A8B1B3);" style-hover="color: var(--text-strong, #FFFFFF);">Release notes</a>
+          <a href="NOKTRA Products Index.dc.html#index" style="font-size: 13.5px; color: var(--text-mid, #A8B1B3);" style-hover="color: var(--text-strong, #FFFFFF);">GitHub</a>
+        </div>
+        <div style="display: grid; gap: 12px; align-content: start;">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--text-dim, #545D5F); text-transform: uppercase;">Contact</div>
+          <a href="NOKTRA Products Index.dc.html#index" style="font-size: 13.5px; color: var(--text-mid, #A8B1B3);" style-hover="color: var(--text-strong, #FFFFFF);">Request a build</a>
+          <a href="NOKTRA Products Index.dc.html#index" style="font-size: 13.5px; color: var(--text-mid, #A8B1B3);" style-hover="color: var(--text-strong, #FFFFFF);">Licensing</a>
+          <a href="NOKTRA Products Index.dc.html#index" style="font-size: 13.5px; color: var(--text-mid, #A8B1B3);" style-hover="color: var(--text-strong, #FFFFFF);">Security</a>
+        </div>
+      </div>
+      <div style="margin-top: 64px; border-top: 1px solid var(--line, #171D1F); padding: 20px 0 26px; display: flex; justify-content: space-between; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; color: var(--text-faint, #4F5859); text-transform: uppercase;">
+        <span>© 2026 NOKTRA</span>
+        <span>Proof, not consensus.</span>
+        <span>No analytics · No telemetry</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440, &quot;height&quot;: 1000},
+ &quot;accentColor&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: null, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#31A9BC&quot;, &quot;#1E7C8C&quot;, &quot;#3FB08F&quot;, &quot;#4C9FD6&quot;], &quot;section&quot;: &quot;Theme&quot;}}">
+const THEMES = {
+  dark: {
+    accent: '#31A9BC', accentHi: '#7FD2DE', btnFg: '#06181C',
+    bg: '#0B0E0F', bgHero: '#0C0F10', bgCatalog: '#101416', bgPillars: '#0B0E0F',
+    bgPhilosophy: '#0E1113', bgFooter: '#090B0C', surface: '#151A1C',
+    line: '#1C2325', lineSoft: '#202829', lineHover: '#34464A',
+    text: '#EDEFF0', textStrong: '#F4F6F6', textMid: '#96A0A3', textDim: '#66706F', textFaint: '#4F5859',
+    okText: '#59C3D2', amberText: '#D2A253', muteText: '#8A9396',
+    tgDarkBg: '#1A2123', tgDarkFg: '#E4E8E8', tgLightBg: 'transparent', tgLightFg: '#5E6769'
+  },
+  light: {
+    accent: '#12707F', accentHi: '#0B5462', btnFg: '#FAFCFC',
+    bg: '#F3F2EE', bgHero: '#EEEDE8', bgCatalog: '#E9E7E1', bgPillars: '#F3F2EE',
+    bgPhilosophy: '#EEEDE8', bgFooter: '#E3E1DA', surface: '#FBFAF8',
+    line: '#D6D2CA', lineSoft: '#E0DCD4', lineHover: '#A9B3B2',
+    text: '#1A1E1F', textStrong: '#0E1213', textMid: '#555E5F', textDim: '#7E8583', textFaint: '#9AA09D',
+    okText: '#0E6070', amberText: '#7E5A12', muteText: '#646B69',
+    tgDarkBg: 'transparent', tgDarkFg: '#8B918F', tgLightBg: '#DEDAD2', tgLightFg: '#14181A'
+  }
+};
+
+const SECTIONS = [
+  { no: '01', title: 'A golden vector is a promise you can re-check',
+    body: 'Every tool ships with a suite of inputs whose correct outputs are known and fixed. They are not examples and not documentation — they are the thing the build is measured against, and they travel inside the executable.',
+    body2: 'If a change makes one vector disagree, the build does not ship. There is no discussion about whether the difference matters, because the vector was agreed upon while nobody was under deadline.',
+    noteLabel: 'Suite, typical', notes: [
+      { k: 'Vectors per tool', v: '180 – 620' }, { k: 'Shipped with build', v: 'Always' },
+      { k: 'Runs offline', v: 'Yes' }, { k: 'Re-run cost', v: 'Seconds' }
+    ] },
+  { no: '02', title: 'Determinism before intelligence',
+    body: 'Anything that can be decided by a rule is decided by a rule. Address overlaps, impossible ranges, unit collisions, missing scale factors, coverage thresholds — these are arithmetic, not judgement, and arithmetic does not have opinions on Friday afternoon.',
+    body2: 'AI is used where rules genuinely cannot reach: reading a badly-scanned table, guessing what an ambiguous field name meant, drafting a first test case. Its output enters the pipeline as a proposal and is checked like anything else.',
+    noteLabel: 'Division of labour', notes: [
+      { k: 'Rules decide', v: 'Structure · limits' }, { k: 'AI proposes', v: 'Reading · drafting' },
+      { k: 'Model location', v: 'On-device' }, { k: 'Network calls', v: 'None' }
+    ] },
+  { no: '03', title: 'Offline is a design constraint, not a feature flag',
+    body: 'These tools are built for rooms where the network is deliberately absent: classified programs, flight-test benches, fab floors. That constraint is accepted at the start, because retrofitting it later never actually works.',
+    body2: 'One consequence is that the software cannot phone home for licences, models, updates or analytics. Another is that you can read the whole trust boundary in one sentence: the file you copied, and nothing else.',
+    noteLabel: 'Deployment', notes: [
+      { k: 'Artefact', v: 'Single .exe' }, { k: 'Runtime install', v: 'None' },
+      { k: 'Telemetry', v: 'None, ever' }, { k: 'Licence check', v: 'Offline key' }
+    ] },
+  { no: '04', title: 'The engineer signs, so the engineer must be able to see',
+    body: 'Approval is only meaningful if the person approving can inspect what they are approving. Every derived value carries its provenance: which page it came from, which rule accepted it, which vector covered it.',
+    body2: 'That audit trail is also what makes the work defensible months later, in a design review, to someone who was not in the room and should not have to take anyone at their word.',
+    noteLabel: 'Traceability', notes: [
+      { k: 'Per-field origin', v: 'Recorded' }, { k: 'Rule that passed it', v: 'Recorded' },
+      { k: 'Re-runs', v: 'Byte-identical' }, { k: 'Export', v: 'Audit package' }
+    ] }
+];
+
+const REFUSALS = [
+  { k: 'No silent fixes', v: 'A tool never quietly corrects your document. It shows the conflict and waits for a decision.' },
+  { k: 'No cloud fallback', v: 'If a local model is unavailable, the step fails loudly. It does not reach for an API to finish the job.' },
+  { k: 'No opinion as verdict', v: 'AI output is never labelled pass or fail. Only deterministic checkers issue verdicts.' },
+  { k: 'No hidden state', v: 'Configuration and results are files you can read, diff and keep in your own version control.' },
+  { k: 'No roadmap theatre', v: 'In-development instruments are listed as such, with no date, until a build exists you can run.' }
+];
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    let saved = null;
+    try { saved = localStorage.getItem('noktra-theme'); } catch (e) {}
+    this.state = { theme: saved === 'light' ? 'light' : 'dark' };
+    this.setDark = () => this.applyTheme('dark');
+    this.setLight = () => this.applyTheme('light');
+  }
+  applyTheme(theme) {
+    try { localStorage.setItem('noktra-theme', theme); } catch (e) {}
+    this.setState({ theme }, () => this.paintBody());
+  }
+  paintBody() {
+    document.body.style.background = THEMES[this.state.theme].bg;
+    document.body.style.transition = 'background 260ms ease';
+  }
+  componentDidMount() { this.paintBody(); }
+  renderVals() {
+    const t = THEMES[this.state.theme] || THEMES.dark;
+    return Object.assign({}, t, {
+      accent: this.props.accentColor ?? t.accent,
+      setDark: this.setDark,
+      setLight: this.setLight,
+      sections: SECTIONS,
+      refusals: REFUSALS
+    });
+  }
+}
+</script>
+</body>
+</html>
