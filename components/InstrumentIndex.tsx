@@ -5,6 +5,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Reveal from "./Reveal";
+import { asset } from "@/lib/asset";
 import {
   STATUS_CLASS,
   STATUS_LABEL,
@@ -99,6 +100,17 @@ export default function InstrumentIndex({ verbs, products }: Props) {
               </div>
               <p className="idx__pane-blurb">{sel.oneLiner}</p>
             </div>
+
+            {sel.image ? (
+              <div className="idx__pane-shot">
+                <img
+                  key={sel.slug}
+                  src={asset(sel.image)}
+                  alt={`${sel.name} screenshot`}
+                  loading="lazy"
+                />
+              </div>
+            ) : null}
 
             <div className="idx__pane-specs">
               {sel.specs.map(([k, v]) => (

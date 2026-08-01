@@ -45,3 +45,7 @@
 - out/ 재확인: 전 라우트(/, /products, /products/{9}, /method, /contact, 404, sitemap.xml, robots.txt) export.
 - DoD: pnpm build 성공 + out/ 확인 + 배포 문서 완비.
 - 퍼블릭 저장소 생성·푸시: https://github.com/Kim-Hakseong/noktra-website (main). Pages(Actions 소스) 활성화 → 워크플로 success → https://kim-hakseong.github.io/noktra-website/ 200 확인.
+
+## 개선 1 — 홈 인덱스 패널에 실제 스크린샷 (2026-08-01)
+- 각 NOKTRA-* 저장소 README 대표 스크린샷 9장을 /public/shots/<slug>.png로 투입, products.json에 image 경로 주입(DESIGN.md 스키마 필드 — 문구 무수정).
+- 홈 Instrument index 상세 패널에 16:10 프레임 이미지 추가, 제품 상세 페이지 프레임도 자동으로 실물 표시.
