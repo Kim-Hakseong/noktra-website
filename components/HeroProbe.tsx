@@ -1,0 +1,115 @@
+"use client";
+
+// 홈 히어로 — Home v2 시안 정본.
+// 배경의 ICD 테이블이 커서 반경(프로브)으로만 드러나는 마스크 연출.
+import { useRef, useState } from "react";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { SITE } from "@/lib/site";
+import { PRODUCTS, VERBS } from "@/lib/products";
+
+// 시안 원문 배경 테이블 (장식용 계기 데이터)
+const PROBE_ROWS = [
+  "0x1A2C  ALT_BARO        UINT16  m       [0, 65535]      SCALE 1.0     OK",
+  "0x1A2E  ALT_RADAR       UINT16  m       [0, 4095]       SCALE 0.5     OK",
+  "0x1A30  IAS             INT16   kt      [-512, 511]     SCALE 0.25    OK",
+  "0x1A34  ATT_PITCH       INT16   deg     [-180, 180]     SCALE 0.01    OK",
+  "0x1A36  ATT_ROLL        INT16   deg     [-180, 180]     SCALE 0.01    OK",
+  "0x1A38  ATT_YAW         INT16   deg     [-180, 180]     SCALE 0.01    OK",
+  "0x1A40  ENG1_N1         UINT16  %       [0, 120]        SCALE 0.05    OK",
+  "0x1A42  ENG1_EGT        UINT16  degC    [0, 1200]       SCALE 0.1     OK",
+  "0x1A46  FUEL_QTY_L      UINT16  kg      [0, 8000]       SCALE 1.0     OK",
+  "0x1A48  FUEL_QTY_R      UINT16  kg      [0, 8000]       SCALE 1.0     OK",
+  "0x1A50  BUS_28V         UINT8   V       [0, 40]         SCALE 0.2     OK",
+  "0x1A52  MODE_WORD       BITF    —       8 FLAGS         GOLDEN VEC    OK",
+  "0x1A54  CRC16           UINT16  —       CCITT-FALSE     VERIFIED      OK",
+  "0x1A58  FRAME_COUNT     UINT32  —       [0, 2^32-1]     MONOTONIC     OK",
+  "0x1A5C  TIME_IRIG       UINT48  us      IRIG-106 CH10   LOCKED        OK",
+  "0x1A62  SECS_MSG        S6F11   —       EVENT REPORT    DECODED       OK",
+  "0x1A66  MTBF_EST        FLOAT32 h       PARTS COUNT     AUDIT TRAIL   OK",
+];
+
+export default function HeroProbe() {
+  const ref = useRef<HTMLElement>(null);
+  const [readout, setReadout] = useState("STANDBY");
+
+  const onMove = (e: React.MouseEvent) => {
+    const el = ref.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    const x = e.clientX - r.left;
+    const y = e.clientY - r.top;
+    el.style.setProperty("--mx", `${x.toFixed(1)}px`);
+    el.style.setProperty("--my", `${y.toFixed(1)}px`);
+    const v = `${((x / Math.max(r.width, 1)) * 4.8 + 0.6).toFixed(3)} V`;
+    if (v !== readout) setReadout(v);
+  };
+  const onLeave = () => {
+    const el = ref.current;
+    if (!el) return;
+    el.style.removeProperty("--mx");
+    el.style.removeProperty("--my");
+    setReadout("STANDBY");
+  };
+
+  return (
+    <section
+      ref={ref}
+      className="band band--hero hero"
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
+    >
+      <div className="hero__probe" aria-hidden="true">
+        {PROBE_ROWS.map((row) => (
+          <div key={row}>{row}</div>
+        ))}
+      </div>
+
+      <div className="wrap hero__in">
+        <div className="statusbar">
+          <span>AIR-GAPPED · LOCAL AI ONLY · NO TELEMETRY</span>
+          <span className="statusbar__right">
+            <span>{PRODUCTS.length} TOOLS</span>
+            <span>{VERBS.length} VERBS</span>
+            <span style={{ color: "var(--text-mid)" }}>SYSTEM READY</span>
+          </span>
+        </div>
+
+        <motion.div
+          className="hero__grid"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div style={{ minWidth: 0 }}>
+            <h1 className="hero__wordmark">{SITE.name}</h1>
+            <p className="hero__lead">{SITE.positioning}</p>
+          </div>
+          <div className="hero__side">
+            <p>{SITE.desc}</p>
+            <div className="hero__side-note">
+              nox — night · offline · deterministic
+            </div>
+          </div>
+        </motion.div>
+
+        <div className="hero__rule">
+          <span>Move the cursor to probe the interface beneath this page</span>
+          <span className="probe-tag">
+            PROBE · <span className="probe-readout">{readout}</span>
+          </span>
+        </div>
+
+        <div className="hero__ctas">
+          <Link className="btn" href="/products">
+            Browse the nine tools
+          </Link>
+          <Link className="btn btn--ghost" href="/method">
+            Proof, not consensus
+          </Link>
+          <span className="end-note">WIN64 · SINGLE-FILE · NO RUNTIME INSTALL</span>
+        </div>
+      </div>
+    </section>
+  );
+}
