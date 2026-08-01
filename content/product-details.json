@@ -1,0 +1,165 @@
+{
+  "_note": "제품 상세 워크스루 콘텐츠. 모든 문장은 각 NOKTRA-* 저장소 README(소유자 작성)에서 발췌·압축 — 창작 주장 없음. 이미지 = 각 저장소 docs/ 스크린샷.",
+  "details": {
+    "icd-refinery": {
+      "intro": "An ICD is usually a spreadsheet: one row per signal, a bit offset, a width, a unit, a scale factor. Everyone who has to speak the protocol re-implements it, and the bugs are found on the bench, late. ICD Refinery turns the document into one intermediate representation, checks it against eight rules that catch the mistakes that actually happen, shows what changed between revisions, and emits an encoder/decoder that matches the definition exactly.",
+      "gallery": [
+        {
+          "image": "/shots/icd-refinery.png",
+          "title": "The editor: message tree, bit layout, live lint",
+          "body": "The bit map and the lint list update on every keystroke. The map colours each bit by what owns it and marks collisions with a label as well as a colour; the lint list names every rule the layout breaks and where."
+        },
+        {
+          "image": "/shots/icd-refinery-review.png",
+          "title": "Review: extracted fields beside their source",
+          "body": "With a local Ollama installed, an extracted document arrives as a proposal: linted, shown beside the source lines it came from, and approved one field at a time. Nothing reaches the IR unapproved."
+        }
+      ]
+    },
+    "sil-runtime": {
+      "intro": "Run a plant model and the compiled control code that drives it on the same deterministic clock, inject stimulus, watch it live, log it, and judge it against acceptance limits — with no hardware and no cloud. The same scenario produces the same numbers, every run, on every machine.",
+      "gallery": [
+        {
+          "image": "/shots/sil-runtime-idle.png",
+          "title": "Scenario loaded, clock at zero",
+          "body": "The Scenario panel shows models, channels, stimulus bindings and limit bands as loaded. Start runs continuously, Pause stops at the next cycle boundary, Step advances exactly one cycle, Reset returns to t=0."
+        },
+        {
+          "image": "/shots/sil-runtime.png",
+          "title": "A scenario running against its bands",
+          "body": "Sync to wall clock paces one simulated second to about one real second so you can watch it. Turn it off and the same run completes as fast as the machine allows — with identical numbers."
+        },
+        {
+          "image": "/shots/sil-runtime-limit-failure.png",
+          "title": "Resonance breaks the band — verdict flips to FAIL",
+          "body": "A channel outside its band turns red and gets an OUT tag; the verdict flips to FAIL and the excursion is logged with its start time, cycle index, peak value and duration in samples."
+        }
+      ]
+    },
+    "test-sequencer": {
+      "intro": "Describe a sequence of steps in a text file — talk to a serial instrument, read a Modbus register, send a UDP frame, ask the operator — and each step is judged against a rule you state. A sequence is a file you keep in version control, and running it produces a document you can put in a report pack.",
+      "gallery": [
+        {
+          "image": "/shots/test-sequencer.png",
+          "title": "The sequencer after a passing run",
+          "body": "Steps light up as they execute, with the measurement, the rule it was judged against, and the verdict. Judgement is a pure function of (rule, measurement) — two runs over the same readings cannot disagree."
+        },
+        {
+          "image": "/shots/test-sequencer-fail.png",
+          "title": "A failing run: abort, skip, teardown still running",
+          "body": "A skipped step is not a pass. If a step never ran, the run failed — reporting an unknown as a pass is the exact failure this kind of tool exists to prevent."
+        },
+        {
+          "image": "/shots/test-sequencer-report.png",
+          "title": "A report you can hand to someone",
+          "body": "Save report writes a self-contained HTML report and a CSV side by side, produced deterministically: the same measurements always produce the same verdicts."
+        }
+      ]
+    },
+    "telemetry-scope": {
+      "intro": "Point it at a UDP port or a serial line, hand it a YAML file describing how bytes become numbers, and watch. Capture the session to disk, then play it back at 0.1×–10× through the same decode path the live data took — so what you see on replay is what the capture saw, not a second opinion about it.",
+      "gallery": [
+        {
+          "image": "/shots/telemetry-scope.png",
+          "title": "The scope, replaying a capture",
+          "body": "Many traces, a 5 s – 5 min window, min/max envelope decimation, freeze and cursor read-out. Drag the position slider to scrub; the chart fills with the window leading up to the handle rather than going blank."
+        },
+        {
+          "image": "/shots/telemetry-scope-range-violation.png",
+          "title": "Out-of-range readings, flagged as they arrive",
+          "body": "Frames are decoded to engineering units against the valid range the definition states. Recordings capture raw frames before decoding, so a capture stays useful even if the definition turns out to be wrong."
+        }
+      ]
+    },
+    "ch10-viewer": {
+      "intro": "Browse a recording's channels, walk its packet timeline, see exactly where the file is damaged, plot analog channels, read serial channels, and export any of it to CSV or raw binary. Indexing streams the file and skips packet bodies, so peak memory stays flat regardless of file size.",
+      "gallery": [
+        {
+          "image": "/shots/ch10-viewer.png",
+          "title": "Analog channel with the file map and packet timeline",
+          "body": "The file map runs along the byte axis of the whole recording: teal for packets, amber for a gap it recovered from, rust for damage it could not recover. Every byte is accounted for exactly once — enforced by a test, not by hope."
+        },
+        {
+          "image": "/shots/ch10-viewer-serial.png",
+          "title": "Serial channel decoded into subpackets",
+          "body": "Serial channels are split into subpackets with a text view. Waveforms use min/max envelope decimation, not every-Nth sampling, so a single-sample spike anywhere stays visible."
+        },
+        {
+          "image": "/shots/ch10-viewer-gate.png",
+          "title": "The gate: no layout transcribed, nothing parsed",
+          "body": "The viewer contains no hardcoded IRIG 106 packet layout. Every standard-derived constant must be transcribed by a human, with a citation, or the feature stays switched off — a viewer that guesses at a byte layout produces plausible numbers that are wrong."
+        }
+      ]
+    },
+    "protocol-bridge": {
+      "intro": "One configuration file turns a flow such as Modbus register → scale → MQTT topic into unattended operation. Per-endpoint auto-reconnect with exponential backoff; a failed endpoint or route never stops the others. bridge check validates every setting while connecting to nothing, so it is safe to run against a live plant.",
+      "gallery": [
+        {
+          "image": "/shots/protocol-bridge.png",
+          "title": "The monitor window",
+          "body": "Pb.Monitor opens this window, refreshed twice a second — endpoints, routes, health, counts and last values. The CLI is the product; the window is an observer."
+        }
+      ]
+    },
+    "secsgem-workbench": {
+      "intro": "Every frame is decoded to a structure tree with the exact byte range of every node — click a byte, the owning node is selected; select a node, its bytes light up. Drive a full HSMS session with transaction matching and T3/T5/T6/T7/T8 timers, or answer a real host from a scenario file of received SxFy → reply rules.",
+      "gallery": [
+        {
+          "image": "/shots/secsgem-workbench.png",
+          "title": "Message browser",
+          "body": "Sessions append to a JSON Lines log that keeps the raw wire bytes; reopen a log and the whole conversation comes back into the browser. Favourites resend under fresh system bytes, never a replayed transaction id."
+        },
+        {
+          "image": "/shots/secsgem-workbench-gate.png",
+          "title": "The gate: SEMI wire constants are not guessed",
+          "body": "The SEMI wire constants come from licensed standards documents, so they are not in the repository. Fill in spec/secs-reference.md from your own copy of the standards and the whole product comes alive — no rebuild, no code change."
+        }
+      ]
+    },
+    "ram-toolkit": {
+      "intro": "Reliability engineering sits in an awkward gap: the established suites cost more than a small team can justify, and the alternative is a folder of spreadsheets where nobody can reconstruct where a number came from six months later. This is a small, auditable tool for that gap — every figure carries the formula and the substituted inputs it came from.",
+      "gallery": [
+        {
+          "image": "/shots/ram-toolkit.png",
+          "title": "Reliability block diagram editor",
+          "body": "Series, parallel and k-out-of-n groups, nested freely. System reliability R(t), steady-state availability A and an equivalent MTBF, recomputed as you type — with a calculation trace showing exactly how the figure was reached."
+        },
+        {
+          "image": "/shots/ram-toolkit-prediction.png",
+          "title": "Failure rate prediction",
+          "body": "A parts list totalling to λ and a predicted MTBF. MIL-HDBK-217F part-stress models are applied only where a human has transcribed them into spec/ with a page citation — no handbook constant is compiled into the toolkit."
+        },
+        {
+          "image": "/shots/ram-toolkit-fmeca.png",
+          "title": "FMECA worksheet",
+          "body": "MIL-STD-1629A worksheet columns, RPN = S × O × D, sort by risk and free-text filter. Anything the tool cannot compute is reported as an issue with the path to the offending item, rather than silently omitted or guessed at."
+        },
+        {
+          "image": "/shots/ram-toolkit-report.png",
+          "title": "Reports with the math shown",
+          "body": "Self-contained HTML and RFC 4180 CSV. Every number is printed beside its formula and its inputs, and every report states which standards excerpts were in force when it was generated."
+        }
+      ]
+    },
+    "local-test-copilot": {
+      "intro": "Point it at a C function. A local LLM suggests test cases, then gcc compiles them, the test binary runs them, and gcov measures what they actually exercised. Whatever the toolchain cannot confirm is discarded or flagged — never shipped as a passing test.",
+      "gallery": [
+        {
+          "image": "/shots/local-test-copilot-doctor.png",
+          "title": "ltc doctor: what did it find on this machine?",
+          "body": "Doctor reports the compiler, the coverage tool, and whether a model is around. The deterministic --manual path needs no model at all — AI is an amplifier here, not a premise."
+        },
+        {
+          "image": "/shots/local-test-copilot.png",
+          "title": "A verified run: 100% line and branch coverage",
+          "body": "The suite that comes out is plain C you can compile and run anywhere, alongside a coverage report, the replayable cases, and the raw compiler and gcov logs."
+        },
+        {
+          "image": "/shots/local-test-copilot-llm.png",
+          "title": "The model proposes; the compiler decides",
+          "body": "The model is told exactly which lines and branches are still unexercised, and asked again until the targets are met. Its cases only survive if gcc and gcov confirm them."
+        }
+      ]
+    }
+  }
+}

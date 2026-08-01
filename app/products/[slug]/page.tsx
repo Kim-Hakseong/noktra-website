@@ -12,7 +12,9 @@ import {
   refOf,
   verbLabel,
 } from "@/lib/products";
+import { detailOf } from "@/lib/details";
 import { SITE } from "@/lib/site";
+import { asset } from "@/lib/asset";
 
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ slug: p.slug }));
@@ -37,6 +39,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
   const hasDownload = Boolean(p.download.win || p.download.mac);
   const i = PRODUCTS.findIndex((x) => x.slug === p.slug);
   const adjacent = [1, 2, 3].map((d) => PRODUCTS[(i + d) % PRODUCTS.length]);
+  const detail = detailOf(p.slug);
 
   return (
     <>
@@ -132,6 +135,48 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
           </div>
         </div>
       </section>
+
+      {/* In practice — README 발췌 워크스루 (텍스트·스크린샷 교차 배치) */}
+      {detail ? (
+        <section className="band band--catalog">
+          <div className="wrap band__in">
+            <Reveal className="sec-head">
+              <div>
+                <div className="t-label">In practice</div>
+                <h2>What you&apos;ll see.</h2>
+              </div>
+              <p className="side" style={{ maxWidth: 460 }}>
+                {detail.intro}
+              </p>
+            </Reveal>
+            {detail.gallery.map((g, gi) => (
+              <Reveal
+                className={`walk${gi % 2 ? " walk--flip" : ""}`}
+                key={g.image}
+              >
+                <div className="walk__text">
+                  <div className="t-label" style={{ color: "var(--accent)" }}>
+                    {String(gi + 1).padStart(2, "0")}
+                  </div>
+                  <h3>{g.title}</h3>
+                  <p>{g.body}</p>
+                </div>
+                <figure className="walk__shot">
+                  <img
+                    src={asset(g.image)}
+                    alt={g.title}
+                    loading="lazy"
+                  />
+                  <figcaption>
+                    {refOf(p.slug)} · {String(gi + 1).padStart(2, "0")} /{" "}
+                    {String(detail.gallery.length).padStart(2, "0")}
+                  </figcaption>
+                </figure>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       {/* Specification — datasheet */}
       <section id="specification" className="band band--catalog">

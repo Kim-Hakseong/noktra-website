@@ -49,3 +49,8 @@
 ## 개선 1 — 홈 인덱스 패널에 실제 스크린샷 (2026-08-01)
 - 각 NOKTRA-* 저장소 README 대표 스크린샷 9장을 /public/shots/<slug>.png로 투입, products.json에 image 경로 주입(DESIGN.md 스키마 필드 — 문구 무수정).
 - 홈 Instrument index 상세 패널에 16:10 프레임 이미지 추가, 제품 상세 페이지 프레임도 자동으로 실물 표시.
+
+## 개선 2 — 제품 상세 워크스루 섹션 (2026-08-01)
+- 참고: realtimewave.co.kr/rtngine 의 Solutions 구성(번호 기능 블록 + 스크린샷 교차 배치) — 레이아웃만 참고, 룩은 NOKTRA 토큰 유지.
+- content/product-details.json 신설: 제품별 intro + gallery(이미지·제목·설명). 전 문장은 각 NOKTRA-* 저장소 README(소유자 작성)에서 발췌 — 창작 주장 없음.
+- 스크린샷 14장 추가 투입(/public/shots/, 총 23장): 상세페이지 "In practice" 밴드에서 텍스트/이미지 좌우 교차(.walk/.walk--flip), 모바일 스택.
