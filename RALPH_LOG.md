@@ -17,3 +17,9 @@
 - [결정] PRD의 "5동사 제품 그리드(9카드)"와 시안의 리스트+상세 패널 구성이 상충 → DESIGN_VISUAL 충돌 심판 규정대로 시안 승.
 - [결정] 시안 데모 데이터(버전·용량·상태·블러브)는 무시하고 products.json 값만 렌더. 현재 9종 전부 in-development → 배지는 mute만 노출(3상태 로직·색은 available/beta/in-development 전부 구현, 데이터 승격 시 자동 반영). 다운로드 URL 빈 값 → "In development" 비활성 처리(규칙 5).
 - DoD: pnpm build 성공, 홈 전 밴드 렌더, 배지 상태 렌더 확인.
+
+## W3 — 제품 상세 템플릿 + 9페이지 정적 생성 (2026-08-01)
+- /products/[slug] 템플릿(Product Detail 시안 정본 밴드 순서): 마스트헤드(crumb·이름·한줄·REF/VERB/STATE 사이드·CTA) → 스크린샷 프레임 → 기능 3셀 → 데이터시트(spec 표, 모노) → 다운로드 밴드 → 인접 도구 3. generateStaticParams로 9 slug 전부 export 확인.
+- ScreenshotFrame: 16:10 회색 프레임 + "screenshot" 라벨, products.json image 경로 있으면 표시(실물은 사람이 /public/shots/ 투입) — 가짜 UI 생성 없음.
+- [결정] 시안의 제품별 창작 카피(파이프라인 4단·버전·SHA·용량·기능 제목/설명)는 products.json에 근거가 없어 미렌더. 기능 3은 features 문장 그대로, 스펙 표는 specs 그대로. 시안 파이프라인 밴드는 ICD Refinery 전용 데모 콘텐츠로 판단, 데이터 근거 없어 템플릿에서 제외.
+- DoD: pnpm build 성공, /products/{9 slug}/ 전부 정적 생성.
