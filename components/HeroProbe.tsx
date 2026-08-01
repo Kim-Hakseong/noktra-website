@@ -4,7 +4,6 @@
 // 배경의 ICD 테이블이 커서 반경(프로브)으로만 드러나는 마스크 연출.
 import { useRef, useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { SITE } from "@/lib/site";
 import { PRODUCTS, VERBS } from "@/lib/products";
 
@@ -75,12 +74,8 @@ export default function HeroProbe() {
           </span>
         </div>
 
-        <motion.div
-          className="hero__grid"
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-        >
+        {/* CSS 키프레임 인트로 — 하이드레이션 전에 시작해 LCP를 막지 않는다 */}
+        <div className="hero__grid hero__intro">
           <div style={{ minWidth: 0 }}>
             <h1 className="hero__wordmark">{SITE.name}</h1>
             <p className="hero__lead">{SITE.positioning}</p>
@@ -91,7 +86,7 @@ export default function HeroProbe() {
               nox — night · offline · deterministic
             </div>
           </div>
-        </motion.div>
+        </div>
 
         <div className="hero__rule">
           <span>Move the cursor to probe the interface beneath this page</span>

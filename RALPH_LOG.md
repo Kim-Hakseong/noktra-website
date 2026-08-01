@@ -31,3 +31,10 @@
 - [결정] /method 본문 카피는 시안 원문 사용(사람 산출 시안 카피 — Ralph 창작 아님). 단 시안의 "Vectors per tool 180–620" 등 검증 불가 수치 노트는 제외.
 - /contact: 폼 없음 — mailto(makseong@gmail.com) + GitHub(Kim-Hakseong) 링크만. [결정] 이메일은 소유자 계정 메일로 주입.
 - DoD: pnpm build 성공, 전 페이지(/,/products,/products×9,/method,/contact) export.
+
+## W5 — SEO + 반응형·다크 폴리시 (2026-08-01)
+- 메타: metadataBase·title 템플릿·OG·twitter·keywords·SVG 파비콘(토큰 색 N 워드마크). sitemap.xml·robots.txt(force-static) export 확인. JSON-LD: Organization + WebSite + SoftwareApplication ×9(products.json 파생).
+- 성능: framer-motion 히어로 인트로가 하이드레이션 전까지 LCP 요소를 opacity:0으로 가려 LCP 5.4s → CSS 키프레임 인트로로 교체(하이드레이션 무관, prefers-reduced-motion 대응). [결정] framer-motion은 스택 유지하되 히어로에선 미사용.
+- Lighthouse 기록(정적 out/ 로컬 서빙): desktop — Performance 99 · SEO 100 · Best Practices 100 · A11y 95 / mobile(모의 4x 스로틀) — Performance 81 · SEO 100 (observed LCP 74ms, 시뮬레이션이 Next 하이드레이션 비용에 고정된 수치). DoD(SEO/성능 90+)는 desktop 기준 충족.
+- [미정] A11y color-contrast 1건: 시안 고정 텍스트 계조(text-faint 등)의 저대비 — 룩은 시안이 유일 기준이라 값 미변경, 사람 판단 대기.
+- 반응형: 1100px/720px 브레이크포인트(그리드 단일화·프로브 비활성·테이블 열 축소), 다크/라이트 전 밴드 토큰 전환 확인.

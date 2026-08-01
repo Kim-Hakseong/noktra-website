@@ -4,7 +4,10 @@ import "@/styles/tokens.css";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import JsonLd from "@/components/JsonLd";
 import { SITE } from "@/lib/site";
+import { SITE_URL, siteGraph } from "@/lib/seo";
+import { asset } from "@/lib/asset";
 
 // 시안 지정 폰트 3계층 — next/font로 셀프호스트(woff2), 외부 요청 없음
 const serif = Newsreader({
@@ -28,11 +31,41 @@ const mono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: `${SITE.name} — ${SITE.positioning}`,
     template: `%s — ${SITE.name}`,
   },
   description: SITE.desc,
+  applicationName: SITE.name,
+  keywords: [
+    "NOKTRA",
+    "verification tools",
+    "test engineering",
+    "offline-first",
+    "air-gapped",
+    "deterministic verification",
+    "golden vectors",
+    "ICD",
+    "SIL",
+    "IRIG 106",
+    "SECS/GEM",
+    "FMECA",
+  ],
+  icons: { icon: [{ url: asset("/favicon.svg"), type: "image/svg+xml" }] },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: SITE.name,
+    title: `${SITE.name} — ${SITE.positioning}`,
+    description: SITE.desc,
+    url: `${SITE_URL}/`,
+  },
+  twitter: {
+    card: "summary",
+    title: `${SITE.name} — ${SITE.positioning}`,
+    description: SITE.desc,
+  },
 };
 
 // FOUC 방지: 첫 페인트 전에 data-theme 확정.
@@ -55,6 +88,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
       </head>
       <body>
+        <JsonLd data={siteGraph()} />
         <Header />
         <main>{children}</main>
         <Footer />
