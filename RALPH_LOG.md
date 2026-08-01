@@ -38,3 +38,9 @@
 - Lighthouse 기록(정적 out/ 로컬 서빙): desktop — Performance 99 · SEO 100 · Best Practices 100 · A11y 95 / mobile(모의 4x 스로틀) — Performance 81 · SEO 100 (observed LCP 74ms, 시뮬레이션이 Next 하이드레이션 비용에 고정된 수치). DoD(SEO/성능 90+)는 desktop 기준 충족.
 - [미정] A11y color-contrast 1건: 시안 고정 텍스트 계조(text-faint 등)의 저대비 — 룩은 시안이 유일 기준이라 값 미변경, 사람 판단 대기.
 - 반응형: 1100px/720px 브레이크포인트(그리드 단일화·프로브 비활성·테이블 열 축소), 다크/라이트 전 밴드 토큰 전환 확인.
+
+## W6 — 배포 워크플로 + README (2026-08-01)
+- .github/workflows/deploy.yml: main 푸시 → pnpm 빌드(NEXT_PUBLIC_BASE_PATH=/noktra-website) → out/ Pages 배포. 실제 Pages 활성화(Settings→Pages→GitHub Actions)는 사람 몫.
+- README.md: 스택·개발·콘텐츠 관리(products.json 승격 절차·스크린샷 투입)·배포·noktra.io 커스텀 도메인 연결 절차(DNS A/CNAME·CNAME 파일·basePath 교체) 완비.
+- out/ 재확인: 전 라우트(/, /products, /products/{9}, /method, /contact, 404, sitemap.xml, robots.txt) export.
+- DoD: pnpm build 성공 + out/ 확인 + 배포 문서 완비.
