@@ -58,3 +58,10 @@
 ## 개선 3 — 상세페이지 Needs(문제→해결) 섹션 (2026-08-02)
 - 참고: realtimewave.co.kr/rtngine "고객 니즈" 카드(문제→해결 형태) — 형태만 이식, 룩은 NOKTRA 토큰.
 - 마스트헤드 직후 "What brings you here." 밴드: 제품별 3카드(Need 세리프 문제문 → ANSWER 해결문). 카피 27쌍 전부 각 저장소 README의 문제의식·해결 문장 발췌.
+
+## 개선 4 — ENG/KOR 언어 토글 + 전 페이지 한국어 (2026-08-02)
+- lib/i18n.tsx: nexys 골격의 LangProvider 패턴 이식 — 클라이언트 컨텍스트, localStorage('noktra-lang'), 기본 en, <Tx en ko> 리프 컴포넌트로 서버 페이지 구조 유지.
+- 헤더에 ENG/KOR 세그먼트(테마 토글과 동일 문법), <html lang> 동기화.
+- 전 페이지 한국어: 홈(히어로·인덱스·기둥·철학), /products(마스트헤드·테이블·배포 노트), /method 전체, /contact, 상세(한줄·니즈·워크스루·기능) — 제품 번역은 content/product-i18n.ko.json(영문 원본과 배열 대응, 원본 무수정).
+- [결정] 모노 마이크로 라벨(REF/VERB/STATE·테이블 컬럼 헤드·상태 배지·spec 표)은 계기 문법으로 보고 영문 유지. 브랜드 선언("Proof, not consensus." 헤드라인·NOKTRA 워드마크)도 영문 유지, 본문은 번역.
+- URL은 단일(정적 export·SEO 영어 기본 유지) — /ko 라우트 분리는 후순위 선택지로 남김.

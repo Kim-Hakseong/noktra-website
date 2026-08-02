@@ -4,6 +4,7 @@
 // 제품 정보는 content/products.json 단일 진실 (props 주입).
 import { useState } from "react";
 import Link from "next/link";
+import { useLang } from "@/lib/i18n";
 import {
   STATUS_CLASS,
   STATUS_LABEL,
@@ -15,13 +16,16 @@ import {
 interface Props {
   verbs: Verb[];
   products: Product[];
+  koOneLiners?: Record<string, string>;
 }
 
 type StateFilter = "all" | ProductStatus;
 
-export default function ProductsTable({ verbs, products }: Props) {
+export default function ProductsTable({ verbs, products, koOneLiners }: Props) {
   const [verb, setVerb] = useState<string>("all");
   const [state, setState] = useState<StateFilter>("all");
+  const { lang } = useLang();
+  const t = (en: string, ko: string) => (lang === "ko" ? ko : en);
 
   const refOf = (slug: string) =>
     `NK-${String(products.findIndex((p) => p.slug === slug) + 1).padStart(2, "0")}`;
@@ -114,7 +118,11 @@ export default function ProductsTable({ verbs, products }: Props) {
             <span className="tbl__ref">{refOf(p.slug)}</span>
             <span className="tbl__name" style={{ minWidth: 0 }}>
               <Link href={`/products/${p.slug}`}>{p.name}</Link>
-              <span className="tbl__line">{p.oneLiner}</span>
+              <span className="tbl__line">
+                {lang === "ko" && koOneLiners?.[p.slug]
+                  ? koOneLiners[p.slug]
+                  : p.oneLiner}
+              </span>
             </span>
             <span className="tbl__verb">
               {verbs.find((v) => v.id === p.verb)?.label}
@@ -126,11 +134,11 @@ export default function ProductsTable({ verbs, products }: Props) {
             <span className="tbl__cta">
               {hasDownload ? (
                 <a className="st-ok" href={p.download.win || p.download.mac}>
-                  Download
+                  {t("Download", "다운로드")}
                 </a>
               ) : (
                 <Link href={`/products/${p.slug}`} className="st-mute">
-                  Details
+                  {t("Details", "상세 보기")}
                 </Link>
               )}
             </span>
@@ -141,8 +149,14 @@ export default function ProductsTable({ verbs, products }: Props) {
       <div className="tbl__foot">
         <span>
           {rows.length === products.length
-            ? `Showing all ${products.length} refs`
-            : `Showing ${rows.length} of ${products.length} refs`}
+            ? t(
+                `Showing all ${products.length} refs`,
+                `전체 ${products.length}개 표시 중`
+              )
+            : t(
+                `Showing ${rows.length} of ${products.length} refs`,
+                `${products.length}개 중 ${rows.length}개 표시 중`
+              )}
         </span>
         <span>All builds win64 · single-file · no telemetry</span>
       </div>

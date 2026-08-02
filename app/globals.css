@@ -121,6 +121,10 @@ a { transition: color 160ms ease, border-color 160ms ease, background 160ms ease
 }
 .tg__seg--dark { background: var(--tg-d-bg); color: var(--tg-d-fg); }
 .tg__seg--light { background: var(--tg-l-bg); color: var(--tg-l-fg); }
+/* 언어 세그먼트 — 활성/비활성을 테마 토글과 같은 톤으로 */
+.tg__seg[data-on="true"] { background: var(--tg-d-bg, var(--surface)); color: var(--text-strong); }
+:root[data-theme="light"] .tg__seg[data-on="true"] { background: var(--tg-l-bg); color: var(--tg-l-fg); }
+.tg__seg[data-on="false"] { background: transparent; color: var(--text-dim); }
 
 /* ---- Buttons (시안: 라운드 0, mono 라벨) ---- */
 .btn {

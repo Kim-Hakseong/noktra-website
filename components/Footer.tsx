@@ -1,10 +1,15 @@
-// nexys-website Footer 골격 이식 → NOKTRA 시안 푸터로 재구성 (서버 컴포넌트)
+"use client";
+
+// nexys-website Footer 골격 이식 → NOKTRA 시안 푸터로 재구성
 import Link from "next/link";
 import { SITE } from "@/lib/site";
 import { VERBS } from "@/lib/products";
+import { useLang } from "@/lib/i18n";
 
 export default function Footer() {
   const year = 2026; // 정적 export — 빌드 시점 연도 고정
+  const { lang } = useLang();
+  const t = (en: string, ko: string) => (lang === "ko" ? ko : en);
 
   return (
     <footer className="footer">
@@ -13,8 +18,10 @@ export default function Footer() {
           <div>
             <div className="footer__logo">{SITE.name}</div>
             <p className="footer__blurb">
-              Verification and test-engineering instruments for work that
-              happens where the internet doesn&apos;t reach.
+              {t(
+                "Verification and test-engineering instruments for work that happens where the internet doesn't reach.",
+                "인터넷이 닿지 않는 곳의 일을 위한 검증·시험 엔지니어링 도구."
+              )}
             </p>
           </div>
           <div className="footer__col">
@@ -27,22 +34,22 @@ export default function Footer() {
           </div>
           <div className="footer__col">
             <div className="footer__head">Resources</div>
-            <Link href="/products">Downloads</Link>
-            <Link href="/method">Philosophy</Link>
+            <Link href="/products">{t("Downloads", "다운로드")}</Link>
+            <Link href="/method">{t("Philosophy", "철학")}</Link>
             <a href={SITE.github} target="_blank" rel="noopener">
               GitHub
             </a>
           </div>
           <div className="footer__col">
             <div className="footer__head">Contact</div>
-            <Link href="/contact">Request a build</Link>
-            <a href={`mailto:${SITE.email}`}>Email</a>
+            <Link href="/contact">{t("Request a build", "빌드 요청")}</Link>
+            <a href={`mailto:${SITE.email}`}>{t("Email", "이메일")}</a>
           </div>
         </div>
         <div className="footer__bottom">
           <span>© {year} {SITE.name}</span>
           <span>{SITE.philosophy}</span>
-          <span>No analytics · No telemetry</span>
+          <span>{t("No analytics · No telemetry", "분석 없음 · 텔레메트리 없음")}</span>
         </div>
       </div>
     </footer>

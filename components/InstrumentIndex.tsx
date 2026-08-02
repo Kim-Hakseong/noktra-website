@@ -6,6 +6,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Reveal from "./Reveal";
 import { asset } from "@/lib/asset";
+import { useLang } from "@/lib/i18n";
 import {
   STATUS_CLASS,
   STATUS_LABEL,
@@ -16,10 +17,13 @@ import {
 interface Props {
   verbs: Verb[];
   products: Product[];
+  koOneLiners?: Record<string, string>;
 }
 
-export default function InstrumentIndex({ verbs, products }: Props) {
+export default function InstrumentIndex({ verbs, products, koOneLiners }: Props) {
   const [selected, setSelected] = useState(products[0]?.slug ?? "");
+  const { lang } = useLang();
+  const t = (en: string, ko: string) => (lang === "ko" ? ko : en);
   const sel = products.find((p) => p.slug === selected) ?? products[0];
   const refOf = (slug: string) =>
     `NK-${String(products.findIndex((p) => p.slug === slug) + 1).padStart(2, "0")}`;
@@ -32,11 +36,15 @@ export default function InstrumentIndex({ verbs, products }: Props) {
         <Reveal className="sec-head">
           <div>
             <div className="t-label">Instrument index</div>
-            <h2>Nine instruments, five verbs.</h2>
+            <h2>
+              {t("Nine instruments, five verbs.", "아홉 개의 도구, 다섯 개의 동사.")}
+            </h2>
           </div>
           <p className="side">
-            Select a line to read its specification. Every build ships as one
-            file with a golden-vector suite.
+            {t(
+              "Select a line to read its specification. Every build ships as one file with a golden-vector suite.",
+              "행을 선택하면 사양이 열립니다. 모든 빌드는 골든 벡터 스위트를 품은 단일 파일로 배포됩니다."
+            )}
           </p>
         </Reveal>
 
@@ -98,7 +106,11 @@ export default function InstrumentIndex({ verbs, products }: Props) {
                 <h3>{sel.name}</h3>
                 <span className="ref">{refOf(sel.slug)}</span>
               </div>
-              <p className="idx__pane-blurb">{sel.oneLiner}</p>
+              <p className="idx__pane-blurb">
+                {lang === "ko" && koOneLiners?.[sel.slug]
+                  ? koOneLiners[sel.slug]
+                  : sel.oneLiner}
+              </p>
             </div>
 
             {sel.image ? (
@@ -129,11 +141,11 @@ export default function InstrumentIndex({ verbs, products }: Props) {
                 </a>
               ) : (
                 <span className="btn btn--sm" aria-disabled="true">
-                  In development
+                  {t("In development", "개발 중")}
                 </span>
               )}
               <Link className="btn btn--ghost btn--sm" href={`/products/${sel.slug}`}>
-                Specification
+                {t("Specification", "사양 보기")}
               </Link>
               <a
                 className="end-note"

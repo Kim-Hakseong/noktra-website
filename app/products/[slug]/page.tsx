@@ -13,8 +13,10 @@ import {
   verbLabel,
 } from "@/lib/products";
 import { detailOf } from "@/lib/details";
+import { koOf } from "@/lib/ko";
 import { SITE } from "@/lib/site";
 import { asset } from "@/lib/asset";
+import { Tx } from "@/lib/i18n";
 
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ slug: p.slug }));
@@ -40,6 +42,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
   const i = PRODUCTS.findIndex((x) => x.slug === p.slug);
   const adjacent = [1, 2, 3].map((d) => PRODUCTS[(i + d) % PRODUCTS.length]);
   const detail = detailOf(p.slug);
+  const ko = koOf(p.slug);
 
   return (
     <>
@@ -59,7 +62,9 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
           <div className="masthead__grid">
             <div style={{ minWidth: 0 }}>
               <h1 className="masthead__title">{p.name}</h1>
-              <p className="masthead__lead">{p.oneLiner}</p>
+              <p className="masthead__lead">
+                <Tx en={p.oneLiner} ko={ko?.oneLiner ?? p.oneLiner} />
+              </p>
             </div>
             <div className="masthead__side">
               <div className="kv-grid">
@@ -91,11 +96,11 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               </a>
             ) : (
               <span className="btn" aria-disabled="true">
-                In development
+                <Tx en="In development" ko="개발 중" />
               </span>
             )}
             <a className="btn btn--ghost" href="#specification">
-              Specification
+              <Tx en="Specification" ko="사양" />
             </a>
             <a className="btn btn--ghost" href={p.repo} target="_blank" rel="noopener">
               GitHub ↗
@@ -111,11 +116,15 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
             <Reveal className="sec-head">
               <div>
                 <div className="t-label">Needs</div>
-                <h2>What brings you here.</h2>
+                <h2>
+                  <Tx en="What brings you here." ko="당신을 여기로 데려온 것." />
+                </h2>
               </div>
               <p className="side">
-                The situations this instrument was built for — and what it does
-                about each one.
+                <Tx
+                  en="The situations this instrument was built for — and what it does about each one."
+                  ko="이 도구가 만들어진 상황들 — 그리고 각각에 대해 이 도구가 하는 일."
+                />
               </p>
             </Reveal>
             <div className="cells" style={{ marginTop: 0 }}>
@@ -124,10 +133,17 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                   <div className="cell__no cell__no--faint">
                     Need {String(ni + 1).padStart(2, "0")}
                   </div>
-                  <p className="need__q">{n.need}</p>
+                  <p className="need__q">
+                    <Tx en={n.need} ko={ko?.needs?.[ni]?.need ?? n.need} />
+                  </p>
                   <div className="need__rule" />
                   <div className="need__a-label">Answer</div>
-                  <p className="need__a">{n.answer}</p>
+                  <p className="need__a">
+                    <Tx
+                      en={n.answer}
+                      ko={ko?.needs?.[ni]?.answer ?? n.answer}
+                    />
+                  </p>
                 </Reveal>
               ))}
             </div>
@@ -153,13 +169,15 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
       {/* Feature trio — products.json features */}
       <section className="band band--pillars">
         <div className="wrap band__in">
-          <Reveal className="t-label">What it does</Reveal>
+          <Reveal className="t-label">
+            <Tx en="What it does" ko="하는 일" />
+          </Reveal>
           <div className="cells">
             {p.features.map((f, fi) => (
               <Reveal className="cell" key={f} delay={fi}>
                 <div className="cell__no">{String(fi + 1).padStart(2, "0")}</div>
                 <p style={{ marginTop: 20, fontSize: 17, color: "var(--text)" }}>
-                  {f}
+                  <Tx en={f} ko={ko?.features?.[fi] ?? f} />
                 </p>
               </Reveal>
             ))}
@@ -174,10 +192,12 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
             <Reveal className="sec-head">
               <div>
                 <div className="t-label">In practice</div>
-                <h2>What you&apos;ll see.</h2>
+                <h2>
+                  <Tx en="What you'll see." ko="실제로 보게 될 것." />
+                </h2>
               </div>
               <p className="side" style={{ maxWidth: 460 }}>
-                {detail.intro}
+                <Tx en={detail.intro} ko={ko?.intro ?? detail.intro} />
               </p>
             </Reveal>
             {detail.gallery.map((g, gi) => (
@@ -189,8 +209,15 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                   <div className="t-label" style={{ color: "var(--accent)" }}>
                     {String(gi + 1).padStart(2, "0")}
                   </div>
-                  <h3>{g.title}</h3>
-                  <p>{g.body}</p>
+                  <h3>
+                    <Tx
+                      en={g.title}
+                      ko={ko?.gallery?.[gi]?.title ?? g.title}
+                    />
+                  </h3>
+                  <p>
+                    <Tx en={g.body} ko={ko?.gallery?.[gi]?.body ?? g.body} />
+                  </p>
                 </div>
                 <figure className="walk__shot">
                   <img
@@ -260,16 +287,19 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
           <Reveal style={{ minWidth: 0 }}>
             <div className="strip__tick" />
             <h2 className="strip--md">
-              One file.
-              <br />
-              Copy it and run.
+              <Tx
+                en={<>One file.<br />Copy it and run.</>}
+                ko={<>파일 하나.<br />복사해서 실행하세요.</>}
+              />
             </h2>
             <p
               className="idx__pane-blurb"
               style={{ marginTop: 26, maxWidth: 560 }}
             >
-              No installer, no package manager, no service account. Move the
-              executable onto the air-gapped machine and open your work.
+              <Tx
+                en="No installer, no package manager, no service account. Move the executable onto the air-gapped machine and open your work."
+                ko="설치 프로그램도, 패키지 매니저도, 서비스 계정도 없습니다. 실행 파일을 폐쇄망 머신으로 옮기고 작업을 여세요."
+              />
             </p>
           </Reveal>
           <Reveal className="strip__side" delay={1}>
@@ -296,7 +326,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                 </a>
               ) : (
                 <span className="btn" aria-disabled="true">
-                  In development
+                  <Tx en="In development" ko="개발 중" />
                 </span>
               )}
             </div>
@@ -308,7 +338,9 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
       <section className="band band--catalog">
         <div className="wrap" style={{ paddingTop: 66, paddingBottom: 72 }}>
           <div className="adjacent__head">
-            <span className="t-label">Next in the index</span>
+            <span className="t-label">
+              <Tx en="Next in the index" ko="인덱스의 다음 항목" />
+            </span>
             <span className="rule" />
           </div>
           <div className="adjacent">
@@ -327,7 +359,12 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                   </span>
                 </div>
                 <div className="adjacent__name">{a.name}</div>
-                <div className="adjacent__line">{a.oneLiner}</div>
+                <div className="adjacent__line">
+                  <Tx
+                    en={a.oneLiner}
+                    ko={koOf(a.slug)?.oneLiner ?? a.oneLiner}
+                  />
+                </div>
               </Link>
             ))}
           </div>

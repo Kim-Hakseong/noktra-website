@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import { SITE } from "@/lib/site";
 import { PRODUCTS, VERBS } from "@/lib/products";
+import { useLang } from "@/lib/i18n";
 
 // 시안 원문 배경 테이블 (장식용 계기 데이터)
 const PROBE_ROWS = [
@@ -31,6 +32,8 @@ const PROBE_ROWS = [
 export default function HeroProbe() {
   const ref = useRef<HTMLElement>(null);
   const [readout, setReadout] = useState("STANDBY");
+  const { lang } = useLang();
+  const t = (en: string, ko: string) => (lang === "ko" ? ko : en);
 
   const onMove = (e: React.MouseEvent) => {
     const el = ref.current;
@@ -78,10 +81,17 @@ export default function HeroProbe() {
         <div className="hero__grid hero__intro">
           <div style={{ minWidth: 0 }}>
             <h1 className="hero__wordmark">{SITE.name}</h1>
-            <p className="hero__lead">{SITE.positioning}</p>
+            <p className="hero__lead">
+              {t(SITE.positioning, "어둠 속에서도 작동하는 검증 도구.")}
+            </p>
           </div>
           <div className="hero__side">
-            <p>{SITE.desc}</p>
+            <p>
+              {t(
+                SITE.desc,
+                "방위·항공우주·산업·반도체 시험 엔지니어링을 위한 9종의 데스크톱 도구. 인터넷에 결코 닿지 않는 네트워크에서 돌아가도록 만들어졌습니다."
+              )}
+            </p>
             <div className="hero__side-note">
               nox — night · offline · deterministic
             </div>
@@ -89,7 +99,12 @@ export default function HeroProbe() {
         </div>
 
         <div className="hero__rule">
-          <span>Move the cursor to probe the interface beneath this page</span>
+          <span>
+            {t(
+              "Move the cursor to probe the interface beneath this page",
+              "커서를 움직여 이 페이지 아래의 인터페이스를 프로브해 보세요"
+            )}
+          </span>
           <span className="probe-tag">
             PROBE · <span className="probe-readout">{readout}</span>
           </span>
@@ -97,10 +112,10 @@ export default function HeroProbe() {
 
         <div className="hero__ctas">
           <Link className="btn" href="/products">
-            Browse the nine tools
+            {t("Browse the nine tools", "9개 도구 살펴보기")}
           </Link>
           <Link className="btn btn--ghost" href="/method">
-            Proof, not consensus
+            {t("Proof, not consensus", "합의가 아니라 증명")}
           </Link>
           <span className="end-note">WIN64 · SINGLE-FILE · NO RUNTIME INSTALL</span>
         </div>
