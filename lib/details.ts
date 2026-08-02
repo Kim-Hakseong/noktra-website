@@ -8,9 +8,15 @@ export interface GalleryItem {
   body: string;
 }
 
+export interface NeedItem {
+  need: string;
+  answer: string;
+}
+
 export interface ProductDetail {
   intro: string;
   gallery: GalleryItem[];
+  needs?: NeedItem[];
 }
 
 const DETAILS = data.details as Record<string, ProductDetail>;

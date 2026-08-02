@@ -104,6 +104,37 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
+      {/* Needs — 문제 → 해결 카드 (RTNgine 소개부 형태 참고, 카피는 README 발췌) */}
+      {detail?.needs?.length ? (
+        <section className="band band--catalog">
+          <div className="wrap band__in">
+            <Reveal className="sec-head">
+              <div>
+                <div className="t-label">Needs</div>
+                <h2>What brings you here.</h2>
+              </div>
+              <p className="side">
+                The situations this instrument was built for — and what it does
+                about each one.
+              </p>
+            </Reveal>
+            <div className="cells" style={{ marginTop: 0 }}>
+              {detail.needs.map((n, ni) => (
+                <Reveal className="cell need" key={n.need} delay={ni}>
+                  <div className="cell__no cell__no--faint">
+                    Need {String(ni + 1).padStart(2, "0")}
+                  </div>
+                  <p className="need__q">{n.need}</p>
+                  <div className="need__rule" />
+                  <div className="need__a-label">Answer</div>
+                  <p className="need__a">{n.answer}</p>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
       {/* Instrument panel — 스크린샷 프레임 */}
       <section className="band band--catalog">
         <div className="wrap" style={{ paddingTop: 78, paddingBottom: 88 }}>

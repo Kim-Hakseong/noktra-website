@@ -54,3 +54,7 @@
 - 참고: realtimewave.co.kr/rtngine 의 Solutions 구성(번호 기능 블록 + 스크린샷 교차 배치) — 레이아웃만 참고, 룩은 NOKTRA 토큰 유지.
 - content/product-details.json 신설: 제품별 intro + gallery(이미지·제목·설명). 전 문장은 각 NOKTRA-* 저장소 README(소유자 작성)에서 발췌 — 창작 주장 없음.
 - 스크린샷 14장 추가 투입(/public/shots/, 총 23장): 상세페이지 "In practice" 밴드에서 텍스트/이미지 좌우 교차(.walk/.walk--flip), 모바일 스택.
+
+## 개선 3 — 상세페이지 Needs(문제→해결) 섹션 (2026-08-02)
+- 참고: realtimewave.co.kr/rtngine "고객 니즈" 카드(문제→해결 형태) — 형태만 이식, 룩은 NOKTRA 토큰.
+- 마스트헤드 직후 "What brings you here." 밴드: 제품별 3카드(Need 세리프 문제문 → ANSWER 해결문). 카피 27쌍 전부 각 저장소 README의 문제의식·해결 문장 발췌.

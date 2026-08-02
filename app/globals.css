@@ -722,6 +722,38 @@ a { transition: color 160ms ease, border-color 160ms ease, background 160ms ease
 }
 .pipeline__meta--accent { color: var(--accent); }
 
+/* ---- Needs 카드 (문제 → 해결) ---- */
+.need { display: flex; flex-direction: column; }
+.need__q {
+  margin-top: 18px;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 21px;
+  line-height: 1.4;
+  letter-spacing: -0.008em;
+  color: var(--text);
+  text-wrap: pretty;
+}
+.need__rule {
+  margin-top: 22px;
+  height: 1px;
+  background: var(--line-soft);
+}
+.need__a-label {
+  margin-top: 18px;
+  font-family: var(--font-data), monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.need__a {
+  margin-top: 10px;
+  font-size: 14.5px;
+  line-height: 1.72;
+  color: var(--text-mid);
+  text-wrap: pretty;
+}
+
 /* ---- In practice 워크스루 (텍스트·스크린샷 교차) ---- */
 .walk {
   display: grid;

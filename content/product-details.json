@@ -14,6 +14,20 @@
           "title": "Review: extracted fields beside their source",
           "body": "With a local Ollama installed, an extracted document arrives as a proposal: linted, shown beside the source lines it came from, and approved one field at a time. Nothing reaches the IR unapproved."
         }
+      ],
+      "needs": [
+        {
+          "need": "An ICD lives in a spreadsheet, and everyone who speaks the protocol re-implements it by hand — the bugs surface on the bench, late.",
+          "answer": "One checked intermediate representation, linted by eight deterministic rules, and a codec generated from the approved definition — so code and document cannot drift apart."
+        },
+        {
+          "need": "Extraction from a big document is tedious, but cloud AI is off the table on a closed program.",
+          "answer": "A local model over 127.0.0.1 proposes fields; every proposal is linted and approved field by field before it reaches the IR."
+        },
+        {
+          "need": "A new revision arrives and nobody is sure what actually changed.",
+          "answer": "Revision diff matches fields by path, not row order, and grades every change by how much it can hurt an existing implementation."
+        }
       ]
     },
     "sil-runtime": {
@@ -33,6 +47,20 @@
           "image": "/shots/sil-runtime-limit-failure.png",
           "title": "Resonance breaks the band — verdict flips to FAIL",
           "body": "A channel outside its band turns red and gets an OUT tag; the verdict flips to FAIL and the excursion is logged with its start time, cycle index, peak value and duration in samples."
+        }
+      ],
+      "needs": [
+        {
+          "need": "Control software needs testing before the hardware exists — with results that hold up in review.",
+          "answer": "MIL and SIL loops on a fixed-step virtual clock: the same scenario produces the same numbers, every run, on every machine."
+        },
+        {
+          "need": "Live viewing and reproducibility usually fight each other.",
+          "answer": "Wall-clock pacing decides when a cycle runs, never what it computes — a paced run and a fast run agree bit-for-bit."
+        },
+        {
+          "need": "Test evidence needs to be diffable, not narrated.",
+          "answer": "CSV logs are byte-reproducible: running the same scenario twice and diffing the logs is a valid regression check."
         }
       ]
     },
@@ -54,6 +82,20 @@
           "title": "A report you can hand to someone",
           "body": "Save report writes a self-contained HTML report and a CSV side by side, produced deterministically: the same measurements always produce the same verdicts."
         }
+      ],
+      "needs": [
+        {
+          "need": "Bench testing lives in a spreadsheet and a pair of hands — which does not survive the person leaving.",
+          "answer": "A sequence is a YAML file you keep in version control; running it produces a report you can put in a report pack."
+        },
+        {
+          "need": "The commercial test executives cost more than the project.",
+          "answer": "One self-contained executable covering serial, Modbus and UDP actions with deterministic pass/fail judgment."
+        },
+        {
+          "need": "A skipped step quietly reported as a pass is how bad units ship.",
+          "answer": "A skipped step is not a pass: if a step never ran, the run failed."
+        }
       ]
     },
     "telemetry-scope": {
@@ -68,6 +110,20 @@
           "image": "/shots/telemetry-scope-range-violation.png",
           "title": "Out-of-range readings, flagged as they arrive",
           "body": "Frames are decoded to engineering units against the valid range the definition states. Recordings capture raw frames before decoding, so a capture stays useful even if the definition turns out to be wrong."
+        }
+      ],
+      "needs": [
+        {
+          "need": "Free tools will plot a serial stream — almost none will record it and give it back at the right speed.",
+          "answer": "Streamed .tsr recording, and 0.1×–10× timed replay through the same decode path the live data took."
+        },
+        {
+          "need": "Ad-hoc decoding scripts quietly disagree about the wire format.",
+          "answer": "One YAML definition states framing, types, endianness and scaling — or the read fails with a line number. Nothing is assumed."
+        },
+        {
+          "need": "A capture has to stay useful years later.",
+          "answer": "Recordings keep the raw frames plus timestamps, and the channel definition travels inside the file."
         }
       ]
     },
@@ -89,6 +145,20 @@
           "title": "The gate: no layout transcribed, nothing parsed",
           "body": "The viewer contains no hardcoded IRIG 106 packet layout. Every standard-derived constant must be transcribed by a human, with a citation, or the feature stays switched off — a viewer that guesses at a byte layout produces plausible numbers that are wrong."
         }
+      ],
+      "needs": [
+        {
+          "need": "Flight-test recordings are GB-scale, and the bench machine is disconnected.",
+          "answer": "Chapter 10 files are streamed, not loaded — peak memory stays flat regardless of file size, and no server is required."
+        },
+        {
+          "need": "Recorder files arrive damaged, and most tools just stop.",
+          "answer": "Resync scans across damaged regions; every byte is accounted for as packet or damage, with offset, length and cause."
+        },
+        {
+          "need": "A viewer that guesses a byte layout produces plausible numbers that are wrong.",
+          "answer": "Every standard-derived constant is transcribed by a human, with a citation, or the feature stays switched off."
+        }
       ]
     },
     "protocol-bridge": {
@@ -98,6 +168,20 @@
           "image": "/shots/protocol-bridge-monitor.png",
           "title": "The monitor window",
           "body": "Pb.Monitor opens this window, refreshed twice a second — endpoints, routes, health, counts and last values. The CLI is the product; the window is an observer."
+        }
+      ],
+      "needs": [
+        {
+          "need": "A Modbus register needs to land in SCADA, a CSV archive and a broker — without a person watching it.",
+          "answer": "One configuration file turns each flow into an unattended route with scale, deadband and periodic or on-change triggers."
+        },
+        {
+          "need": "One flaky endpoint must not take the whole line down.",
+          "answer": "Per-endpoint auto-reconnect with exponential backoff; a failed endpoint or route never stops the others."
+        },
+        {
+          "need": "Nobody wants to try out a configuration against a live plant.",
+          "answer": "bridge check validates every setting and every channel address while connecting to nothing."
         }
       ]
     },
@@ -113,6 +197,20 @@
           "image": "/shots/secsgem-workbench-gate.png",
           "title": "The gate: SEMI wire constants are not guessed",
           "body": "The SEMI wire constants come from licensed standards documents, so they are not in the repository. Fill in spec/secs-reference.md from your own copy of the standards and the whole product comes alive — no rebuild, no code change."
+        }
+      ],
+      "needs": [
+        {
+          "need": "Fab integration work cannot wait on a real tool being free.",
+          "answer": "A scenario file of received SxFy → reply rules lets the workbench answer a real host as the equipment."
+        },
+        {
+          "need": "Debugging SECS-II means matching bytes to structures by hand.",
+          "answer": "Every frame decodes to a tree with the exact byte range of every node — click a byte, the owning node lights up."
+        },
+        {
+          "need": "SEMI standards are licensed material; guessed constants are worse than none.",
+          "answer": "Wire constants live behind one gate file you fill from your own copy of the standards — no rebuild, no code change."
         }
       ]
     },
@@ -139,6 +237,20 @@
           "title": "Reports with the math shown",
           "body": "Self-contained HTML and RFC 4180 CSV. Every number is printed beside its formula and its inputs, and every report states which standards excerpts were in force when it was generated."
         }
+      ],
+      "needs": [
+        {
+          "need": "The established reliability suites cost more than a small team can justify.",
+          "answer": "Reliability prediction, RBD availability and FMECA in one small, auditable offline tool."
+        },
+        {
+          "need": "In a folder of spreadsheets, nobody can reconstruct where a number came from six months later.",
+          "answer": "Every figure carries the formula and the substituted inputs it came from, and the report writes both out next to the value."
+        },
+        {
+          "need": "An audit asks exactly which standard text produced the numbers.",
+          "answer": "Handbook models apply only where transcribed into spec/ with a page citation, and every report states which excerpts were in force."
+        }
       ]
     },
     "local-test-copilot": {
@@ -158,6 +270,20 @@
           "image": "/shots/local-test-copilot-llm.png",
           "title": "The model proposes; the compiler decides",
           "body": "The model is told exactly which lines and branches are still unexercised, and asked again until the targets are met. Its cases only survive if gcc and gcov confirm them."
+        }
+      ],
+      "needs": [
+        {
+          "need": "C unit tests are wanted, but the code lives on an air-gapped network.",
+          "answer": "Everything runs on your machine: a loopback-only local model proposes, gcc and gcov judge."
+        },
+        {
+          "need": "LLM-generated tests can assert wrong behaviour with complete confidence.",
+          "answer": "Whatever the toolchain cannot confirm is discarded or flagged — never shipped as a passing test."
+        },
+        {
+          "need": "Coverage gaps are the point, not an afterthought.",
+          "answer": "The model is told exactly which lines and branches are still unexercised, and asked again until the targets are met."
         }
       ]
     }
