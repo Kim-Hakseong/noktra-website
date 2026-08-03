@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-03T08:21:19Z",
+  "generated": "2026-08-03T08:24:53Z",
   "runs": {
     "icd-refinery": {"conclusion":"success","date":"2026-08-03","url":"https://github.com/Kim-Hakseong/NOKTRA-icd-refinery/actions/runs/30796700992"},
     "sil-runtime": {"conclusion":"success","date":"2026-08-03","url":"https://github.com/Kim-Hakseong/NOKTRA-sil-runtime/actions/runs/30796700804"},
