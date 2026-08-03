@@ -137,3 +137,9 @@
 - [결정] OV 인증서(연 $200~400) 미구매. 무료 전략 확정: 베타까지 SHA-256 + SignPath Foundation(OSS 무료 서명, 게시자명 재단 표기 트레이드오프) + 폐쇄망용 self-signed 인증서 1회 등록 → 유료화 시 Azure Trusted Signing(연 ~$120) 전환.
 - /security (en·/ko, 총 43라우트): 고객용 다운로드 검증 정본 — SHA-256 3단계 절차(외부 기록→반입→내부 대조)+OS별 내장 명령, 코드 서명 정책(공개 릴리스/폐쇄망 두 경로, "아직 공개 빌드 없음" 정직 표기), 다운로드가 하지 않는 일(설치·자동업데이트·텔레메트리 없음). 푸터 "다운로드 검증" 링크·sitemap 반영.
 - docs/SIGNING.md 내부 런북: SignPath 신청 요건 체크리스트(일부 저장소 LICENSE가 All rights reserved라 OSS 요건 정리 필요 — 릴리스 전 선결 과제), self-signed 생성/서명/검증 명령 일체(타임스탬프 무료 서버 포함), 릴리스 체크리스트, Azure 전환 절차.
+
+## 개선 15 — testbench.tools ↔ NOKTRA 퍼널 연결 (2026-08-03)
+- [결정] 도메인 등록 전 진행(사용자) — 양쪽 모두 링크 베이스 상수 1곳(NOKTRA_BASE/TB_BASE)이라 noktra.io 등록 시 한 줄 교체.
+- testbench: content/noktra-links.ts(툴 22종 → 제품 4종 강한 연관만: 1553/ARINC→Ch10, Modbus/CNET→Bridge, TDMS/파형/스케일링→Scope, 비트·워드오더→ICD) + ToolShell 하단 NoktraBanner(en/ko, 매핑 없으면 미렌더). 빌드 검증: mil-1553 배너 O, pt100 배너 X. 커밋 64b6f19 푸시됨.
+- NOKTRA: lib/funnel.ts(제품 5종 → 웹툴 3~4개) + 상세 인접도구 밴드 상단 퍼널 행 + 푸터 "무료 웹툴" 링크. testbench ko 페이지가 있는 툴만 /ko 링크(5종), 나머지 영문 폴백(404 방지).
+- [대기] testbench 라이브 반영은 wrangler login 후 `wrangler deploy` 필요(미인증).

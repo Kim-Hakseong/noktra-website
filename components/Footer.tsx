@@ -41,6 +41,9 @@ export default function Footer() {
             <a href={SITE.github} target="_blank" rel="noopener">
               GitHub
             </a>
+            <a href="https://testbench.tools" target="_blank" rel="noopener">
+              {t("Free web tools", "무료 웹툴")} ↗
+            </a>
           </div>
           <div className="footer__col">
             <div className="footer__head">Contact</div>

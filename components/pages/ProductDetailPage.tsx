@@ -18,6 +18,7 @@ import { asset } from "@/lib/asset";
 import { Tx } from "@/lib/i18n";
 import { productFaqs, productPageGraph } from "@/lib/seo";
 import { verifyRunOf } from "@/lib/ci";
+import { tbToolsFor, tbUrl } from "@/lib/funnel";
 import JsonLd from "@/components/JsonLd";
 import type { Lang } from "@/lib/i18n";
 
@@ -41,6 +42,7 @@ export default function ProductDetailPage({
 
   const faqs = productFaqs(p);
   const verify = verifyRunOf(p.slug);
+  const tbTools = tbToolsFor(p.slug);
 
   return (
     <>
@@ -398,9 +400,30 @@ export default function ProductDetailPage({
         </div>
       </section>
 
-      {/* Adjacent tools */}
+      {/* Adjacent tools + testbench.tools 퍼널 */}
       <section className="band band--catalog">
         <div className="wrap" style={{ paddingTop: 66, paddingBottom: 72 }}>
+          {tbTools.length ? (
+            <div className="tb-funnel">
+              <span className="t-label">
+                <Tx
+                  en="Free web tools for this territory"
+                  ko="이 영역의 무료 웹툴"
+                />
+              </span>
+              <span className="tb-funnel__links">
+                {tbTools.map((tool, ti) => (
+                  <span key={tool.slug}>
+                    <a href={tbUrl(tool, lang)} target="_blank" rel="noopener">
+                      <Tx en={tool.name} ko={tool.nameKo} />
+                    </a>
+                    {ti < tbTools.length - 1 ? " · " : ""}
+                  </span>
+                ))}
+              </span>
+              <span className="t-label t-label--faint">testbench.tools ↗</span>
+            </div>
+          ) : null}
           <div className="adjacent__head">
             <span className="t-label">
               <Tx en="Next in the index" ko="인덱스의 다음 항목" />

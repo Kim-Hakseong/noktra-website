@@ -1129,6 +1129,26 @@ a { transition: color 160ms ease, border-color 160ms ease, background 160ms ease
   overflow-wrap: anywhere;
 }
 
+/* ---- testbench.tools 퍼널 행 ---- */
+.tb-funnel {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 14px 18px;
+  margin-bottom: 44px;
+  border: var(--hairline) solid var(--line-soft);
+  background: var(--surface);
+}
+.tb-funnel__links {
+  flex: 1;
+  min-width: 200px;
+  font-size: 13.5px;
+  color: var(--text-mid);
+}
+.tb-funnel__links a { color: var(--text-mid); border-bottom: var(--hairline) solid var(--line-hover); padding-bottom: 2px; }
+.tb-funnel__links a:hover { color: var(--accent); border-color: var(--accent); }
+
 /* ---- 명령어 블록 (/security) ---- */
 .cmd-block {
   margin-top: 44px;
