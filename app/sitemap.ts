@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/products",
     "/method",
     "/notes",
+    "/brand",
     "/contact",
     ...PRODUCTS.map((p) => `/products/${p.slug}`),
     ...NOTES.map((n) => `/notes/${n.slug}`),

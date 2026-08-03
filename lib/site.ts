@@ -2,8 +2,9 @@
 export const SITE = {
   name: "NOKTRA",
   tagline: "Verification Instruments",
-  // CONTEXT.md 포지셔닝 원문
-  positioning: "Verification tools that work in the dark.",
+  // [결정] 2026-08-03 사용자 지시로 CONTEXT 원문("...work in the dark")의
+  // 은유를 걷어내고 구체 문장으로 교체. 은유 해설은 /brand 페이지가 담당.
+  positioning: "Verification tools for air-gapped environments.",
   philosophy: "Proof, not consensus.",
   desc: "Nine desktop instruments for defense, aerospace, industrial and semiconductor test engineering. Built to run on networks that never touch the internet.",
   url: "https://kim-hakseong.github.io/noktra-website",

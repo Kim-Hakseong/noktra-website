@@ -1,6 +1,6 @@
 # NOKTRA — 메인 웹사이트
 
-> Verification tools that work in the dark. · Proof, not consensus.
+> Verification tools for air-gapped environments. · Proof, not consensus.
 
 NOKTRA 브랜드 홈이자 9개 검증 도구의 다운로드 허브. Next.js 14(App Router) 정적 export로 빌드되며 서버 기능이 전혀 없다(폼·API·DB 없음, 분석·텔레메트리 없음).
 

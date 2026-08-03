@@ -82,13 +82,13 @@ export default function HeroProbe() {
           <div style={{ minWidth: 0 }}>
             <div className="hero__eyebrow">
               {t(
-                "Offline-first verification instruments",
-                "오프라인 우선 검증 도구"
+                "Defense · Aerospace · Industrial · Semiconductor",
+                "방위 · 항공우주 · 산업 · 반도체"
               )}
             </div>
             <h1 className="hero__wordmark">{SITE.name}</h1>
             <p className="hero__lead">
-              {t(SITE.positioning, "빛이 닿지 않는 곳을 위한 검증 도구.")}
+              {t(SITE.positioning, "폐쇄망 환경을 위한 검증 도구.")}
             </p>
             <p className="hero__desc">
               {t(

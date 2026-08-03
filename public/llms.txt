@@ -1,6 +1,6 @@
 # NOKTRA
 
-> Verification tools that work in the dark. Nine offline-first desktop instruments for defense, aerospace, industrial and semiconductor test engineering — built to run on air-gapped networks that never touch the internet. No cloud services, no telemetry, no accounts. Any AI runs locally on the engineer's own machine. Philosophy: "Proof, not consensus." — golden-vector suites, deterministic checkers judge, AI only proposes, a human approves.
+> Verification tools for air-gapped environments. Nine offline-first desktop instruments for defense, aerospace, industrial and semiconductor test engineering — built to run on air-gapped networks that never touch the internet. No cloud services, no telemetry, no accounts. Any AI runs locally on the engineer's own machine. Philosophy: "Proof, not consensus." — golden-vector suites, deterministic checkers judge, AI only proposes, a human approves.
 
 Site: https://kim-hakseong.github.io/noktra-website/
 GitHub: https://github.com/Kim-Hakseong

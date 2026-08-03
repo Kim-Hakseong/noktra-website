@@ -11,6 +11,7 @@ const NAV_ITEMS = [
   { href: "/products", en: "Products", ko: "제품" },
   { href: "/method", en: "Method", ko: "방법론" },
   { href: "/notes", en: "Notes", ko: "노트" },
+  { href: "/brand", en: "Brand", ko: "CI" },
   { href: "/contact", en: "Contact", ko: "문의" },
 ];
 

@@ -35,10 +35,8 @@ export default function InstrumentIndex({ verbs, products, koOneLiners }: Props)
       <div className="wrap band__in">
         <Reveal className="sec-head">
           <div>
-            <div className="t-label">Instrument index</div>
-            <h2>
-              {t("Nine instruments, five verbs.", "아홉 개의 도구, 다섯 개의 동사.")}
-            </h2>
+            <div className="t-label">{t("Product index", "제품 인덱스")}</div>
+            <h2>{t("All instruments at a glance.", "전체 도구를 한눈에.")}</h2>
           </div>
           <p className="side">
             {t(
