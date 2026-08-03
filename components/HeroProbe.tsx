@@ -80,18 +80,58 @@ export default function HeroProbe() {
         {/* CSS 키프레임 인트로 — 하이드레이션 전에 시작해 LCP를 막지 않는다 */}
         <div className="hero__grid hero__intro">
           <div style={{ minWidth: 0 }}>
+            <div className="hero__eyebrow">
+              {t(
+                "Offline-first verification instruments",
+                "오프라인 우선 검증 도구"
+              )}
+            </div>
             <h1 className="hero__wordmark">{SITE.name}</h1>
             <p className="hero__lead">
               {t(SITE.positioning, "빛이 닿지 않는 곳을 위한 검증 도구.")}
             </p>
-          </div>
-          <div className="hero__side">
-            <p>
+            <p className="hero__desc">
               {t(
-                SITE.desc,
-                "방위·항공우주·산업·반도체 시험 엔지니어링을 위한 아홉 개의 데스크톱 도구. 인터넷과 완전히 분리된 네트워크에서 동작하도록 설계되었습니다."
+                "NOKTRA builds nine desktop instruments for defense, aerospace, industrial and semiconductor test engineering — interface definition, MIL/SIL execution, test sequencing, telemetry, protocol work and reliability analysis. Every one of them runs on networks that never touch the internet.",
+                "NOKTRA는 방위·항공우주·산업·반도체 시험 현장을 위한 데스크톱 도구 아홉 개를 만듭니다 — 인터페이스 정의, MIL/SIL 실행, 시험 시퀀싱, 텔레메트리, 프로토콜 작업, 신뢰성 분석까지. 전부 인터넷에 닿지 않는 네트워크에서 동작합니다."
               )}
             </p>
+          </div>
+          <div className="hero__side">
+            <div className="hero__verbs">
+              {[
+                {
+                  v: "Define",
+                  en: "Interface definitions, refined",
+                  ko: "인터페이스 정의를 정제",
+                },
+                {
+                  v: "Run",
+                  en: "Simulation and test sequencing",
+                  ko: "시뮬레이션과 시험 시퀀싱",
+                },
+                {
+                  v: "Observe",
+                  en: "Telemetry and flight recordings",
+                  ko: "텔레메트리와 비행 기록",
+                },
+                {
+                  v: "Connect",
+                  en: "Industrial and fab protocols",
+                  ko: "산업·팹 프로토콜",
+                },
+                {
+                  v: "Assure",
+                  en: "Reliability and test generation",
+                  ko: "신뢰성과 시험 생성",
+                },
+              ].map((r) => (
+                <div className="hero__verb" key={r.v}>
+                  <span className="verb">{r.v}</span>
+                  <span className="role">{t(r.en, r.ko)}</span>
+                </div>
+              ))}
+            </div>
             <div className="hero__side-note">
               nox — night · offline · deterministic
             </div>

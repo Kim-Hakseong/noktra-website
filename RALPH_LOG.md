@@ -92,3 +92,7 @@
 ## 개선 9 — Field Notes 섹션 (2026-08-03)
 - /notes + /notes/[slug] ×3 (en/ko, 총 8라우트 추가 → 39): testbench notes 패턴 이식. Article JSON-LD(citation=출처 저장소·inLanguage), sitemap·hreflang·헤더/푸터 네비 연결.
 - 노트 3편(이중언어): "건너뛴 단계는 합격이 아니다"(sequencer) / "바이트 동일 로그는 시험 도구다"(sil-runtime) / "빈 spec/ 폴더가 기능이다"(ram·ch10·secsgem 게이트 패턴) — 전부 README 기존 논지의 에세이 확장, 신규 기술 주장 없음.
+
+## 개선 10 — 히어로 재구성: 브랜드가 무엇을 하는지 첫 화면에 (2026-08-03)
+- 워드마크 축소(clamp 104–156 → 72–112), 위에 액센트 모노 아이브로우("Offline-first verification instruments") 추가.
+- 포지셔닝 문장 아래 구체 설명 문단(hero__desc): 9종·5영역·폐쇄망을 명시. 우측 사이드는 일반 문단 대신 다섯 동사 미니맵(Define~Assure + 역할 한 줄)으로 교체 — [결정] 시안 사이드 문단 구성에서 이탈, 브랜드 오퍼링 가독을 우선(사용자 지시).

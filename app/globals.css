@@ -215,22 +215,38 @@ a { transition: color 160ms ease, border-color 160ms ease, background 160ms ease
   align-items: end;
   pointer-events: none;
 }
+.hero__eyebrow {
+  font-family: var(--font-data), monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 26px;
+}
 .hero__wordmark {
   font-family: var(--font-display), Georgia, serif;
   font-weight: 400;
-  font-size: clamp(104px, 11.4vw, 156px);
-  line-height: 0.88;
+  font-size: clamp(72px, 8.2vw, 112px);
+  line-height: 0.9;
   letter-spacing: 0.045em;
   color: var(--text-strong);
 }
 .hero__lead {
-  margin-top: 34px;
+  margin-top: 30px;
   font-family: var(--font-display), Georgia, serif;
-  font-size: clamp(30px, 3vw, 42px);
+  font-size: clamp(28px, 2.8vw, 40px);
   line-height: 1.24;
   letter-spacing: -0.005em;
   color: var(--text-mid);
   max-width: 720px;
+  text-wrap: pretty;
+}
+.hero__desc {
+  margin-top: 24px;
+  max-width: 640px;
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: var(--text-mid);
   text-wrap: pretty;
 }
 .hero__side {
@@ -243,6 +259,27 @@ a { transition: color 160ms ease, border-color 160ms ease, background 160ms ease
   line-height: 1.72;
   color: var(--text-mid);
   text-wrap: pretty;
+}
+/* 다섯 동사 미니맵 — 브랜드가 무엇을 하는지 첫 화면에서 요약 */
+.hero__verbs { display: grid; gap: 0; }
+.hero__verb {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 8px 0;
+  border-bottom: var(--hairline) dashed var(--line-soft);
+}
+.hero__verb:last-child { border-bottom: none; }
+.hero__verb .verb {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 17px;
+  color: var(--text-strong);
+  min-width: 76px;
+}
+.hero__verb .role {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-mid);
 }
 .hero__side-note {
   margin-top: 22px;
