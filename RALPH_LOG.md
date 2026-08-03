@@ -121,3 +121,8 @@
 - [결정] 사용자 지시로 포지셔닝 전역 교체: "Verification tools that work in the dark." / "빛이 닿지 않는 곳을 위한 검증 도구." → "Verification tools for air-gapped environments." / "폐쇄망 환경을 위한 검증 도구." (히어로·메타 title·OG 기본 카드 재생성·llms.txt·README). 히어로 아이브로우는 대상 시장 나열(방위·항공우주·산업·반도체)로 교체. nox/dark 은유 해설은 /brand로 이사.
 - /brand (en) · /ko/brand (총 41라우트): CI 정본 — 이름의 유래(nox), 소개 카피 뱅크(한 줄/짧게/상세, 이중언어), 원칙 3+권위 순서, 다섯 동사 구조(제품 링크), 비주얼 아이덴티티(토큰 스와치 다크/라이트·타이포 3계층·라운드 0 규칙), 보이스(쓰는 말/쓰지 않는 말). 네비 "Brand/CI" 추가, sitemap 반영.
 - 홈 인덱스 헤딩 일반화: "Instrument index / Nine instruments, five verbs." → "Product index / All instruments at a glance." (ko "제품 인덱스 / 전체 도구를 한눈에.")
+
+## 개선 12 — SHA-256 게시 배관 (2026-08-03)
+- products.json 스키마 확장: 선택 필드 sha256{win,mac} — 실물 릴리스 시 사람이 주입(문구 무수정, 현재 데이터 없음).
+- 상세 다운로드 밴드: 해시 있으면 SHA-256 kv 행 표시(64자리 줄바꿈 처리), 없으면 미표시. 임시 데이터로 렌더 검증 후 원복.
+- README에 필드 사용법·해시 추출 명령(shasum/certutil) 문서화. [대기] 실물 릴리스 등장 시 값 주입만 하면 됨.

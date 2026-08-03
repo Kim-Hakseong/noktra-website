@@ -515,6 +515,13 @@ a { transition: color 160ms ease, border-color 160ms ease, background 160ms ease
 .kv .v { color: var(--text-mid); text-align: right; }
 .kv:last-child { border-bottom: none; }
 .kv--edge:last-child { border-bottom: var(--hairline) dashed var(--line-soft); }
+/* 64자리 해시 — 우측 정렬 유지하며 줄바꿈 허용 */
+.kv--sha .v {
+  font-size: 10.5px;
+  letter-spacing: 0.02em;
+  overflow-wrap: anywhere;
+  max-width: 300px;
+}
 
 /* ---- 셀 그리드 (기둥 3 / 기능 3 / 권위 3) ---- */
 .cells {

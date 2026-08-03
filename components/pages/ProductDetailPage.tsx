@@ -307,7 +307,7 @@ export default function ProductDetailPage({
                 {STATUS_LABEL[p.status].toUpperCase()}
               </span>
             </div>
-            <div className="kv">
+            <div className={p.sha256?.win || p.sha256?.mac ? "kv kv--edge" : "kv"}>
               <span className="k">SOURCE</span>
               <span className="sp" />
               <span className="v">
@@ -316,6 +316,15 @@ export default function ProductDetailPage({
                 </a>
               </span>
             </div>
+            {/* 반입 검증용 지문 — 릴리스에 해시가 게시된 경우에만 표시.
+                고객은 폐쇄망에서 `certutil -hashfile <exe> SHA256`으로 대조한다. */}
+            {p.sha256?.win || p.sha256?.mac ? (
+              <div className="kv kv--sha">
+                <span className="k">SHA-256</span>
+                <span className="sp" />
+                <span className="v">{p.sha256.win || p.sha256.mac}</span>
+              </div>
+            ) : null}
             <div style={{ marginTop: 20 }}>
               {hasDownload ? (
                 <a className="btn" href={p.download.win || p.download.mac}>

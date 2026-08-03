@@ -10,6 +10,8 @@ export interface Product {
   status: ProductStatus;
   repo: string;
   download: { win: string; mac: string };
+  /** 릴리스 무결성 검증용 — 실물 릴리스 등록 시 사람이 주입. 없으면 미표시 */
+  sha256?: { win?: string; mac?: string };
   oneLiner: string;
   features: string[];
   specs: [string, string][];

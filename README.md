@@ -29,6 +29,7 @@ pnpm serve        # out/ 로컬 서빙
 | `public/shots/` | 제품 스크린샷 투입 위치 — `products.json`의 `image` 필드로 연결 |
 
 - 다운로드 링크: `products.json`의 `download.win`(또는 `.mac`)이 비어 있으면 사이트는 자동으로 "In development" 처리한다.
+- 릴리스 해시: 실물 릴리스 등록 시 제품 객체에 `"sha256": {"win": "<64자리>"}` 필드를 추가하면 상세페이지 다운로드 밴드에 SHA-256이 표시된다(없으면 미표시). 해시 추출: `shasum -a 256 <파일>` (macOS) / `certutil -hashfile <파일> SHA256` (Windows).
 - 상태 배지: available=액센트 / beta=앰버 / in-development=뮤트.
 
 ## 배포 (GitHub Pages)
