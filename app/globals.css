@@ -1085,6 +1085,71 @@ a { transition: color 160ms ease, border-color 160ms ease, background 160ms ease
   overflow-wrap: anywhere;
 }
 
+/* ---- Field Notes ---- */
+.note-row {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 40px;
+  padding: 30px 0;
+  border-bottom: var(--hairline) solid var(--line-soft);
+  align-items: start;
+}
+.note-row__meta { display: grid; align-content: start; }
+.note-row__title a {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(24px, 2.2vw, 30px);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--text-strong);
+}
+.note-row__title a:hover { color: var(--accent); }
+.note-row__desc {
+  margin-top: 10px;
+  max-width: 640px;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--text-mid);
+  text-wrap: pretty;
+}
+.note-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 80px;
+  align-items: start;
+}
+.note-prose { max-width: 680px; }
+.note-prose p {
+  font-size: 16.5px;
+  line-height: 1.82;
+  color: var(--text-mid);
+  text-wrap: pretty;
+}
+.note-prose p + p { margin-top: 22px; }
+.note-prose p:first-child::first-letter { color: var(--text-strong); }
+.note-cite {
+  margin-top: 40px;
+  padding-top: 18px;
+  border-top: var(--hairline) solid var(--line-soft);
+  display: grid;
+  gap: 8px;
+}
+.note-cite a {
+  font-family: var(--font-data), monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  overflow-wrap: anywhere;
+}
+.note-cite a:hover { color: var(--accent-hi); }
+.note-rel {
+  border-left: var(--hairline) solid var(--line-soft);
+  padding-left: 28px;
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+
 /* ---- /contact ---- */
 .contact-list { margin-top: 44px; max-width: 640px; }
 
@@ -1131,6 +1196,10 @@ a { transition: color 160ms ease, border-color 160ms ease, background 160ms ease
   .statusbar__right { flex-wrap: wrap; gap: 12px; }
   .footer__grid { grid-template-columns: 1fr; gap: 32px; }
   .refusal { grid-template-columns: 1fr; gap: 8px; }
+  .note-row { grid-template-columns: 1fr; gap: 10px; }
+  .note-row__meta { grid-auto-flow: column; justify-content: start; gap: 16px; }
+  .note-body { grid-template-columns: 1fr; gap: 44px; }
+  .note-rel { border-left: none; padding-left: 0; }
   .pipeline { grid-template-columns: 1fr; }
   .spec-grid { gap: 0; }
   .statement { padding: 64px 0; }

@@ -88,3 +88,7 @@
 
 ## 개선 8 — OG 카드 9장 스크린샷 배경 버전으로 교체 (2026-08-03)
 - 좌측 텍스트(틱·세리프 제품명·한줄) + 우측 실제 스크린샷 헤어라인 프레임(cover-crop) + 하단 REF/동사/상태 모노 라벨. 사용자 선택으로 텍스트형에서 전면 교체, 메타 연결은 기존 그대로.
+
+## 개선 9 — Field Notes 섹션 (2026-08-03)
+- /notes + /notes/[slug] ×3 (en/ko, 총 8라우트 추가 → 39): testbench notes 패턴 이식. Article JSON-LD(citation=출처 저장소·inLanguage), sitemap·hreflang·헤더/푸터 네비 연결.
+- 노트 3편(이중언어): "건너뛴 단계는 합격이 아니다"(sequencer) / "바이트 동일 로그는 시험 도구다"(sil-runtime) / "빈 spec/ 폴더가 기능이다"(ram·ch10·secsgem 게이트 패턴) — 전부 README 기존 논지의 에세이 확장, 신규 기술 주장 없음.

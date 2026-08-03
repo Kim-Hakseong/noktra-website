@@ -131,6 +131,37 @@ export function productPageGraph(p: Product, lang: "en" | "ko" = "en") {
   };
 }
 
+/** Article JSON-LD (Field Note) — 논지의 출처 저장소를 citation으로 명시 */
+export function noteGraph(
+  note: {
+    slug: string;
+    title: string;
+    titleKo: string;
+    description: string;
+    descriptionKo: string;
+    published: string;
+    source: string;
+  },
+  lang: "en" | "ko" = "en"
+) {
+  const prefix = lang === "ko" ? "/ko" : "";
+  const url = `${SITE_URL}${prefix}/notes/${note.slug}/`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": `${url}#article`,
+    headline: lang === "ko" ? note.titleKo : note.title,
+    description: lang === "ko" ? note.descriptionKo : note.description,
+    url,
+    datePublished: note.published,
+    dateModified: note.published,
+    inLanguage: lang,
+    citation: note.source,
+    author: { "@id": `${SITE_URL}/#org` },
+    publisher: { "@id": `${SITE_URL}/#org` },
+  };
+}
+
 /** hreflang 대응 canonical/languages (Metadata.alternates) — path는 "/products/" 꼴 */
 export function localeAlternates(path: string, lang: "en" | "ko") {
   const koPath = path === "/" ? "/ko/" : `/ko${path}`;

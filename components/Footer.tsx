@@ -36,6 +36,7 @@ export default function Footer() {
             <div className="footer__head">Resources</div>
             <LLink href="/products">{t("Downloads", "다운로드")}</LLink>
             <LLink href="/method">{t("Philosophy", "철학")}</LLink>
+            <LLink href="/notes">{t("Field notes", "필드 노트")}</LLink>
             <a href={SITE.github} target="_blank" rel="noopener">
               GitHub
             </a>
