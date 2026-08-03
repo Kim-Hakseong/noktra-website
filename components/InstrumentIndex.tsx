@@ -3,7 +3,7 @@
 // 홈 Instrument index — Home v2 시안 정본 (좌측 리스트 + 우측 상세 패널).
 // 제품 정보는 content/products.json 단일 진실 (props 주입).
 import { useState } from "react";
-import Link from "next/link";
+import LLink from "@/components/LLink";
 import Reveal from "./Reveal";
 import { asset } from "@/lib/asset";
 import { useLang } from "@/lib/i18n";
@@ -144,9 +144,9 @@ export default function InstrumentIndex({ verbs, products, koOneLiners }: Props)
                   {t("In development", "개발 중")}
                 </span>
               )}
-              <Link className="btn btn--ghost btn--sm" href={`/products/${sel.slug}`}>
+              <LLink className="btn btn--ghost btn--sm" href={`/products/${sel.slug}`}>
                 {t("Specification", "사양 보기")}
-              </Link>
+              </LLink>
               <a
                 className="end-note"
                 href={sel.repo}

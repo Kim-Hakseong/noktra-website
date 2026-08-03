@@ -1,13 +1,6 @@
 // /contact — 폼 없음 (정적): mailto + GitHub 링크
-import type { Metadata } from "next";
 import { SITE } from "@/lib/site";
 import { Tx } from "@/lib/i18n";
-
-export const metadata: Metadata = {
-  title: "Contact",
-  description: "Request a build, report an issue, or ask about licensing.",
-  alternates: { canonical: "/contact/" },
-};
 
 export default function ContactPage() {
   return (

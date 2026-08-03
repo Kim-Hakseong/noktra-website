@@ -3,7 +3,7 @@
 // /products 인덱스 테이블 — Products Index 시안 정본 (동사·상태 필터 + 행 테이블).
 // 제품 정보는 content/products.json 단일 진실 (props 주입).
 import { useState } from "react";
-import Link from "next/link";
+import LLink from "@/components/LLink";
 import { useLang } from "@/lib/i18n";
 import {
   STATUS_CLASS,
@@ -117,7 +117,7 @@ export default function ProductsTable({ verbs, products, koOneLiners }: Props) {
           <div className="tbl__row" key={p.slug} id={p.verb}>
             <span className="tbl__ref">{refOf(p.slug)}</span>
             <span className="tbl__name" style={{ minWidth: 0 }}>
-              <Link href={`/products/${p.slug}`}>{p.name}</Link>
+              <LLink href={`/products/${p.slug}`}>{p.name}</LLink>
               <span className="tbl__line">
                 {lang === "ko" && koOneLiners?.[p.slug]
                   ? koOneLiners[p.slug]
@@ -137,9 +137,9 @@ export default function ProductsTable({ verbs, products, koOneLiners }: Props) {
                   {t("Download", "다운로드")}
                 </a>
               ) : (
-                <Link href={`/products/${p.slug}`} className="st-mute">
+                <LLink href={`/products/${p.slug}`} className="st-mute">
                   {t("Details", "상세 보기")}
-                </Link>
+                </LLink>
               )}
             </span>
           </div>

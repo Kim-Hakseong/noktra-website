@@ -3,7 +3,7 @@
 // 홈 히어로 — Home v2 시안 정본.
 // 배경의 ICD 테이블이 커서 반경(프로브)으로만 드러나는 마스크 연출.
 import { useRef, useState } from "react";
-import Link from "next/link";
+import LLink from "@/components/LLink";
 import { SITE } from "@/lib/site";
 import { PRODUCTS, VERBS } from "@/lib/products";
 import { useLang } from "@/lib/i18n";
@@ -111,12 +111,12 @@ export default function HeroProbe() {
         </div>
 
         <div className="hero__ctas">
-          <Link className="btn" href="/products">
+          <LLink className="btn" href="/products">
             {t("Browse the nine tools", "9개 도구 살펴보기")}
-          </Link>
-          <Link className="btn btn--ghost" href="/method">
+          </LLink>
+          <LLink className="btn btn--ghost" href="/method">
             {t("Proof, not consensus", "합의가 아니라 증명")}
-          </Link>
+          </LLink>
           <span className="end-note">WIN64 · SINGLE-FILE · NO RUNTIME INSTALL</span>
         </div>
       </div>

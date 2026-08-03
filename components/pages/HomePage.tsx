@@ -1,9 +1,6 @@
-// 홈(/) — Home v2 시안 정본: 히어로 → Instrument index → 신뢰 기둥 3 → 철학 스트립
-// (푸터는 layout 공통). 제품 정보는 content/products.json 단일 진실.
-import type { Metadata } from "next";
-import Link from "next/link";
-
-export const metadata: Metadata = { alternates: { canonical: "/" } };
+// 홈 본문 — Home v2 시안 정본: 히어로 → Instrument index → 신뢰 기둥 3 → 철학 스트립
+// (en)/(ko) 두 라우트가 공유. 제품 정보는 content/products.json 단일 진실.
+import LLink from "@/components/LLink";
 import HeroProbe from "@/components/HeroProbe";
 import InstrumentIndex from "@/components/InstrumentIndex";
 import Reveal from "@/components/Reveal";
@@ -39,7 +36,7 @@ const PILLARS = [
   },
 ];
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
       <HeroProbe />
@@ -88,9 +85,9 @@ export default function Home() {
                 ko={`모두가 통과해야 한다고 합의했기에 통과하는 시험은 시험이 아닙니다. 모든 ${SITE.name} 도구는 골든 벡터 스위트와 함께 배포되고, 결정론적 검사기가 결과를 판정하며, AI는 제안만 하고, 사람이 승인해야 무엇이든 릴리스됩니다.`}
               />
             </p>
-            <Link className="link-under" href="/method">
+            <LLink className="link-under" href="/method">
               <Tx en="Read the method" ko="방법론 읽기" />
-            </Link>
+            </LLink>
           </Reveal>
         </div>
       </section>

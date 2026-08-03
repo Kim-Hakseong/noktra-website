@@ -101,30 +101,41 @@ export function productFaqs(p: Product): FaqItem[] {
   return faqs;
 }
 
-/** FAQPage + BreadcrumbList JSON-LD (제품 상세) */
-export function productPageGraph(p: Product) {
-  const url = `${SITE_URL}/products/${p.slug}/`;
+/** FAQPage + BreadcrumbList JSON-LD (제품 상세) — 로케일별 URL·문구 */
+export function productPageGraph(p: Product, lang: "en" | "ko" = "en") {
+  const prefix = lang === "ko" ? "/ko" : "";
+  const url = `${SITE_URL}${prefix}/products/${p.slug}/`;
   return {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "FAQPage",
         "@id": `${url}#faq`,
+        inLanguage: lang,
         mainEntity: productFaqs(p).map((f) => ({
           "@type": "Question",
-          name: f.q,
-          acceptedAnswer: { "@type": "Answer", text: f.a },
+          name: lang === "ko" ? f.qKo : f.q,
+          acceptedAnswer: { "@type": "Answer", text: lang === "ko" ? f.aKo : f.a },
         })),
       },
       {
         "@type": "BreadcrumbList",
         "@id": `${url}#crumbs`,
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: SITE.name, item: `${SITE_URL}/` },
-          { "@type": "ListItem", position: 2, name: "Products", item: `${SITE_URL}/products/` },
+          { "@type": "ListItem", position: 1, name: SITE.name, item: `${SITE_URL}${prefix}/` },
+          { "@type": "ListItem", position: 2, name: lang === "ko" ? "제품" : "Products", item: `${SITE_URL}${prefix}/products/` },
           { "@type": "ListItem", position: 3, name: `${p.name} (${refOf(p.slug)} · ${verbLabel(p.verb)})`, item: url },
         ],
       },
     ],
+  };
+}
+
+/** hreflang 대응 canonical/languages (Metadata.alternates) — path는 "/products/" 꼴 */
+export function localeAlternates(path: string, lang: "en" | "ko") {
+  const koPath = path === "/" ? "/ko/" : `/ko${path}`;
+  return {
+    canonical: lang === "ko" ? koPath : path,
+    languages: { en: path, ko: koPath, "x-default": path },
   };
 }

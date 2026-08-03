@@ -1,20 +1,13 @@
 // /products — Products Index 시안 정본: 마스트헤드 → 필터+테이블 → 배포 노트 밴드
-import type { Metadata } from "next";
-import Link from "next/link";
+import LLink from "@/components/LLink";
 import Reveal from "@/components/Reveal";
 import ProductsTable from "@/components/ProductsTable";
 import { PRODUCTS, VERBS, statusTally } from "@/lib/products";
 import { KO_ONELINERS } from "@/lib/ko";
 import { Tx } from "@/lib/i18n";
 
-export const metadata: Metadata = {
-  title: "Products",
-  description:
-    "Every build, every state, one page. Nine verification instruments across five verbs.",
-  alternates: { canonical: "/products/" },
-};
 
-export default function ProductsPage() {
+export default function ProductsIndexPage() {
   return (
     <>
       <section className="band band--hero">
@@ -75,9 +68,9 @@ export default function ProductsPage() {
                 ko="모든 다운로드는 골든 벡터 스위트를 내장한 단일 실행 파일입니다. 외부망에서 해시를 검증하고, 파일을 옮기고, 대상 머신에서 스위트를 돌리세요 — 같은 판정이 나오거나, 출하되지 않거나."
               />
             </p>
-            <Link className="link-under" href="/method">
+            <LLink className="link-under" href="/method">
               <Tx en="Why we verify this way" ko="왜 이렇게 검증하는가" />
-            </Link>
+            </LLink>
           </Reveal>
         </div>
       </section>

@@ -1,7 +1,6 @@
-// /products/[slug] — Product Detail 시안 정본 템플릿 ×9 (정적 생성).
+// 제품 상세 본문 — Product Detail 시안 정본 템플릿 ×9. (en)/(ko) 두 라우트가 공유.
 // 제품 정보는 content/products.json 단일 진실 — 버전·용량 등 미보유 데이터는 렌더하지 않는다.
-import type { Metadata } from "next";
-import Link from "next/link";
+import LLink from "@/components/LLink";
 import Reveal from "@/components/Reveal";
 import ScreenshotFrame from "@/components/ScreenshotFrame";
 import {
@@ -19,27 +18,16 @@ import { asset } from "@/lib/asset";
 import { Tx } from "@/lib/i18n";
 import { productFaqs, productPageGraph } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
+import type { Lang } from "@/lib/i18n";
 
-export function generateStaticParams() {
-  return PRODUCTS.map((p) => ({ slug: p.slug }));
-}
-
-export function generateMetadata({
-  params,
+export default function ProductDetailPage({
+  slug,
+  lang = "en",
 }: {
-  params: { slug: string };
-}): Metadata {
-  const p = productBySlug(params.slug);
-  if (!p) return {};
-  return {
-    title: p.name,
-    description: p.oneLiner,
-    alternates: { canonical: `/products/${p.slug}/` },
-  };
-}
-
-export default function ProductPage({ params }: { params: { slug: string } }) {
-  const p = productBySlug(params.slug);
+  slug: string;
+  lang?: Lang;
+}) {
+  const p = productBySlug(slug);
   if (!p) return null;
 
   const ref = refOf(p.slug);
@@ -54,13 +42,13 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
 
   return (
     <>
-      <JsonLd data={productPageGraph(p)} />
+      <JsonLd data={productPageGraph(p, lang)} />
       {/* Masthead */}
       <section className="band band--hero">
         <div className="wrap">
           <div className="statusbar">
             <span>
-              <Link href="/products">Index</Link> &nbsp;/&nbsp; {verb}{" "}
+              <LLink href="/products">Index</LLink> &nbsp;/&nbsp; {verb}{" "}
               &nbsp;/&nbsp; {ref}
             </span>
             <span className={STATUS_CLASS[p.status]}>
@@ -380,7 +368,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
           </div>
           <div className="adjacent">
             {adjacent.map((a) => (
-              <Link
+              <LLink
                 key={a.slug}
                 className="adjacent__item"
                 href={`/products/${a.slug}`}
@@ -400,7 +388,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                     ko={koOf(a.slug)?.oneLiner ?? a.oneLiner}
                   />
                 </div>
-              </Link>
+              </LLink>
             ))}
           </div>
         </div>

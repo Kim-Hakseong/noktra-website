@@ -1,16 +1,8 @@
 // /method — Philosophy 시안 정본: 선언 → 방법론 4절 → 인프라 사실 → 권위의 순서 → 거부 목록 → 맺음
 // 본문 카피는 시안 원문(영), 한국어는 의미 보존 번역. 인프라 사실은 CONTEXT.md 기재 사실만.
-import type { Metadata } from "next";
-import Link from "next/link";
+import LLink from "@/components/LLink";
 import Reveal from "@/components/Reveal";
 import { Tx } from "@/lib/i18n";
-
-export const metadata: Metadata = {
-  title: "Method",
-  description:
-    "Proof, not consensus. Golden vectors, deterministic checkers, offline-first design, and the engineer's signature.",
-  alternates: { canonical: "/method/" },
-};
 
 const SECTIONS = [
   {
@@ -344,12 +336,12 @@ export default function MethodPage() {
               />
             </p>
             <div className="closing__ctas">
-              <Link className="btn" href="/products">
+              <LLink className="btn" href="/products">
                 <Tx en="Download a build" ko="빌드 내려받기" />
-              </Link>
-              <Link className="btn btn--ghost" href="/products/icd-refinery">
+              </LLink>
+              <LLink className="btn btn--ghost" href="/products/icd-refinery">
                 <Tx en="See a datasheet" ko="데이터시트 보기" />
-              </Link>
+              </LLink>
             </div>
           </Reveal>
         </div>

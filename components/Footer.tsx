@@ -1,7 +1,7 @@
 "use client";
 
 // nexys-website Footer 골격 이식 → NOKTRA 시안 푸터로 재구성
-import Link from "next/link";
+import LLink from "@/components/LLink";
 import { SITE } from "@/lib/site";
 import { VERBS } from "@/lib/products";
 import { useLang } from "@/lib/i18n";
@@ -27,22 +27,22 @@ export default function Footer() {
           <div className="footer__col">
             <div className="footer__head">Catalog</div>
             {VERBS.map((v) => (
-              <Link key={v.id} href={`/products#${v.id}`}>
+              <LLink key={v.id} href={`/products#${v.id}`}>
                 {v.label}
-              </Link>
+              </LLink>
             ))}
           </div>
           <div className="footer__col">
             <div className="footer__head">Resources</div>
-            <Link href="/products">{t("Downloads", "다운로드")}</Link>
-            <Link href="/method">{t("Philosophy", "철학")}</Link>
+            <LLink href="/products">{t("Downloads", "다운로드")}</LLink>
+            <LLink href="/method">{t("Philosophy", "철학")}</LLink>
             <a href={SITE.github} target="_blank" rel="noopener">
               GitHub
             </a>
           </div>
           <div className="footer__col">
             <div className="footer__head">Contact</div>
-            <Link href="/contact">{t("Request a build", "빌드 요청")}</Link>
+            <LLink href="/contact">{t("Request a build", "빌드 요청")}</LLink>
             <a href={`mailto:${SITE.email}`}>{t("Email", "이메일")}</a>
           </div>
         </div>

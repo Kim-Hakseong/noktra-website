@@ -76,3 +76,8 @@
 - AEO: 제품 상세에 가시 FAQ 섹션(4문항, 이중언어) + 동기화된 FAQPage JSON-LD + BreadcrumbList. FAQ는 products.json 사실(상태·스펙·저장소)에서만 파생.
 - SEO: 전 라우트 rel=canonical, OG 기본 카드(public/og.png 1200×630, 토큰 색·시안 타이포로 생성) + twitter summary_large_image. og:image는 metadataBase 중복 방지 위해 루트 상대 경로 사용(이중 basePath 버그 수정).
 - [미정] 한국어 콘텐츠는 클라이언트 토글이라 크롤러에 비노출 — 한국어 SEO가 필요해지면 /ko 정적 라우트 분리+hreflang(testbench 방식)이 다음 단계.
+
+## 개선 6 — /ko 정적 라우트 분리 (한국어 SEO) (2026-08-03)
+- 구조: testbench.tools 방식 멀티 루트 레이아웃 — app/(en)/*, app/(ko)/ko/* 로케일 그룹, 페이지 본문은 components/pages/* 공용(중복 없음). 총 26 라우트(en 13 + ko 13) 정적 export.
+- i18n 재설계: 언어는 URL이 결정(라우트 기반). LangProvider는 레이아웃이 lang 주입, 토글은 반대 로케일 동일 경로로 가는 링크, 내부 링크는 LLink(로케일 접두어 자동). localStorage 언어 저장 제거([결정] — URL이 진실).
+- SEO: ko 페이지가 한국어로 프리렌더(크롤러 노출) — <html lang=ko>, ko title/description/og:locale, 전 페이지 rel=canonical + hreflang(en/ko/x-default) 상호 링크, sitemap에 ko 13 URL 추가, ko FAQPage/Breadcrumb JSON-LD(inLanguage=ko).
