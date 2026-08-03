@@ -17,6 +17,7 @@ import { SITE } from "@/lib/site";
 import { asset } from "@/lib/asset";
 import { Tx } from "@/lib/i18n";
 import { productFaqs, productPageGraph } from "@/lib/seo";
+import { verifyRunOf } from "@/lib/ci";
 import JsonLd from "@/components/JsonLd";
 import type { Lang } from "@/lib/i18n";
 
@@ -39,6 +40,7 @@ export default function ProductDetailPage({
   const ko = koOf(p.slug);
 
   const faqs = productFaqs(p);
+  const verify = verifyRunOf(p.slug);
 
   return (
     <>
@@ -75,13 +77,43 @@ export default function ProductDetailPage({
                   <span className="sp" />
                   <span className="v">{verb.toUpperCase()}</span>
                 </div>
-                <div className="kv">
+                <div className={verify ? "kv kv--edge" : "kv"}>
                   <span className="k">STATE</span>
                   <span className="sp" />
                   <span className={`v ${STATUS_CLASS[p.status]}`}>
                     {STATUS_LABEL[p.status].toUpperCase()}
                   </span>
                 </div>
+                {/* 골든 벡터 라이브 배지 — verify 워크플로 최근 결과.
+                    빨간 날도 그대로 공개한다: Proof, not consensus. */}
+                {verify ? (
+                  <div className="kv">
+                    <span className="k">
+                      <Tx en="VERIFIED" ko="검증" />
+                    </span>
+                    <span className="sp" />
+                    <span className="v">
+                      <a
+                        href={verify.url}
+                        target="_blank"
+                        rel="noopener"
+                        className={
+                          verify.conclusion === "success" ? "st-ok" : "st-amber"
+                        }
+                      >
+                        {verify.conclusion === "success" ? (
+                          <>
+                            <Tx en="SUITE PASS" ko="스위트 PASS" /> · {verify.date}
+                          </>
+                        ) : (
+                          <>
+                            <Tx en="FAILING" ko="실패 중" /> · {verify.date}
+                          </>
+                        )}
+                      </a>
+                    </span>
+                  </div>
+                ) : null}
               </div>
             </div>
           </div>

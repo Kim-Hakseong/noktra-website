@@ -1,0 +1,52 @@
+# 골든 벡터 라이브 배지 — 9개 제품 저장소의 Verify 결과를 매일 집계해
+# content/ci-status.json으로 커밋한다. 커밋이 생기면 Pages 배포가 자동으로 따라온다.
+name: Collect verify status
+
+on:
+  schedule:
+    - cron: '0 19 * * *'   # 각 저장소 Verify(18:00 UTC) 1시간 뒤 = 04:00 KST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Collect run conclusions
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          slugs="icd-refinery sil-runtime test-sequencer telemetry-scope ch10-viewer protocol-bridge secsgem-workbench ram-toolkit local-test-copilot"
+          {
+            echo '{'
+            echo "  \"generated\": \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\","
+            echo '  "runs": {'
+            first=1
+            for s in $slugs; do
+              row=$(gh api "repos/Kim-Hakseong/NOKTRA-$s/actions/workflows/verify.yml/runs?per_page=1&status=completed&branch=main" \
+                --jq '.workflow_runs[0] | {conclusion: .conclusion, date: (.updated_at[0:10]), url: .html_url}' || echo 'null')
+              [ "$row" = "null" ] && continue
+              [ $first -eq 0 ] && echo ','
+              first=0
+              printf '    "%s": %s' "$s" "$row"
+            done
+            echo ''
+            echo '  }'
+            echo '}'
+          } > content/ci-status.json
+          cat content/ci-status.json
+      - name: Commit if changed
+        run: |
+          if ! git diff --quiet content/ci-status.json; then
+            git config user.name "noktra-verify-bot"
+            git config user.email "actions@github.com"
+            git add content/ci-status.json
+            git commit -m "ci-status: $(date -u +%Y-%m-%d) verify results"
+            git push
+          else
+            echo "No change."
+          fi

@@ -126,3 +126,9 @@
 - products.json 스키마 확장: 선택 필드 sha256{win,mac} — 실물 릴리스 시 사람이 주입(문구 무수정, 현재 데이터 없음).
 - 상세 다운로드 밴드: 해시 있으면 SHA-256 kv 행 표시(64자리 줄바꿈 처리), 없으면 미표시. 임시 데이터로 렌더 검증 후 원복.
 - README에 필드 사용법·해시 추출 명령(shasum/certutil) 문서화. [대기] 실물 릴리스 등장 시 값 주입만 하면 됨.
+
+## 개선 13 — 골든 벡터 라이브 배지 (2026-08-03)
+- 9개 제품 저장소에 .github/workflows/verify.yml 신설: push+일일 크론(03:00 KST)+수동. dotnet 8종 dotnet test, local-test-copilot은 pytest — Ubuntu gcov 차이로 13건 실패해 macos 러너로 전환(240→253/253). secsgem은 루트 마커가 로컬 전용 CLAUDE.md라 CI에서 실패 → 커밋되는 .sln 마커로 수정(제품 저장소 테스트 인프라 버그 픽스). 최종 9/9 success.
+- 웹사이트: verify-status.yml(일일 04:00 KST)이 각 저장소 최신 Verify 결론을 content/ci-status.json으로 커밋 → Pages 자동 재배포. 상세 마스트헤드에 VERIFIED 행: 성공=액센트 "SUITE PASS · 날짜", 실패=앰버 "FAILING · 날짜"(빨간 날도 공개 — 브랜드 원칙), 런 링크. 데이터 없으면 미표시.
+- 비용 0(공개 저장소 Actions 무료), 방문자 브라우저 외부 호출 없음(빌드타임 정적 JSON).
+- [메모] 통과/전체 카운트 표기는 후속 개선 여지(현재는 결론+날짜).
