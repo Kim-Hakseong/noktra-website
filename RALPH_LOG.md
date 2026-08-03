@@ -81,3 +81,7 @@
 - 구조: testbench.tools 방식 멀티 루트 레이아웃 — app/(en)/*, app/(ko)/ko/* 로케일 그룹, 페이지 본문은 components/pages/* 공용(중복 없음). 총 26 라우트(en 13 + ko 13) 정적 export.
 - i18n 재설계: 언어는 URL이 결정(라우트 기반). LangProvider는 레이아웃이 lang 주입, 토글은 반대 로케일 동일 경로로 가는 링크, 내부 링크는 LLink(로케일 접두어 자동). localStorage 언어 저장 제거([결정] — URL이 진실).
 - SEO: ko 페이지가 한국어로 프리렌더(크롤러 노출) — <html lang=ko>, ko title/description/og:locale, 전 페이지 rel=canonical + hreflang(en/ko/x-default) 상호 링크, sitemap에 ko 13 URL 추가, ko FAQPage/Breadcrumb JSON-LD(inLanguage=ko).
+
+## 개선 7 — 제품별 OG 카드 9장 (2026-08-03)
+- public/og/<slug>.png ×9: 기본 카드와 동일 문법(토큰 색·Georgia/Courier, 1200×630) — 제품명·oneLiner(자동 줄바꿈)·REF/동사/상태·NOKTRA 마크. secsgem은 ↔ 글리프 부재로 렌더 시 -to- 치환.
+- en/ko 제품 페이지 og/twitter를 전용 카드로 오버라이드(productOgMeta — 자식 openGraph가 부모를 통째로 대체하므로 완전한 객체 반환). 나머지 페이지는 기본 카드 유지.
