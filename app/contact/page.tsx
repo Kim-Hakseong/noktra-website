@@ -23,7 +23,7 @@ export default function ContactPage() {
           <h1 style={{ fontSize: "clamp(56px, 6.6vw, 96px)" }}>
             <Tx
               en={<>Write when<br />you&apos;re ready.</>}
-              ko={<>준비되면<br />쓰세요.</>}
+              ko={<>준비되었을 때<br />보내세요.</>}
             />
           </h1>
           <p className="statement__lead">

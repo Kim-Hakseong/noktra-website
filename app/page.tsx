@@ -16,7 +16,7 @@ const PILLARS = [
     titleKo: "오프라인 우선",
     body: "Designed for air-gapped networks. Any AI runs locally on the engineer's own machine; nothing about your program leaves the room.",
     bodyKo:
-      "폐쇄망을 전제로 설계됩니다. AI는 전부 엔지니어의 머신에서 로컬로 돌고, 프로그램에 관한 어떤 것도 방 밖으로 나가지 않습니다.",
+      "폐쇄망을 전제로 설계되었습니다. AI는 전부 엔지니어의 머신에서 로컬로 실행되며, 프로그램에 관한 어떤 것도 방 밖으로 나가지 않습니다.",
   },
   {
     no: "02",

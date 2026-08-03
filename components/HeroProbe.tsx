@@ -82,14 +82,14 @@ export default function HeroProbe() {
           <div style={{ minWidth: 0 }}>
             <h1 className="hero__wordmark">{SITE.name}</h1>
             <p className="hero__lead">
-              {t(SITE.positioning, "어둠 속에서도 작동하는 검증 도구.")}
+              {t(SITE.positioning, "빛이 닿지 않는 곳을 위한 검증 도구.")}
             </p>
           </div>
           <div className="hero__side">
             <p>
               {t(
                 SITE.desc,
-                "방위·항공우주·산업·반도체 시험 엔지니어링을 위한 9종의 데스크톱 도구. 인터넷에 결코 닿지 않는 네트워크에서 돌아가도록 만들어졌습니다."
+                "방위·항공우주·산업·반도체 시험 엔지니어링을 위한 아홉 개의 데스크톱 도구. 인터넷과 완전히 분리된 네트워크에서 동작하도록 설계되었습니다."
               )}
             </p>
             <div className="hero__side-note">
@@ -102,7 +102,7 @@ export default function HeroProbe() {
           <span>
             {t(
               "Move the cursor to probe the interface beneath this page",
-              "커서를 움직여 이 페이지 아래의 인터페이스를 프로브해 보세요"
+              "커서를 움직이면 페이지 아래의 인터페이스가 드러납니다"
             )}
           </span>
           <span className="probe-tag">

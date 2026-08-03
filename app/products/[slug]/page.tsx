@@ -117,7 +117,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               <div>
                 <div className="t-label">Needs</div>
                 <h2>
-                  <Tx en="What brings you here." ko="당신을 여기로 데려온 것." />
+                  <Tx en="What brings you here." ko="찾아오게 되는 이유." />
                 </h2>
               </div>
               <p className="side">

@@ -30,7 +30,7 @@ export default function ProductsPage() {
               <p className="masthead__lead">
                 <Tx
                   en="Every build, every state, one page. Nothing hidden behind a sales call."
-                  ko="모든 빌드, 모든 상태를 한 페이지에. 영업 전화 뒤에 숨긴 것은 없습니다."
+                  ko="모든 빌드, 모든 상태를 한 페이지에. 상담 전화 뒤로 감춘 것은 없습니다."
                 />
               </p>
             </div>

@@ -59,7 +59,7 @@ const SECTIONS = [
     body2:
       "One consequence is that the software cannot phone home for licences, models, updates or analytics. Another is that you can read the whole trust boundary in one sentence: the file you copied, and nothing else.",
     body2Ko:
-      "그 결과 하나: 소프트웨어는 라이선스·모델·업데이트·분석 무엇을 위해서도 집으로 전화하지 못합니다. 또 하나: 신뢰 경계 전체를 한 문장으로 읽을 수 있습니다 — 당신이 복사한 그 파일, 그 이상은 없다.",
+      "그 결과 하나: 소프트웨어는 라이선스·모델·업데이트·분석 그 무엇을 위해서도 외부 서버에 연결하지 않습니다. 또 하나: 신뢰 경계 전체를 한 문장으로 읽을 수 있습니다 — 당신이 복사한 그 파일, 그 이상은 없다.",
     noteLabel: "Deployment",
     notes: [
       ["Artefact", "Single .exe"],
