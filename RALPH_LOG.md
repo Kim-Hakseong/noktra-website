@@ -96,3 +96,23 @@
 ## 개선 10 — 히어로 재구성: 브랜드가 무엇을 하는지 첫 화면에 (2026-08-03)
 - 워드마크 축소(clamp 104–156 → 72–112), 위에 액센트 모노 아이브로우("Offline-first verification instruments") 추가.
 - 포지셔닝 문장 아래 구체 설명 문단(hero__desc): 9종·5영역·폐쇄망을 명시. 우측 사이드는 일반 문단 대신 다섯 동사 미니맵(Define~Assure + 역할 한 줄)으로 교체 — [결정] 시안 사이드 문단 구성에서 이탈, 브랜드 오퍼링 가독을 우선(사용자 지시).
+
+## 세션 현황 요약 (2026-08-03 기준)
+### 완료 상태
+- 사이트: 39 라우트 정적 export (en 홈/제품×9/products/method/notes×3+인덱스/contact + ko 미러 + 404·sitemap·robots).
+- 라이브: https://kim-hakseong.github.io/noktra-website/ — main 푸시마다 GitHub Pages 자동 배포.
+- 콘텐츠 계층: products.json(단일 진실) / product-details.json(README 발췌 니즈·워크스루) / product-i18n.ko.json(한국어 전량) / notes.ts(필드 노트 3편 이중언어) / 스크린샷 23장(+OG 카드 10장).
+- SEO/AEO/GEO: 로케일별 canonical+hreflang, Organization sameAs(저장소 10), SoftwareApplication×9, FAQ 가시 섹션+FAQPage JSON-LD, BreadcrumbList, Article JSON-LD(citation), llms.txt, 제품별 스크린샷 OG 카드, Lighthouse desktop 99/100/100/95.
+
+### 합의된 방향 (전략 세션)
+- 수익 축: per-seat 영구 라이선스 + 오프라인 키(Ed25519 키 파일), open-core. 구독 SaaS 배제.
+- 9종 동시 운영 전제(개발 리소스 제약 없음 — Claude Code 주도). "쐐기 1개" 논리는 마케팅 집중 순서로만 유지.
+- 신규 아이템 3종: 사용자가 Claude 채팅(Fable 5)에서 별도 발굴 완료 — 상세는 추후 공유 예정, 사이트 반영 대기.
+
+### 대기/보류 항목
+- [보류] 퍼널 연결(testbench.tools ↔ NOKTRA): noktra 도메인 등록 후 진행하기로 결정.
+- [대기] 골든 벡터 라이브 배지: 개념 설명 완료, 사용자 판단 대기.
+- [대기] 커뮤니티 바텀업 가이드: testbench.tools와 공동 진행 예정, 요청 시 상세 가이드.
+- [대기] SHA-256 게시: 실물 릴리스 등장 시 products.json에 해시 주입.
+- [대기] Windows 코드사이닝(OV, 연 $200~400): 첫 유료 다운로드 전까지 확보 권장.
+- [미정] noktra.io 도메인: 등록 시 CNAME + basePath 제거 + SITE_URL 교체(절차는 README).
