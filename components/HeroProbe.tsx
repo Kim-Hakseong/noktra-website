@@ -93,7 +93,7 @@ export default function HeroProbe() {
             <p className="hero__desc">
               {t(
                 "NOKTRA builds nine desktop instruments for defense, aerospace, industrial and semiconductor test engineering — interface definition, MIL/SIL execution, test sequencing, telemetry, protocol work and reliability analysis. Every one of them runs on networks that never touch the internet.",
-                "NOKTRA는 방위·항공우주·산업·반도체 시험 현장을 위한 데스크톱 도구 아홉 개를 만듭니다 — 인터페이스 정의, MIL/SIL 실행, 시험 시퀀싱, 텔레메트리, 프로토콜 작업, 신뢰성 분석까지. 전부 인터넷에 닿지 않는 네트워크에서 동작합니다."
+                "NOKTRA는 방위·항공우주·산업·반도체 시험 현장을 위한 데스크톱 도구를 만듭니다 — 인터페이스 정의, MIL/SIL 실행, 시험 시퀀싱, 텔레메트리, 프로토콜 작업, 신뢰성 분석까지. 인터넷 닿지 않는 환경에서 동작합니다."
               )}
             </p>
           </div>
