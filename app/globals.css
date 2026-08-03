@@ -1129,6 +1129,22 @@ a { transition: color 160ms ease, border-color 160ms ease, background 160ms ease
   overflow-wrap: anywhere;
 }
 
+/* ---- 명령어 블록 (/security) ---- */
+.cmd-block {
+  margin-top: 44px;
+  border: var(--hairline) solid var(--line-soft);
+  background: var(--surface);
+  padding: 22px 26px 24px;
+}
+.cmd-block pre {
+  font-family: var(--font-data), monospace;
+  font-size: 12.5px;
+  line-height: 2;
+  letter-spacing: 0.03em;
+  color: var(--text-mid);
+  overflow-x: auto;
+}
+
 /* ---- Brand/CI 스와치 ---- */
 .swatches {
   margin-top: 44px;

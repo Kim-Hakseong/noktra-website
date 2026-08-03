@@ -37,6 +37,7 @@ export default function Footer() {
             <LLink href="/products">{t("Downloads", "다운로드")}</LLink>
             <LLink href="/method">{t("Philosophy", "철학")}</LLink>
             <LLink href="/notes">{t("Field notes", "필드 노트")}</LLink>
+            <LLink href="/security">{t("Verify a download", "다운로드 검증")}</LLink>
             <a href={SITE.github} target="_blank" rel="noopener">
               GitHub
             </a>
