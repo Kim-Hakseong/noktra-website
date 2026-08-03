@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "Products",
   description:
     "Every build, every state, one page. Nine verification instruments across five verbs.",
+  alternates: { canonical: "/products/" },
 };
 
 export default function ProductsPage() {

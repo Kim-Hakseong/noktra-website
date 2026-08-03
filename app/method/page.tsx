@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Method",
   description:
     "Proof, not consensus. Golden vectors, deterministic checkers, offline-first design, and the engineer's signature.",
+  alternates: { canonical: "/method/" },
 };
 
 const SECTIONS = [

@@ -69,3 +69,10 @@
 ## 다듬기 — 한국어 카피 폴리시 (2026-08-03)
 - 히어로 포지셔닝: "어둠 속에서도 작동하는 검증 도구." → "빛이 닿지 않는 곳을 위한 검증 도구." (dark=폐쇄망 은유 유지, 직역투 제거).
 - 히어로 부문단·프로브 힌트·기둥 1·인덱스 리드("영업 전화"→"상담 전화")·문의 헤드라인("준비되었을 때 보내세요.")·Needs 헤딩("찾아오게 되는 이유.")·method "집으로 전화"→"외부 서버에 연결" 등 직역·구어투 정리.
+
+## 개선 5 — SEO/AEO/GEO 보강 (testbench.tools 스택 이식) (2026-08-03)
+- 참고: 운영 사이트 testbench.tools 저장소(apps/web)의 lib/jsonld.tsx·AeoBlocks·레이아웃 메타 패턴.
+- GEO: Organization sameAs를 GitHub 프로필+제품 저장소 9개 전체로 확장(엔티티 해석). public/llms.txt 신설(사이트·9제품·사실 요약, AI 크롤러용).
+- AEO: 제품 상세에 가시 FAQ 섹션(4문항, 이중언어) + 동기화된 FAQPage JSON-LD + BreadcrumbList. FAQ는 products.json 사실(상태·스펙·저장소)에서만 파생.
+- SEO: 전 라우트 rel=canonical, OG 기본 카드(public/og.png 1200×630, 토큰 색·시안 타이포로 생성) + twitter summary_large_image. og:image는 metadataBase 중복 방지 위해 루트 상대 경로 사용(이중 basePath 버그 수정).
+- [미정] 한국어 콘텐츠는 클라이언트 토글이라 크롤러에 비노출 — 한국어 SEO가 필요해지면 /ko 정적 라우트 분리+hreflang(testbench 방식)이 다음 단계.

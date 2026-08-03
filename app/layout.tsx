@@ -61,11 +61,16 @@ export const metadata: Metadata = {
     title: `${SITE.name} — ${SITE.positioning}`,
     description: SITE.desc,
     url: `${SITE_URL}/`,
+    // 공용 프리뷰 카드 — 개별 페이지가 재정의하지 않는 한 상속되어
+    // 링크가 맨몸으로 렌더되는 일이 없다 (testbench.tools 패턴).
+    // metadataBase(basePath 포함)가 절대화하므로 asset() 없이 루트 상대 경로.
+    images: [{ url: "/og.png", width: 1200, height: 630 }],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: `${SITE.name} — ${SITE.positioning}`,
     description: SITE.desc,
+    images: ["/og.png"],
   },
 };
 

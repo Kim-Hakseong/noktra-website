@@ -1,6 +1,9 @@
 // 홈(/) — Home v2 시안 정본: 히어로 → Instrument index → 신뢰 기둥 3 → 철학 스트립
 // (푸터는 layout 공통). 제품 정보는 content/products.json 단일 진실.
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = { alternates: { canonical: "/" } };
 import HeroProbe from "@/components/HeroProbe";
 import InstrumentIndex from "@/components/InstrumentIndex";
 import Reveal from "@/components/Reveal";

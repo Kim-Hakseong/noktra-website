@@ -6,6 +6,7 @@ import { Tx } from "@/lib/i18n";
 export const metadata: Metadata = {
   title: "Contact",
   description: "Request a build, report an issue, or ask about licensing.",
+  alternates: { canonical: "/contact/" },
 };
 
 export default function ContactPage() {

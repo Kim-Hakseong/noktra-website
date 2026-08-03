@@ -1,0 +1,38 @@
+# NOKTRA
+
+> Verification tools that work in the dark. Nine offline-first desktop instruments for defense, aerospace, industrial and semiconductor test engineering — built to run on air-gapped networks that never touch the internet. No cloud services, no telemetry, no accounts. Any AI runs locally on the engineer's own machine. Philosophy: "Proof, not consensus." — golden-vector suites, deterministic checkers judge, AI only proposes, a human approves.
+
+Site: https://kim-hakseong.github.io/noktra-website/
+GitHub: https://github.com/Kim-Hakseong
+Contact: makseong@gmail.com
+
+## Products (five verbs, nine instruments)
+
+### Define
+- [ICD Refinery](https://kim-hakseong.github.io/noktra-website/products/icd-refinery/): Turns messy, inconsistent interface control documents into a validated canonical spec — local-LLM extraction, deterministic linting, human approval, codec generation. Source: https://github.com/Kim-Hakseong/NOKTRA-icd-refinery
+
+### Run
+- [SIL Runtime](https://kim-hakseong.github.io/noktra-website/products/sil-runtime/): Fixed-step model execution for control software without hardware — deterministic MIL/SIL loops, stimulus injection, limit judgment. Source: https://github.com/Kim-Hakseong/NOKTRA-sil-runtime
+- [Test Sequencer](https://kim-hakseong.github.io/noktra-website/products/test-sequencer/): YAML test sequences → execution → pass/fail judgment → audit-ready HTML reports. Source: https://github.com/Kim-Hakseong/NOKTRA-test-sequencer
+
+### Observe
+- [Telemetry Scope](https://kim-hakseong.github.io/noktra-website/products/telemetry-scope/): Channel-defined live strip charts with recording and timed replay — replay a test exactly as it happened. Source: https://github.com/Kim-Hakseong/NOKTRA-telemetry-scope
+- [Ch10 Viewer](https://kim-hakseong.github.io/noktra-website/products/ch10-viewer/): IRIG 106 Chapter 10 flight-test recording viewer — stream GB-class files, survive corruption, export channels. Source: https://github.com/Kim-Hakseong/NOKTRA-ch10-viewer
+
+### Connect
+- [Protocol Bridge](https://kim-hakseong.github.io/noktra-website/products/protocol-bridge/): Unattended channel mapping across Modbus, UDP, serial and MQTT — scale, deadband, reconnect, keep running. Source: https://github.com/Kim-Hakseong/NOKTRA-protocol-bridge
+- [SECS/GEM Workbench](https://kim-hakseong.github.io/noktra-website/products/secsgem-workbench/): Semiconductor equipment↔host protocol decoder and simulator — HSMS sessions, SECS-II trees, host or equipment role. Source: https://github.com/Kim-Hakseong/NOKTRA-secsgem-workbench
+
+### Assure
+- [RAM Toolkit](https://kim-hakseong.github.io/noktra-website/products/ram-toolkit/): Reliability prediction, RBD availability and FMECA with audit-grade math trails — every number shows its formula. Source: https://github.com/Kim-Hakseong/NOKTRA-ram-toolkit
+- [Local Test Copilot](https://kim-hakseong.github.io/noktra-website/products/local-test-copilot/): Air-gapped C unit-test generation — a local LLM proposes cases, gcc + gcov judge them, coverage gaps drive the loop. Source: https://github.com/Kim-Hakseong/NOKTRA-local-test-copilot
+
+## Pages
+- [Products index](https://kim-hakseong.github.io/noktra-website/products/): every build, every state, one page
+- [Method](https://kim-hakseong.github.io/noktra-website/method/): golden vectors, determinism before intelligence, offline as a design constraint, the engineer signs
+- [Contact](https://kim-hakseong.github.io/noktra-website/contact/): mailto + GitHub, no forms
+
+## Facts
+- All instruments are offline-first; builds ship as single-file executables (Windows 10/11 x64 unless noted; Local Test Copilot is a Linux/macOS CLI).
+- Product status is one of: available, beta, in development. In-development tools are listed with no promised dates.
+- Golden-vector suites ship inside each build; deterministic checkers issue every verdict; AI output is never labelled pass or fail.

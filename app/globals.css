@@ -1063,6 +1063,28 @@ a { transition: color 160ms ease, border-color 160ms ease, background 160ms ease
 }
 .closing__ctas { margin-top: 40px; display: flex; align-items: center; flex-wrap: wrap; gap: 16px; }
 
+/* ---- FAQ ---- */
+.faq {
+  padding: 20px 0;
+  border-bottom: var(--hairline) solid var(--line-soft);
+}
+.faq__q {
+  font-family: var(--font-ui), system-ui, sans-serif;
+  font-size: 16.5px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--text-strong);
+}
+.faq__a {
+  margin-top: 8px;
+  max-width: 640px;
+  font-size: 14.5px;
+  line-height: 1.72;
+  color: var(--text-mid);
+  text-wrap: pretty;
+  overflow-wrap: anywhere;
+}
+
 /* ---- /contact ---- */
 .contact-list { margin-top: 44px; max-width: 640px; }
 

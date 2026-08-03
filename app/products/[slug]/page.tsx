@@ -17,6 +17,8 @@ import { koOf } from "@/lib/ko";
 import { SITE } from "@/lib/site";
 import { asset } from "@/lib/asset";
 import { Tx } from "@/lib/i18n";
+import { productFaqs, productPageGraph } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
 
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ slug: p.slug }));
@@ -29,7 +31,11 @@ export function generateMetadata({
 }): Metadata {
   const p = productBySlug(params.slug);
   if (!p) return {};
-  return { title: p.name, description: p.oneLiner };
+  return {
+    title: p.name,
+    description: p.oneLiner,
+    alternates: { canonical: `/products/${p.slug}/` },
+  };
 }
 
 export default function ProductPage({ params }: { params: { slug: string } }) {
@@ -44,8 +50,11 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
   const detail = detailOf(p.slug);
   const ko = koOf(p.slug);
 
+  const faqs = productFaqs(p);
+
   return (
     <>
+      <JsonLd data={productPageGraph(p)} />
       {/* Masthead */}
       <section className="band band--hero">
         <div className="wrap">
@@ -329,6 +338,32 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                   <Tx en="In development" ko="개발 중" />
                 </span>
               )}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* FAQ — 가시 콘텐츠 + FAQPage JSON-LD 동기 (AEO) */}
+      <section className="band band--pillars">
+        <div className="wrap band__in">
+          <Reveal className="refusals">
+            <div>
+              <div className="t-label">FAQ</div>
+              <h2>
+                <Tx en="Quick answers" ko="빠른 답" />
+              </h2>
+            </div>
+            <div>
+              {faqs.map((f) => (
+                <div className="faq" key={f.q}>
+                  <h3 className="faq__q">
+                    <Tx en={f.q} ko={f.qKo} />
+                  </h3>
+                  <p className="faq__a">
+                    <Tx en={f.a} ko={f.aKo} />
+                  </p>
+                </div>
+              ))}
             </div>
           </Reveal>
         </div>
