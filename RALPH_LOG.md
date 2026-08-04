@@ -143,3 +143,6 @@
 - testbench: content/noktra-links.ts(툴 22종 → 제품 4종 강한 연관만: 1553/ARINC→Ch10, Modbus/CNET→Bridge, TDMS/파형/스케일링→Scope, 비트·워드오더→ICD) + ToolShell 하단 NoktraBanner(en/ko, 매핑 없으면 미렌더). 빌드 검증: mil-1553 배너 O, pt100 배너 X. 커밋 64b6f19 푸시됨.
 - NOKTRA: lib/funnel.ts(제품 5종 → 웹툴 3~4개) + 상세 인접도구 밴드 상단 퍼널 행 + 푸터 "무료 웹툴" 링크. testbench ko 페이지가 있는 툴만 /ko 링크(5종), 나머지 영문 폴백(404 방지).
 - [대기] testbench 라이브 반영은 wrangler login 후 `wrangler deploy` 필요(미인증).
+
+## 개선 16 — 상단 네비 크로스 로고 링크 (2026-08-04)
+- testbench 헤더: Desktop Apps 왼쪽에 NOKTRA 세리프 워드마크 링크(로케일 인식: ko→/ko). NOKTRA 헤더: Products 왼쪽에 TestBench.tools 세리프 로고 링크(.nav__tb — 모노 네비 사이 세리프로 브랜드 구분, ko→/ko/).

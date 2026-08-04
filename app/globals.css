@@ -107,6 +107,17 @@ a { transition: color 160ms ease, border-color 160ms ease, background 160ms ease
 }
 .nav > a:hover,
 .nav > a[aria-current="page"] { color: var(--accent); }
+/* 자매 브랜드 로고 링크 — 모노 네비 사이에서 세리프 워드마크로 구분 */
+.nav > a.nav__tb {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 14.5px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--text-dim);
+}
+.nav > a.nav__tb span { color: var(--text-faint); }
+.nav > a.nav__tb:hover { color: var(--text-strong); }
+.nav > a.nav__tb:hover span { color: var(--text-mid); }
 
 /* 테마 토글 — 시안 세그먼트 */
 .tg { display: flex; border: var(--hairline) solid var(--line-hover); height: 28px; }
