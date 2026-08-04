@@ -146,3 +146,4 @@
 
 ## 개선 16 — 상단 네비 크로스 로고 링크 (2026-08-04)
 - testbench 헤더: Desktop Apps 왼쪽에 NOKTRA 세리프 워드마크 링크(로케일 인식: ko→/ko). NOKTRA 헤더: Products 왼쪽에 TestBench.tools 세리프 로고 링크(.nav__tb — 모노 네비 사이 세리프로 브랜드 구분, ko→/ko/).
+- 2026-08-04: wrangler 로그인 후 testbench 배포 완료 — 라이브 확인: 헤더 NOKTRA 로고 전 페이지, 퍼널 배너는 매핑된 툴에만(mil-1553 O, pt100 X). 퍼널 양방향 가동.
