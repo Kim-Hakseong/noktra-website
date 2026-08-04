@@ -61,15 +61,18 @@ export default function Header() {
           <span className="brand__tag">{SITE.tagline}</span>
         </div>
         <nav className="nav" aria-label="Main menu">
-          {/* 자매 브랜드 로고 링크 — 무료 웹툴 쪽 */}
+          {/* 자매 브랜드 칩 — 보더+도트+↗로 '눌리는 제휴 링크'임을 드러낸다 */}
           <a
             className="nav__tb"
             href={lang === "ko" ? "https://testbench.tools/ko/" : "https://testbench.tools/"}
             target="_blank"
             rel="noopener"
             aria-label="TestBench.tools — free web tools"
+            title={lang === "ko" ? "자매 사이트 — 무료 웹툴" : "Sister site — free web tools"}
           >
-            TestBench<span>.tools</span>
+            <span className="nav__tb-dot" aria-hidden="true" />
+            TestBench<span className="nav__tb-dim">.tools</span>
+            <span className="nav__tb-arr" aria-hidden="true">↗</span>
           </a>
           {NAV_ITEMS.map((n) => (
             <Link

@@ -107,17 +107,38 @@ a { transition: color 160ms ease, border-color 160ms ease, background 160ms ease
 }
 .nav > a:hover,
 .nav > a[aria-current="page"] { color: var(--accent); }
-/* 자매 브랜드 로고 링크 — 모노 네비 사이에서 세리프 워드마크로 구분 */
+/* 자매 브랜드 칩 — 테마/언어 세그먼트와 같은 보더 문법 + 도트·화살표로 링크임을 명시 */
 .nav > a.nav__tb {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 28px;
+  padding: 0 11px;
+  border: var(--hairline) solid var(--line-hover);
   font-family: var(--font-display), Georgia, serif;
-  font-size: 14.5px;
+  font-size: 13.5px;
   letter-spacing: 0.02em;
   text-transform: none;
+  color: var(--text);
+  transition: border-color 160ms ease, color 160ms ease;
+}
+.nav > a.nav__tb .nav__tb-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  flex: none;
+}
+.nav > a.nav__tb .nav__tb-dim { color: var(--text-dim); }
+.nav > a.nav__tb .nav__tb-arr {
+  font-family: var(--font-data), monospace;
+  font-size: 11px;
   color: var(--text-dim);
 }
-.nav > a.nav__tb span { color: var(--text-faint); }
-.nav > a.nav__tb:hover { color: var(--text-strong); }
-.nav > a.nav__tb:hover span { color: var(--text-mid); }
+.nav > a.nav__tb:hover {
+  border-color: var(--accent);
+  color: var(--text-strong);
+}
+.nav > a.nav__tb:hover .nav__tb-arr { color: var(--accent); }
 
 /* 테마 토글 — 시안 세그먼트 */
 .tg { display: flex; border: var(--hairline) solid var(--line-hover); height: 28px; }
