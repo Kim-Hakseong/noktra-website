@@ -148,3 +148,9 @@
 - testbench 헤더: Desktop Apps 왼쪽에 NOKTRA 세리프 워드마크 링크(로케일 인식: ko→/ko). NOKTRA 헤더: Products 왼쪽에 TestBench.tools 세리프 로고 링크(.nav__tb — 모노 네비 사이 세리프로 브랜드 구분, ko→/ko/).
 - 2026-08-04: wrangler 로그인 후 testbench 배포 완료 — 라이브 확인: 헤더 NOKTRA 로고 전 페이지, 퍼널 배너는 매핑된 툴에만(mil-1553 O, pt100 X). 퍼널 양방향 가동.
 - 2026-08-04 (개선 16 보강): 크로스 로고 링크를 보더 칩으로 재설계(사용자 피드백 — 텍스트로만 보여 인지 안 됨). 양쪽 모두: 헤어라인 보더 + NOKTRA 액센트 도트(#31A9BC) + ↗ 화살표 + hover 강조 + title 툴팁("자매 사이트 — …"). NOKTRA 쪽은 테마/언어 세그먼트와 동일 문법, testbench 쪽은 자사 라운드 배지 문법.
+
+## 유지보수 — 플래키 Verify 2건 수정 (2026-08-14)
+- 정기 Verify 도입 후 간헐 실패 메일 다수(sil-runtime 2회, protocol-bridge 3회) — 라이브 배지가 잡아낸 실전 플래키.
+- sil-runtime StartAndPauseDriveTheBackgroundHost: 느린 러너에서 Pause가 첫 사이클을 추월해 채널 전부 0 → 값 관측까지 조건 대기(상한 10s, 고정 sleep 아님) 후 Pause. 로컬 296/296 통과.
+- protocol-bridge Deadband E2E: IsCompleted 폴링이 전송 중 데이터그램을 놓침 → forwarded==2 확정 후 소켓 버퍼에서 직접 await 수신 2건으로 재구성. 로컬 659/659 통과.
+- 양쪽 CI success 확인, verify-status 수동 갱신으로 배지 최신화.
