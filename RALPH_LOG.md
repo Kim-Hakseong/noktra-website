@@ -154,3 +154,8 @@
 - sil-runtime StartAndPauseDriveTheBackgroundHost: 느린 러너에서 Pause가 첫 사이클을 추월해 채널 전부 0 → 값 관측까지 조건 대기(상한 10s, 고정 sleep 아님) 후 Pause. 로컬 296/296 통과.
 - protocol-bridge Deadband E2E: IsCompleted 폴링이 전송 중 데이터그램을 놓침 → forwarded==2 확정 후 소켓 버퍼에서 직접 await 수신 2건으로 재구성. 로컬 659/659 통과.
 - 양쪽 CI success 확인, verify-status 수동 갱신으로 배지 최신화.
+
+## 리디자인 준비 — v2 디자인 프롬프트 작성 (2026-08-16)
+- 방향: "deep-space probe HUD" — 레퍼런스 7장 분석(핵심: 행성 대신 제품 스크린샷을 HUD 링 크롬으로 감싸 스캔하는 문법) + 인터랙션 1순위 레퍼런스 aaronjcunningham.com(커서 반응 입자 필드·//넘버링·라이트웨이트 모드), 보조 edolus.com.
+- 팔레트 시맨틱 확정 제안: 블랙(우주 캔버스)·화이트(하드웨어 크롬)·오렌지(에너지 — 신규, 정확값은 시안이 결정)·민트 #31A9BC(라이브 신호 — 유지). beta 앰버와 브랜드 오렌지 구분 유지(병합 시 시안이 명시 제안).
+- DESIGN_PROMPT_V2.md 작성 — 산출물: Token Sheet v2 + Home/Detail/Index/Philosophy v2 (.dc.html → design-mockups/v2/). 모션은 키프레임 정적 표현 + 텍스트 브리프(구현은 이식 단계에서). [대기] 사람이 Claude Design 실행 → 시안 투입 후 이식 시작.
