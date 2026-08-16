@@ -66,7 +66,7 @@ export function rootMetadata(lang: Lang): Metadata {
         ? ["검증 도구", "시험 자동화", "폐쇄망", "오프라인", "신뢰성"]
         : []),
     ],
-    icons: { icon: [{ url: asset("/favicon.svg"), type: "image/svg+xml" }] },
+    icons: { icon: [{ url: asset("/favicon.svg?v=2"), type: "image/svg+xml" }] },
     openGraph: {
       type: "website",
       locale: lang === "ko" ? "ko_KR" : "en_US",
