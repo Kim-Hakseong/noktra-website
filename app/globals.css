@@ -1971,3 +1971,25 @@ html[lang="ko"] .mission__line { line-height: 1.42; }
 .detail-hud { width: min(72vh, 720px); margin: 0 auto; }
 .tbl__row { border-left: 2px solid transparent; padding-left: 14px; transition: border-color 180ms ease, background 180ms ease; }
 .tbl__row:hover { border-left-color: var(--energy); }
+
+/* ---- reduced-motion: 씬 스크럽 전체 무력화 — 정적 문서로 강등 ---- */
+@media (prefers-reduced-motion: reduce) {
+  .scene--launch, .scene--mission, .scene--nine, .scene--proof { height: auto; }
+  .scene__stage {
+    position: static;
+    height: auto;
+    min-height: 60vh;
+    overflow: visible;
+    padding: 96px 0;
+  }
+  .scene__no { position: static; margin: 0 var(--gutter) 28px; }
+  .launch__center { transform: none !important; opacity: 1 !important; }
+  .launch__wordmark { letter-spacing: 0.04em !important; }
+  .launch__eyebrow, .launch__tagline { opacity: 1 !important; }
+  .launch__hint { display: none; }
+  .mission__line { opacity: 1 !important; transform: none !important; }
+  .proof__title { opacity: 1 !important; transform: none !important; }
+  .proof__tick { width: 120px !important; }
+  .proof__pillars span, .proof__ctas { opacity: 1 !important; }
+  .nine__stage { display: block; }
+}

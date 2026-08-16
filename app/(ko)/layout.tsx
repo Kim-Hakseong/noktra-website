@@ -8,7 +8,8 @@ import { LangProvider } from "@/lib/i18n";
 import StarField from "@/components/StarField";
 import ScrollRail from "@/components/ScrollRail";
 import { siteGraph } from "@/lib/seo";
-import { koFontClass, themeInit } from "@/lib/fonts";
+import { themeInit } from "@/lib/fonts";
+import { koFontClass } from "@/lib/fonts-ko";
 import { rootMetadata } from "@/lib/root-meta";
 
 export const metadata: Metadata = rootMetadata("ko");

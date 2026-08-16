@@ -163,3 +163,9 @@
 ## 브랜드 — 파비콘 확정: 스캔 링 N (2026-08-16)
 - 후보 10안(레터 5 + 픽토그램 5) 비교 후 사용자 확정: A "스캔 링 N" — HUD 틱 링(36틱+메이저 12) + 오렌지 스캔 아크 + 세리프 N, v2 probe-HUD 컨셉과 1:1 호응. 임시 N 사각형 대체.
 - 실서비스·v2 샘플 동시 적용, ?v=2 쿼리로 파비콘 캐시 무력화.
+
+## v2 이식 Phase 0–3 (2026-08-16, 브랜치 v2)
+- Phase 0: 샘플 확정 자산 이식(토큰·씬 홈·StarField/HudFrame/SecNo/ScrollRail·ko 폰트), DESIGN_VISUAL.md에 "v2부터 구현이 룩의 정본" 명문화.
+- Phase 1: 상세페이지 HUD 마스트헤드+//넘버링(NEEDS~FAQ), 인덱스 에너지 액센트, 데드 컴포넌트 3종 제거(HeroProbe/InstrumentIndex/ScreenshotFrame).
+- Phase 2: 라이트(랩 그레이) 전 페이지 스윕 통과, text-faint 대비 상향(v1 [미정] a11y 해소).
+- Phase 3 성능: desktop 홈 95/96/100/100(LCP 1.5s·CLS 0), 상세 93/96. mobile 홈 71→78 — KR 폰트 CSS(292KB)가 en 청크에 섞이던 회귀를 fonts-ko.ts 분리로 해소(en CSS 351→59KB). observed LCP 122ms(시뮬레이터가 하이드레이션에 고정하는 기지 패턴, v1 동일). reduced-motion에서 씬이 통과 상태(--p=1)로 굳어 콘텐츠 소실되는 버그 발견→CSS 폴백 블록으로 정적 문서 강등 수정.
