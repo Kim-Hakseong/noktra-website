@@ -83,7 +83,7 @@ export default function HeroProbe() {
             <div className="hero__eyebrow">
               {t(
                 "Defense · Aerospace · Industrial · Semiconductor",
-                "방위 · 항공우주 · 산업 · 반도체"
+                "국방 · 항공우주 · 산업 · 반도체"
               )}
             </div>
             <h1 className="hero__wordmark">{SITE.name}</h1>
