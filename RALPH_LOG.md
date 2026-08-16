@@ -169,3 +169,8 @@
 - Phase 1: 상세페이지 HUD 마스트헤드+//넘버링(NEEDS~FAQ), 인덱스 에너지 액센트, 데드 컴포넌트 3종 제거(HeroProbe/InstrumentIndex/ScreenshotFrame).
 - Phase 2: 라이트(랩 그레이) 전 페이지 스윕 통과, text-faint 대비 상향(v1 [미정] a11y 해소).
 - Phase 3 성능: desktop 홈 95/96/100/100(LCP 1.5s·CLS 0), 상세 93/96. mobile 홈 71→78 — KR 폰트 CSS(292KB)가 en 청크에 섞이던 회귀를 fonts-ko.ts 분리로 해소(en CSS 351→59KB). observed LCP 122ms(시뮬레이터가 하이드레이션에 고정하는 기지 패턴, v1 동일). reduced-motion에서 씬이 통과 상태(--p=1)로 굳어 콘텐츠 소실되는 버그 발견→CSS 폴백 블록으로 정적 문서 강등 수정.
+
+## v2 리디자인 배포 (2026-08-16)
+- 사용자 승인 후 v2 브랜치 → main 머지·배포. 라이브 v2 마크업(en/ko 씬 홈) 확인.
+- 라이브 Lighthouse desktop: **100 / 96 / 100 / 100** (LCP 0.6s · CLS 0 · TBT 0ms) — CDN 서빙에서 v1보다 오히려 상승.
+- 이로써 probe-HUD 리디자인 완결: 씬 홈·HUD 상세·라이트(랩 그레이)·ko 폰트·스캔 링 N 파비콘 전부 라이브.
