@@ -38,7 +38,7 @@ export default function BrandPage() {
               <p className="masthead__lead">
                 <Tx
                   en="A brand of offline-first desktop instruments for test and verification engineering — built for defense, aerospace, industrial and semiconductor sites where the network is deliberately absent."
-                  ko="시험·검증 엔지니어링을 위한 오프라인 우선 데스크톱 도구 브랜드 — 네트워크가 의도적으로 존재하지 않는 방위·항공우주·산업·반도체 현장을 위해 만듭니다."
+                  ko="시험·검증 엔지니어링을 위한 오프라인 우선 데스크톱 도구 브랜드 — 네트워크가 의도적으로 존재하지 않는 국방·항공우주·산업·반도체 현장을 위해 만듭니다."
                 />
               </p>
             </div>
@@ -186,7 +186,7 @@ export default function BrandPage() {
               <p style={{ marginTop: 14 }}>
                 <Tx
                   en="NOKTRA builds desktop instruments for defense, aerospace, industrial and semiconductor test engineering. Single-file deploys, golden-vector suites, no telemetry — everything runs where the internet doesn't reach."
-                  ko="NOKTRA는 방위·항공우주·산업·반도체 시험 엔지니어링을 위한 데스크톱 도구를 만듭니다. 단일 파일 배포, 골든 벡터 스위트, 텔레메트리 없음 — 전부 인터넷이 닿지 않는 곳에서 동작합니다."
+                  ko="NOKTRA는 국방·항공우주·산업·반도체 시험 엔지니어링을 위한 데스크톱 도구를 만듭니다. 단일 파일 배포, 골든 벡터 스위트, 텔레메트리 없음 — 전부 인터넷이 닿지 않는 곳에서 동작합니다."
                 />
               </p>
               <div className="kv kv--edge" style={{ marginTop: 28 }}>

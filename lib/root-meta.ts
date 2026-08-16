@@ -7,7 +7,7 @@ import type { Lang } from "@/lib/i18n";
 
 export const KO_POSITIONING = "폐쇄망 환경을 위한 검증 도구.";
 export const KO_DESC =
-  "방위·항공우주·산업·반도체 시험 엔지니어링을 위한 아홉 개의 데스크톱 도구. 인터넷과 완전히 분리된 네트워크에서 동작하도록 설계되었습니다.";
+  "국방·항공우주·산업·반도체 시험 엔지니어링을 위한 아홉 개의 데스크톱 도구. 인터넷과 완전히 분리된 네트워크에서 동작하도록 설계되었습니다.";
 
 /** 제품 페이지 전용 OG/트위터 카드 — 자식 openGraph는 부모를 통째로 대체하므로 완전한 객체를 반환 */
 export function productOgMeta(opts: {
