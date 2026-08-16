@@ -2,7 +2,8 @@
 // 제품 정보는 content/products.json 단일 진실 — 버전·용량 등 미보유 데이터는 렌더하지 않는다.
 import LLink from "@/components/LLink";
 import Reveal from "@/components/Reveal";
-import ScreenshotFrame from "@/components/ScreenshotFrame";
+import HudFrame from "@/components/HudFrame";
+import SecNo from "@/components/SecNo";
 import {
   PRODUCTS,
   STATUS_CLASS,
@@ -146,7 +147,7 @@ export default function ProductDetailPage({
           <div className="wrap band__in">
             <Reveal className="sec-head">
               <div>
-                <div className="t-label">Needs</div>
+                <SecNo n="01">NEEDS</SecNo>
                 <h2>
                   <Tx en="What brings you here." ko="찾아오게 되는 이유." />
                 </h2>
@@ -182,16 +183,17 @@ export default function ProductDetailPage({
         </section>
       ) : null}
 
-      {/* Instrument panel — 스크린샷 프레임 */}
+      {/* Instrument panel — HUD 스캔 프레임 */}
       <section className="band band--catalog">
-        <div className="wrap" style={{ paddingTop: 78, paddingBottom: 88 }}>
-          <Reveal>
-            <ScreenshotFrame
+        <div className="wrap" style={{ paddingTop: 60, paddingBottom: 72 }}>
+          <Reveal className="detail-hud">
+            <HudFrame
               name={p.name}
+              refCode={ref}
+              verb={verb}
+              state={STATUS_LABEL[p.status]}
+              stateClass={STATUS_CLASS[p.status]}
               image={p.image}
-              barLeft={`${p.name} — instrument view`}
-              footLeft={`REF ${ref}`}
-              footRight={`${verb.toUpperCase()} · ${STATUS_LABEL[p.status].toUpperCase()}`}
             />
           </Reveal>
         </div>
@@ -200,8 +202,8 @@ export default function ProductDetailPage({
       {/* Feature trio — products.json features */}
       <section className="band band--pillars">
         <div className="wrap band__in">
-          <Reveal className="t-label">
-            <Tx en="What it does" ko="하는 일" />
+          <Reveal>
+            <SecNo n="02"><Tx en="WHAT IT DOES" ko="하는 일" /></SecNo>
           </Reveal>
           <div className="cells">
             {p.features.map((f, fi) => (
@@ -222,7 +224,7 @@ export default function ProductDetailPage({
           <div className="wrap band__in">
             <Reveal className="sec-head">
               <div>
-                <div className="t-label">In practice</div>
+                <SecNo n="03">IN PRACTICE</SecNo>
                 <h2>
                   <Tx en="What you'll see." ko="실제로 보게 될 것." />
                 </h2>
@@ -272,7 +274,7 @@ export default function ProductDetailPage({
         <div className="wrap band__in">
           <Reveal className="sec-head">
             <div>
-              <div className="t-label">Specification</div>
+              <SecNo n="04">DATASHEET</SecNo>
               <h2>{ref} datasheet</h2>
             </div>
             <span className="t-label t-label--faint">{SITE.name} index</span>
@@ -379,7 +381,7 @@ export default function ProductDetailPage({
         <div className="wrap band__in">
           <Reveal className="refusals">
             <div>
-              <div className="t-label">FAQ</div>
+              <SecNo n="05">FAQ</SecNo>
               <h2>
                 <Tx en="Quick answers" ko="빠른 답" />
               </h2>

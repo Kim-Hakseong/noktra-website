@@ -1966,3 +1966,8 @@ html[lang="ko"] .hero__lead {
   line-height: 1.32;
 }
 html[lang="ko"] .mission__line { line-height: 1.42; }
+
+/* ---- v2 상세페이지 ---- */
+.detail-hud { width: min(72vh, 720px); margin: 0 auto; }
+.tbl__row { border-left: 2px solid transparent; padding-left: 14px; transition: border-color 180ms ease, background 180ms ease; }
+.tbl__row:hover { border-left-color: var(--energy); }

@@ -36,7 +36,7 @@
   --text-strong: #FBFDFD;
   --text-mid: #9AA6AA;
   --text-dim: #5F6B6E;
-  --text-faint: #414C4F;
+  --text-faint: #4E5A5E;
 
   /* Status semantics */
   --ok-line: #1E7C8C;
@@ -92,7 +92,7 @@
   --text-strong: #0B0F10;
   --text-mid: #4E5A5C;
   --text-dim: #7A8484;
-  --text-faint: #9AA2A2;
+  --text-faint: #849090;
 
   --ok-line: #9CC3CA;
   --ok-fill: rgba(18, 112, 127, 0.09);

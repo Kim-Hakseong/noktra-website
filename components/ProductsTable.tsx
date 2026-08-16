@@ -61,8 +61,8 @@ export default function ProductsTable({ verbs, products, koOneLiners }: Props) {
         letterSpacing: "0.14em",
         textTransform: "uppercase",
         paddingBottom: 4,
-        borderBottom: `1px solid ${active ? "var(--accent)" : "transparent"}`,
-        color: active ? "var(--accent)" : "var(--text-dim)",
+        borderBottom: `1px solid ${active ? "var(--energy)" : "transparent"}`,
+        color: active ? "var(--energy)" : "var(--text-dim)",
       }}
     >
       {label}
