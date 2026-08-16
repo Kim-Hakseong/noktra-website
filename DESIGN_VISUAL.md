@@ -37,3 +37,18 @@ Ralph는 매 세션 시작 시 이 문서와 시안 파일을 함께 읽는다. 
 
 - tokens.css의 주요 값(액센트·캔버스·잉크·배지 3색)이 Token Sheet 추출값과 일치하는지 대조 기록.
 - 완성 페이지를 시안과 나란히 놓고 밴드 순서·위계 일치 스모크 확인, 차이는 `[결정]`/`[미정]`으로 로그.
+
+---
+
+# v2 (2026-08-16 확정) — 룩의 정본 변경
+
+사용자 결정으로 v2부터 **룩의 유일 기준은 시안 파일이 아니라 저장소의 구현 자체**다.
+(클로드 디자인 산출 없이 v2 샘플을 정본으로 승격 — design-mockups/는 v1 히스토리로만 보존)
+
+- 컨셉: **deep-space probe HUD** — 우주 블랙 캔버스(다크) / 랩 그레이(라이트), 화이트 하드웨어 크롬,
+  오렌지 `--energy`(다크 전용 에너지: CTA·태그·스캔), 민트 `--accent`(라이브 신호, 라이트에선 포인트 겸임).
+- 홈: 풀스크린 스크롤 씬 4개(//00 LAUNCH → //01 MISSION → //02 THE NINE → //03 PROOF), SceneHome.tsx가 정본.
+- 공용 프리미티브: StarField(스크롤 패럴랙스+워프), HudFrame(스캔 링·브래킷·태그·락온), SecNo(//NN 틱업), ScrollRail(DESCENT).
+- 폰트: 라틴 3계층 유지 + 한국어 Noto Serif KR·IBM Plex Sans KR 폴백 체인(html[lang=ko]).
+- 파비콘: 스캔 링 N (public/favicon.svg).
+- 인터랙션 원칙: 스크롤 구동(커서 구동 금지), WebGL 금지, prefers-reduced-motion 정적 폴백 필수.

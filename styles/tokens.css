@@ -1,40 +1,44 @@
 /* ============================================================
-   NOKTRA — styles/tokens.css
-   유일 기준: design-mockups/NOKTRA Token Sheet.dc.html 에서 추출.
-   임의 값 발명 금지 — 시안의 D(dark)/L(light) 팔레트 원문 값.
-   보조 상태 값(ok/amber/mute line·fill, probe-ink)은
-   Home v2 시안 THEMES 정의에서 추출.
+   NOKTRA v2 SAMPLE — probe-HUD tokens (레퍼런스 기반 실험판)
+   방향: 우주 블랙 캔버스 · 화이트 하드웨어 크롬 · 오렌지=에너지 · 민트=라이브 신호
+   ※ 샘플 전용 — 정본은 v2 Token Sheet 시안 산출 후 확정
    ============================================================ */
 
 :root[data-theme="dark"] {
-  /* Accent — one family */
+  /* Live signal — 유지 (오실로스코프 트레이스) */
   --accent: #31A9BC;
   --accent-hi: #7FD2DE;
   --btn-fg: #06181C;
   --probe-ink: #7FD2DE;
 
-  /* Grounds */
-  --bg: #0B0E0F;
-  --bg-hero: #0C0F10;
-  --bg-catalog: #101416;
-  --bg-pillars: #0B0E0F;
-  --bg-philosophy: #0E1113;
-  --bg-footer: #090B0C;
-  --surface: #151A1C;
+  /* Energy — 신규 (이름 태그·CTA·스캔 활성) */
+  --energy: #FF5C1F;
+  --energy-hi: #FF7E4A;
+  --energy-dim: #B23E13;
+  --energy-fg: #0A0503;
 
-  /* Lines */
-  --line: #1C2325;
-  --line-soft: #202829;
-  --line-hover: #34464A;
+  /* Grounds — 우주 캔버스 (밴드 구분은 미세한 층위로만) */
+  --bg: #050607;
+  --bg-hero: #050607;
+  --bg-catalog: #07090C;
+  --bg-pillars: #050607;
+  --bg-philosophy: #06080A;
+  --bg-footer: #030405;
+  --surface: rgba(13, 17, 20, 0.72);
 
-  /* Text — four steps */
-  --text: #EDEFF0;
-  --text-strong: #F4F6F6;
-  --text-mid: #96A0A3;
-  --text-dim: #66706F;
-  --text-faint: #4F5859;
+  /* Lines — 크롬 헤어라인 */
+  --line: #171C21;
+  --line-soft: #12171B;
+  --line-hover: #2E3A42;
 
-  /* Status semantics — meaning only */
+  /* Text — 화이트 크롬 대비 강화 */
+  --text: #EDF1F2;
+  --text-strong: #FBFDFD;
+  --text-mid: #9AA6AA;
+  --text-dim: #5F6B6E;
+  --text-faint: #414C4F;
+
+  /* Status semantics */
   --ok-line: #1E7C8C;
   --ok-fill: rgba(30, 124, 140, 0.16);
   --ok-text: #59C3D2;
@@ -48,41 +52,48 @@
   --mute-text: #8A9396;
 
   /* Theme switch */
-  --tg-d-bg: #1A2123;
+  --tg-d-bg: #14191D;
   --tg-d-fg: #E4E8E8;
   --tg-l-bg: transparent;
   --tg-l-fg: #5E6769;
+
+  /* Starfield */
+  --star: rgba(237, 241, 242, 0.8);
+  --star-accent: rgba(49, 169, 188, 0.9);
+  --star-energy: rgba(255, 92, 31, 0.85);
 }
 
 :root[data-theme="light"] {
-  /* Accent — one family */
+  /* Lab-gray 캔버스 + 화이트 하드웨어 (포스터 레퍼런스 반전) */
   --accent: #12707F;
   --accent-hi: #0B5462;
   --btn-fg: #FAFCFC;
   --probe-ink: #0F4A55;
 
-  /* Grounds */
-  --bg: #F3F2EE;
-  --bg-hero: #EEEDE8;
-  --bg-catalog: #E9E7E1;
-  --bg-pillars: #F3F2EE;
-  --bg-philosophy: #EEEDE8;
-  --bg-footer: #E3E1DA;
-  --surface: #FBFAF8;
+  /* 라이트 모드 포인트 = NOKTRA 민트 (오렌지는 다크 전용 에너지) */
+  --energy: #12707F;
+  --energy-hi: #0B5462;
+  --energy-dim: #5FA3AE;
+  --energy-fg: #FAFCFC;
 
-  /* Lines */
-  --line: #D6D2CA;
-  --line-soft: #E0DCD4;
-  --line-hover: #A9B3B2;
+  --bg: #E8EAEA;
+  --bg-hero: #E8EAEA;
+  --bg-catalog: #E3E6E6;
+  --bg-pillars: #E8EAEA;
+  --bg-philosophy: #E5E8E8;
+  --bg-footer: #DDE0E0;
+  --surface: rgba(255, 255, 255, 0.85);
 
-  /* Text — four steps */
-  --text: #1A1E1F;
-  --text-strong: #0E1213;
-  --text-mid: #555E5F;
-  --text-dim: #7E8583;
-  --text-faint: #9AA09D;
+  --line: #C9CECE;
+  --line-soft: #D4D8D8;
+  --line-hover: #9FA8A8;
 
-  /* Status semantics — meaning only */
+  --text: #171C1D;
+  --text-strong: #0B0F10;
+  --text-mid: #4E5A5C;
+  --text-dim: #7A8484;
+  --text-faint: #9AA2A2;
+
   --ok-line: #9CC3CA;
   --ok-fill: rgba(18, 112, 127, 0.09);
   --ok-text: #0E6070;
@@ -95,17 +106,21 @@
   --mute-fill: rgba(90, 96, 96, 0.07);
   --mute-text: #646B69;
 
-  /* Theme switch */
   --tg-d-bg: transparent;
   --tg-d-fg: #8B918F;
-  --tg-l-bg: #DEDAD2;
+  --tg-l-bg: #FFFFFF;
   --tg-l-fg: #14181A;
+
+  --star: rgba(23, 28, 29, 0.5);
+  --star-accent: rgba(18, 112, 127, 0.7);
+  --star-energy: rgba(18, 112, 127, 0.75);
 }
 
-/* Layout constants — Token Sheet */
+/* Layout constants */
 :root {
   --container: 1440px;
   --gutter: 100px;
   --hairline: 1px;
   --radius: 0;
+  --radius-chip: 999px; /* v2: 태그·칩만 필 허용 */
 }
