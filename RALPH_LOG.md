@@ -179,3 +179,4 @@
 - 증상 보고: 회사 노트북 크롬에서 인터랙션만 전부 미동작(디자인은 정상) — 원인은 OS 동작줄이기(prefers-reduced-motion)에 의한 설계상 정적 강등. 조용한 강등이 UX 문제라 판단.
 - 해결: <html data-motion=static|active> 체계 도입 — 인라인 스크립트가 localStorage('noktra-motion') 오버라이드 > OS 설정 순으로 결정. 전 컴포넌트(StarField/SceneHome/HudFrame/SecNo)와 CSS 폴백을 media query에서 data-motion 셀렉터로 전환(단일 진실).
 - 정적 모드일 때 헤더에 에너지색 "STATIC MODE · ENABLE"(ko: 정적 모드 · 모션 켜기) 칩 표시 — 클릭 시 사이트 한정 모션 재활성(리로드). 헤더 혼잡 방지로 1600px 이하에서 장식 태그 숨김.
+- 2026-08-20 (후속): 사용자 결정으로 기본값 반전 — OS 동작줄이기와 무관하게 전 방문자 모션 ON. [결정] prefers-reduced-motion 기본 존중 원칙 철회, 대신 푸터에 "모션 끄기" 마이크로 토글을 상시 노출해 접근성 탈출구 유지. 헤더 STATIC MODE 칩은 사용자가 직접 끈 경우에만 표시됨.

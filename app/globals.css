@@ -2024,3 +2024,15 @@ html[lang="ko"] .mission__line { line-height: 1.42; }
   flex: none;
 }
 .motion-chip:hover .motion-chip__dot { background: var(--energy-fg); }
+
+/* 푸터 모션 토글 — 마이크로 텍스트 버튼 */
+.footer__motion {
+  font-family: var(--font-data), monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  border-bottom: var(--hairline) solid var(--line-hover);
+  padding-bottom: 1px;
+}
+.footer__motion:hover { color: var(--accent); border-color: var(--accent); }

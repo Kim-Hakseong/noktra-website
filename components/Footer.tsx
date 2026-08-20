@@ -5,11 +5,15 @@ import LLink from "@/components/LLink";
 import { SITE } from "@/lib/site";
 import { VERBS } from "@/lib/products";
 import { useLang } from "@/lib/i18n";
+import { useEffect, useState } from "react";
+import { motionIsStatic, setMotion } from "@/lib/motion";
 
 export default function Footer() {
   const year = 2026; // 정적 export — 빌드 시점 연도 고정
   const { lang } = useLang();
   const t = (en: string, ko: string) => (lang === "ko" ? ko : en);
+  const [staticMode, setStaticMode] = useState(false);
+  useEffect(() => setStaticMode(motionIsStatic()), []);
 
   return (
     <footer className="footer">
@@ -54,7 +58,19 @@ export default function Footer() {
         <div className="footer__bottom">
           <span>© {year} {SITE.name}</span>
           <span>{SITE.philosophy}</span>
-          <span>{t("No analytics · No telemetry", "분석 없음 · 텔레메트리 없음")}</span>
+          <span>
+            {t("No analytics · No telemetry", "분석 없음 · 텔레메트리 없음")}
+            {" · "}
+            {/* 모션 토글 — 기본 ON, 원치 않는 방문자를 위한 끄기 스위치 */}
+            <button
+              className="footer__motion"
+              onClick={() => setMotion(staticMode ? "on" : "off")}
+            >
+              {staticMode
+                ? t("MOTION OFF — TURN ON", "모션 꺼짐 — 켜기")
+                : t("MOTION ON — TURN OFF", "모션 켜짐 — 끄기")}
+            </button>
+          </span>
         </div>
       </div>
     </footer>
