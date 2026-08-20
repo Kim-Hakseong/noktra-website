@@ -3,9 +3,34 @@
 // nexys-website Header 골격 이식 → NOKTRA 시안 헤더로 재구성
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { SITE } from "@/lib/site";
 import { switchLocalePath, useLang } from "@/lib/i18n";
+import { motionIsStatic, setMotion } from "@/lib/motion";
 import ThemeToggle from "./ThemeToggle";
+
+// 정적 모드(OS 동작줄이기 등)일 때만 나타나는 칩 — 왜 인터랙션이 없는지 알리고,
+// 클릭 한 번으로 모션을 되살릴 수 있게 한다 (조용한 강등 금지).
+function MotionChip() {
+  const { lang } = useLang();
+  const [isStatic, setIsStatic] = useState(false);
+  useEffect(() => setIsStatic(motionIsStatic()), []);
+  if (!isStatic) return null;
+  return (
+    <button
+      className="motion-chip"
+      onClick={() => setMotion("on")}
+      title={
+        lang === "ko"
+          ? "OS 동작 줄이기 설정으로 모션이 꺼져 있습니다. 클릭하면 이 사이트에서만 켭니다."
+          : "Motion is off (OS reduce-motion). Click to enable it for this site."
+      }
+    >
+      <span className="motion-chip__dot" aria-hidden="true" />
+      {lang === "ko" ? "정적 모드 · 모션 켜기" : "STATIC MODE · ENABLE"}
+    </button>
+  );
+}
 
 const NAV_ITEMS = [
   { href: "/products", en: "Products", ko: "제품" },
@@ -83,6 +108,7 @@ export default function Header() {
               {lang === "ko" ? n.ko : n.en}
             </Link>
           ))}
+          <MotionChip />
           <LangSwitch />
           <ThemeToggle />
         </nav>

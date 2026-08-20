@@ -32,8 +32,7 @@ export default function SceneHome() {
   const activeRef = useRef(0);
 
   useEffect(() => {
-    const reduce =
-      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+    const reduce = document.documentElement.dataset.motion === "static";
     const wraps = [launchRef, missionRef, nineRef, proofRef];
     let raf = 0;
 

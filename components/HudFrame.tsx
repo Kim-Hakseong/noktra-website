@@ -11,9 +11,7 @@ function useScrollRotation() {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const reduce =
-      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
-    if (reduce) return;
+    if (document.documentElement.dataset.motion === "static") return;
     let raf = 0;
     const apply = () => {
       el.style.transform = `rotate(${window.scrollY * 0.06}deg)`;

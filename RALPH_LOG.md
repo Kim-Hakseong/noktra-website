@@ -174,3 +174,8 @@
 - 사용자 승인 후 v2 브랜치 → main 머지·배포. 라이브 v2 마크업(en/ko 씬 홈) 확인.
 - 라이브 Lighthouse desktop: **100 / 96 / 100 / 100** (LCP 0.6s · CLS 0 · TBT 0ms) — CDN 서빙에서 v1보다 오히려 상승.
 - 이로써 probe-HUD 리디자인 완결: 씬 홈·HUD 상세·라이트(랩 그레이)·ko 폰트·스캔 링 N 파비콘 전부 라이브.
+
+## 수정 — 모션 오버라이드 토글 (2026-08-20)
+- 증상 보고: 회사 노트북 크롬에서 인터랙션만 전부 미동작(디자인은 정상) — 원인은 OS 동작줄이기(prefers-reduced-motion)에 의한 설계상 정적 강등. 조용한 강등이 UX 문제라 판단.
+- 해결: <html data-motion=static|active> 체계 도입 — 인라인 스크립트가 localStorage('noktra-motion') 오버라이드 > OS 설정 순으로 결정. 전 컴포넌트(StarField/SceneHome/HudFrame/SecNo)와 CSS 폴백을 media query에서 data-motion 셀렉터로 전환(단일 진실).
+- 정적 모드일 때 헤더에 에너지색 "STATIC MODE · ENABLE"(ko: 정적 모드 · 모션 켜기) 칩 표시 — 클릭 시 사이트 한정 모션 재활성(리로드). 헤더 혼잡 방지로 1600px 이하에서 장식 태그 숨김.

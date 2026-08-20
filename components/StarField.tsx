@@ -23,8 +23,7 @@ export default function StarField() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const reduce =
-      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+    const reduce = document.documentElement.dataset.motion === "static";
 
     let stars: Star[] = [];
     let raf = 0;

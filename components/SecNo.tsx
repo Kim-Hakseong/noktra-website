@@ -18,8 +18,7 @@ export default function SecNo({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const reduce =
-      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+    const reduce = document.documentElement.dataset.motion === "static";
     if (reduce) {
       setDisplay(n);
       setLocked(true);
