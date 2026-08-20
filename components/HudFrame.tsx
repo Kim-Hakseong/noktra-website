@@ -150,11 +150,13 @@ export default function HudFrame({
         <span className="hud__bracket hud__bracket--tr" aria-hidden="true" />
         <span className="hud__bracket hud__bracket--bl" aria-hidden="true" />
         <span className="hud__bracket hud__bracket--br" aria-hidden="true" />
-        {image ? (
-          <img src={asset(image)} alt={`${name} screenshot`} />
-        ) : (
-          <span className="hud__ph">NO SIGNAL</span>
-        )}
+        <div className="hud__shot">
+          {image ? (
+            <img src={asset(image)} alt={`${name} screenshot`} />
+          ) : (
+            <span className="hud__ph">NO SIGNAL</span>
+          )}
+        </div>
         {/* 크로스헤어 */}
         <span className="hud__cross" aria-hidden="true" />
       </div>
