@@ -180,3 +180,7 @@
 - 해결: <html data-motion=static|active> 체계 도입 — 인라인 스크립트가 localStorage('noktra-motion') 오버라이드 > OS 설정 순으로 결정. 전 컴포넌트(StarField/SceneHome/HudFrame/SecNo)와 CSS 폴백을 media query에서 data-motion 셀렉터로 전환(단일 진실).
 - 정적 모드일 때 헤더에 에너지색 "STATIC MODE · ENABLE"(ko: 정적 모드 · 모션 켜기) 칩 표시 — 클릭 시 사이트 한정 모션 재활성(리로드). 헤더 혼잡 방지로 1600px 이하에서 장식 태그 숨김.
 - 2026-08-20 (후속): 사용자 결정으로 기본값 반전 — OS 동작줄이기와 무관하게 전 방문자 모션 ON. [결정] prefers-reduced-motion 기본 존중 원칙 철회, 대신 푸터에 "모션 끄기" 마이크로 토글을 상시 노출해 접근성 탈출구 유지. 헤더 STATIC MODE 칩은 사용자가 직접 끈 경우에만 표시됨.
+
+## 개선 — THE NINE 스크린샷 확대 + 입체 인터랙션 (2026-08-20)
+- 확대: 씬 HUD 62vh→72vh, 링 내 타깃 66%→82% (체감 +45%), 리스트 열 400→340px·패딩 축소로 공간 확보. 상세페이지 HUD도 동반 확대.
+- 입체: perspective 1100px 레이어(hud__persp/tilt) — ①포인터 호버 틸트(±12°/9°, lerp 감쇠) ②스크롤 관성 틸트(휠 속도 비례 젖힘→복원). 브래킷 translateZ 30px·크로스헤어 22px로 이미지 위 공중 크롬, 이중 드롭섀도(다크/라이트 별도). 정적 모드에선 틸트 완전 무해화.

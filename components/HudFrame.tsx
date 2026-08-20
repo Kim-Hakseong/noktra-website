@@ -6,6 +6,55 @@
 import { useEffect, useRef } from "react";
 import { asset } from "@/lib/asset";
 
+// 입체 틸트 — 포인터 호버(rotateX/Y) + 스크롤 관성(휠 속도만큼 젖혀졌다 복원).
+// 감쇠 보간(lerp)으로 부드럽게, 정적 모드에선 완전 비활성.
+function useTilt() {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (document.documentElement.dataset.motion === "static") return;
+    let raf = 0;
+    let tx = 0, ty = 0;       // 현재 각
+    let px = 0, py = 0;       // 포인터 목표각
+    let sx = 0;               // 스크롤 관성각
+    let lastY = window.scrollY;
+
+    const loop = () => {
+      // 스크롤 속도 → 관성 틸트 (감쇠)
+      const dy = window.scrollY - lastY;
+      lastY = window.scrollY;
+      sx += dy * 0.06;
+      sx = Math.max(-8, Math.min(8, sx)) * 0.88;
+      tx += (px + sx - tx) * 0.12;
+      ty += (py - ty) * 0.12;
+      el.style.transform = `rotateX(${tx.toFixed(2)}deg) rotateY(${ty.toFixed(2)}deg)`;
+      raf = requestAnimationFrame(loop);
+    };
+    const onMove = (e: PointerEvent) => {
+      const r = el.getBoundingClientRect();
+      const nx = (e.clientX - r.left) / r.width - 0.5;
+      const ny = (e.clientY - r.top) / r.height - 0.5;
+      py = nx * 12;
+      px = -ny * 9;
+    };
+    const onLeave = () => {
+      px = 0;
+      py = 0;
+    };
+    const parent = el.parentElement ?? el;
+    parent.addEventListener("pointermove", onMove);
+    parent.addEventListener("pointerleave", onLeave);
+    raf = requestAnimationFrame(loop);
+    return () => {
+      cancelAnimationFrame(raf);
+      parent.removeEventListener("pointermove", onMove);
+      parent.removeEventListener("pointerleave", onLeave);
+    };
+  }, []);
+  return ref;
+}
+
 function useScrollRotation() {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -51,6 +100,7 @@ export default function HudFrame({
   lockKey,
 }: Props) {
   const ringRef = useScrollRotation();
+  const tiltRef = useTilt();
 
   return (
     <figure className="hud" key={lockKey}>
@@ -92,7 +142,9 @@ export default function HudFrame({
       </svg>
       </div>
 
-      {/* 스크린샷 + 코너 브래킷 */}
+      {/* 스크린샷 + 코너 브래킷 — 원근 틸트 레이어 */}
+      <div className="hud__persp">
+      <div className="hud__tilt" ref={tiltRef}>
       <div className="hud__target">
         <span className="hud__bracket hud__bracket--tl" aria-hidden="true" />
         <span className="hud__bracket hud__bracket--tr" aria-hidden="true" />
@@ -105,6 +157,8 @@ export default function HudFrame({
         )}
         {/* 크로스헤어 */}
         <span className="hud__cross" aria-hidden="true" />
+      </div>
+      </div>
       </div>
 
       {/* 오렌지 이름 태그 */}
