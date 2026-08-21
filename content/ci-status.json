@@ -1,14 +1,14 @@
 {
-  "generated": "2026-08-20T19:25:11Z",
+  "generated": "2026-08-21T19:21:03Z",
   "runs": {
-    "icd-refinery": {"conclusion":"success","date":"2026-08-20","url":"https://github.com/Kim-Hakseong/NOKTRA-icd-refinery/actions/runs/32402770450"},
-    "sil-runtime": {"conclusion":"success","date":"2026-08-20","url":"https://github.com/Kim-Hakseong/NOKTRA-sil-runtime/actions/runs/32404144983"},
-    "test-sequencer": {"conclusion":"success","date":"2026-08-20","url":"https://github.com/Kim-Hakseong/NOKTRA-test-sequencer/actions/runs/32405321338"},
-    "telemetry-scope": {"conclusion":"success","date":"2026-08-20","url":"https://github.com/Kim-Hakseong/NOKTRA-telemetry-scope/actions/runs/32404521016"},
-    "ch10-viewer": {"conclusion":"success","date":"2026-08-20","url":"https://github.com/Kim-Hakseong/NOKTRA-ch10-viewer/actions/runs/32403597492"},
-    "protocol-bridge": {"conclusion":"success","date":"2026-08-20","url":"https://github.com/Kim-Hakseong/NOKTRA-protocol-bridge/actions/runs/32403524148"},
-    "secsgem-workbench": {"conclusion":"success","date":"2026-08-20","url":"https://github.com/Kim-Hakseong/NOKTRA-secsgem-workbench/actions/runs/32403894760"},
-    "ram-toolkit": {"conclusion":"success","date":"2026-08-20","url":"https://github.com/Kim-Hakseong/NOKTRA-ram-toolkit/actions/runs/32403667668"},
-    "local-test-copilot": {"conclusion":"success","date":"2026-08-20","url":"https://github.com/Kim-Hakseong/NOKTRA-local-test-copilot/actions/runs/32403705895"}
+    "icd-refinery": {"conclusion":"success","date":"2026-08-21","url":"https://github.com/Kim-Hakseong/NOKTRA-icd-refinery/actions/runs/32512879005"},
+    "sil-runtime": {"conclusion":"success","date":"2026-08-21","url":"https://github.com/Kim-Hakseong/NOKTRA-sil-runtime/actions/runs/32514006456"},
+    "test-sequencer": {"conclusion":"success","date":"2026-08-21","url":"https://github.com/Kim-Hakseong/NOKTRA-test-sequencer/actions/runs/32515035937"},
+    "telemetry-scope": {"conclusion":"success","date":"2026-08-21","url":"https://github.com/Kim-Hakseong/NOKTRA-telemetry-scope/actions/runs/32514362660"},
+    "ch10-viewer": {"conclusion":"success","date":"2026-08-21","url":"https://github.com/Kim-Hakseong/NOKTRA-ch10-viewer/actions/runs/32513521818"},
+    "protocol-bridge": {"conclusion":"success","date":"2026-08-21","url":"https://github.com/Kim-Hakseong/NOKTRA-protocol-bridge/actions/runs/32513444655"},
+    "secsgem-workbench": {"conclusion":"success","date":"2026-08-21","url":"https://github.com/Kim-Hakseong/NOKTRA-secsgem-workbench/actions/runs/32513798862"},
+    "ram-toolkit": {"conclusion":"success","date":"2026-08-21","url":"https://github.com/Kim-Hakseong/NOKTRA-ram-toolkit/actions/runs/32513578296"},
+    "local-test-copilot": {"conclusion":"success","date":"2026-08-21","url":"https://github.com/Kim-Hakseong/NOKTRA-local-test-copilot/actions/runs/32513596831"}
   }
 }
