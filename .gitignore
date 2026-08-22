@@ -26,3 +26,7 @@ pnpm-debug.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# 로컬 AI 도구 설정 (공개 저장소에 미포함)
+/.claude/
+/.mcp.json
