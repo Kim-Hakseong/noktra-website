@@ -1,6 +1,6 @@
-// v3 홈 — 풀스크린 스크롤 씬 (샘플). 기존 밴드 구성은 SceneHome이 대체.
-import SceneHome from "@/components/SceneHome";
+// v4 홈 — ORBIT 시네마틱 WebGL (스캔 링 + 입자 양자화 모프). v3 SceneHome 대체.
+import OrbitHome from "@/components/OrbitHome";
 
 export default function HomePage() {
-  return <SceneHome />;
+  return <OrbitHome />;
 }

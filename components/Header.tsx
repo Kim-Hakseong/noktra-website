@@ -99,15 +99,18 @@ export default function Header() {
             TestBench<span className="nav__tb-dim">.tools</span>
             <span className="nav__tb-arr" aria-hidden="true">↗</span>
           </a>
-          {NAV_ITEMS.map((n) => (
-            <Link
-              key={n.href}
-              href={p(n.href)}
-              aria-current={isActive(n.href) ? "page" : undefined}
-            >
-              {lang === "ko" ? n.ko : n.en}
-            </Link>
-          ))}
+          {/* 필 스타일 메뉴 그룹 — 활성 페이지는 화이트 필 */}
+          <span className="nav__pills">
+            {NAV_ITEMS.map((n) => (
+              <Link
+                key={n.href}
+                href={p(n.href)}
+                aria-current={isActive(n.href) ? "page" : undefined}
+              >
+                {lang === "ko" ? n.ko : n.en}
+              </Link>
+            ))}
+          </span>
           <MotionChip />
           <LangSwitch />
           <ThemeToggle />
