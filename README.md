@@ -1,8 +1,24 @@
-# NOKTRA — 메인 웹사이트
+<p align="center">
+  <img src="docs/logo.png" width="160" alt="NOKTRA 로고" />
+</p>
 
-> Verification tools for air-gapped environments. · Proof, not consensus.
+<h1 align="center">NOKTRA — 메인 웹사이트</h1>
 
-NOKTRA 브랜드 홈이자 9개 검증 도구의 다운로드 허브. Next.js 14(App Router) 정적 export로 빌드되며 서버 기능이 전혀 없다(폼·API·DB 없음, 분석·텔레메트리 없음).
+<p align="center">
+  <b>Verification tools for air-gapped environments. · Proof, not consensus.</b><br/>
+  NOKTRA 브랜드 홈이자 9개 검증 도구의 다운로드 허브. Next.js 14(App Router) 정적 export 로 빌드되며
+  서버 기능이 전혀 없다 — 폼·API·DB 없음, 분석·텔레메트리 없음.
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Next.js-14-000000?logo=nextdotjs" alt="Next.js 14" />
+  <img src="https://img.shields.io/badge/React-18-61DAFB?logo=react" alt="React 18" />
+  <img src="https://img.shields.io/badge/Hosting-static%20export%20(no%20server)-blue" alt="정적 export" />
+  <img src="https://img.shields.io/badge/Tools-9-orange" alt="9개 도구" />
+  <img src="https://img.shields.io/badge/Telemetry-none-brightgreen" alt="텔레메트리 없음" />
+</p>
+
+---
 
 ## 스택
 
