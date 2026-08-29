@@ -6,6 +6,7 @@ import {
   refOf,
   verbLabel,
   type Product,
+  REPOS_PUBLIC,
 } from "@/lib/products";
 import { SITE } from "@/lib/site";
 
@@ -15,7 +16,9 @@ export const SITE_URL = `${ORIGIN}${BASE}`;
 
 // 브랜드 저장소 전체 — 검색·AI 엔진이 사이트와 오픈소스를
 // 하나의 엔티티로 해석하도록 sameAs에 연결.
-export const NOKTRA_REPOS = [SITE.github, ...PRODUCTS.map((p) => p.repo)];
+export const NOKTRA_REPOS = REPOS_PUBLIC
+  ? [SITE.github, ...PRODUCTS.map((p) => p.repo)]
+  : [SITE.github];
 
 export function siteGraph() {
   return {
@@ -86,17 +89,21 @@ export function productFaqs(p: Product): FaqItem[] {
       qKo: `${p.name}는 지금 내려받을 수 있나요?`,
       a: hasDownload
         ? `Yes — the current build downloads directly from this page.`
-        : `Not yet — it is ${STATUS_LABEL[p.status].toLowerCase()}. It is listed with no promised date, until a build exists you can run. Development is public in the repository.`,
+        : `Not yet — it is ${STATUS_LABEL[p.status].toLowerCase()}. It is listed with no promised date, until a build exists you can run.`,
       aKo: hasDownload
         ? `네 — 현재 빌드를 이 페이지에서 바로 내려받을 수 있습니다.`
-        : `아직입니다 — 현재 ${STATUS_LABEL[p.status] === "In development" ? "개발 중" : STATUS_LABEL[p.status]}입니다. 실행할 수 있는 빌드가 나오기 전까지 날짜를 약속하지 않고 목록에만 올립니다. 개발 과정은 저장소에 공개되어 있습니다.`,
+        : `아직입니다 — 현재 ${STATUS_LABEL[p.status] === "In development" ? "개발 중" : STATUS_LABEL[p.status]}입니다. 실행할 수 있는 빌드가 나오기 전까지 날짜를 약속하지 않고 목록에만 올립니다.`,
     },
-    {
-      q: `Where is the source code for ${p.name}?`,
-      qKo: `${p.name}의 소스는 어디에 있나요?`,
-      a: `On GitHub: ${p.repo}`,
-      aKo: `GitHub에 있습니다: ${p.repo}`,
-    },
+    ...(REPOS_PUBLIC
+      ? [
+          {
+            q: `Where is the source code for ${p.name}?`,
+            qKo: `${p.name}의 소스는 어디에 있나요?`,
+            a: `On GitHub: ${p.repo}`,
+            aKo: `GitHub에 있습니다: ${p.repo}`,
+          },
+        ]
+      : []),
   ];
   return faqs;
 }
@@ -156,7 +163,7 @@ export function noteGraph(
     datePublished: note.published,
     dateModified: note.published,
     inLanguage: lang,
-    citation: note.source,
+    ...(REPOS_PUBLIC ? { citation: note.source } : {}),
     author: { "@id": `${SITE_URL}/#org` },
     publisher: { "@id": `${SITE_URL}/#org` },
   };

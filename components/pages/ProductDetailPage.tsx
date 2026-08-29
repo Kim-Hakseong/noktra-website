@@ -11,6 +11,7 @@ import {
   productBySlug,
   refOf,
   verbLabel,
+  REPOS_PUBLIC,
 } from "@/lib/products";
 import { detailOf } from "@/lib/details";
 import { koOf } from "@/lib/ko";
@@ -96,24 +97,28 @@ export default function ProductDetailPage({
                     </span>
                     <span className="sp" />
                     <span className="v">
-                      <a
-                        href={verify.url}
-                        target="_blank"
-                        rel="noopener"
-                        className={
-                          verify.conclusion === "success" ? "st-ok" : "st-amber"
-                        }
-                      >
-                        {verify.conclusion === "success" ? (
-                          <>
-                            <Tx en="SUITE PASS" ko="스위트 PASS" /> · {verify.date}
-                          </>
+                      {/* 저장소가 비공개면 실행 로그로 보내지 않는다 — 배지 사실은 유지 */}
+                      {(() => {
+                        const cls =
+                          verify.conclusion === "success" ? "st-ok" : "st-amber";
+                        const label =
+                          verify.conclusion === "success" ? (
+                            <>
+                              <Tx en="SUITE PASS" ko="스위트 PASS" /> · {verify.date}
+                            </>
+                          ) : (
+                            <>
+                              <Tx en="FAILING" ko="실패 중" /> · {verify.date}
+                            </>
+                          );
+                        return REPOS_PUBLIC ? (
+                          <a href={verify.url} target="_blank" rel="noopener" className={cls}>
+                            {label}
+                          </a>
                         ) : (
-                          <>
-                            <Tx en="FAILING" ko="실패 중" /> · {verify.date}
-                          </>
-                        )}
-                      </a>
+                          <span className={cls}>{label}</span>
+                        );
+                      })()}
                     </span>
                   </div>
                 ) : null}
@@ -134,9 +139,11 @@ export default function ProductDetailPage({
             <a className="btn btn--ghost" href="#specification">
               <Tx en="Specification" ko="사양" />
             </a>
-            <a className="btn btn--ghost" href={p.repo} target="_blank" rel="noopener">
-              GitHub ↗
-            </a>
+            {REPOS_PUBLIC && (
+              <a className="btn btn--ghost" href={p.repo} target="_blank" rel="noopener">
+                GitHub ↗
+              </a>
+            )}
           </div>
         </div>
       </section>
@@ -343,15 +350,17 @@ export default function ProductDetailPage({
                 {STATUS_LABEL[p.status].toUpperCase()}
               </span>
             </div>
-            <div className={p.sha256?.win || p.sha256?.mac ? "kv kv--edge" : "kv"}>
-              <span className="k">SOURCE</span>
-              <span className="sp" />
-              <span className="v">
-                <a href={p.repo} target="_blank" rel="noopener">
-                  GitHub ↗
-                </a>
-              </span>
-            </div>
+            {REPOS_PUBLIC && (
+              <div className={p.sha256?.win || p.sha256?.mac ? "kv kv--edge" : "kv"}>
+                <span className="k">SOURCE</span>
+                <span className="sp" />
+                <span className="v">
+                  <a href={p.repo} target="_blank" rel="noopener">
+                    GitHub ↗
+                  </a>
+                </span>
+              </div>
+            )}
             {/* 반입 검증용 지문 — 릴리스에 해시가 게시된 경우에만 표시.
                 고객은 폐쇄망에서 `certutil -hashfile <exe> SHA256`으로 대조한다. */}
             {p.sha256?.win || p.sha256?.mac ? (

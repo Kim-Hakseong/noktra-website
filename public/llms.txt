@@ -9,23 +9,23 @@ Contact: makseong@gmail.com
 ## Products (five verbs, nine instruments)
 
 ### Define
-- [ICD Refinery](https://kim-hakseong.github.io/noktra-website/products/icd-refinery/): Turns messy, inconsistent interface control documents into a validated canonical spec — local-LLM extraction, deterministic linting, human approval, codec generation. Source: https://github.com/Kim-Hakseong/NOKTRA-icd-refinery
+- [ICD Refinery](https://kim-hakseong.github.io/noktra-website/products/icd-refinery/): Turns messy, inconsistent interface control documents into a validated canonical spec — local-LLM extraction, deterministic linting, human approval, codec generation.
 
 ### Run
-- [SIL Runtime](https://kim-hakseong.github.io/noktra-website/products/sil-runtime/): Fixed-step model execution for control software without hardware — deterministic MIL/SIL loops, stimulus injection, limit judgment. Source: https://github.com/Kim-Hakseong/NOKTRA-sil-runtime
-- [Test Sequencer](https://kim-hakseong.github.io/noktra-website/products/test-sequencer/): YAML test sequences → execution → pass/fail judgment → audit-ready HTML reports. Source: https://github.com/Kim-Hakseong/NOKTRA-test-sequencer
+- [SIL Runtime](https://kim-hakseong.github.io/noktra-website/products/sil-runtime/): Fixed-step model execution for control software without hardware — deterministic MIL/SIL loops, stimulus injection, limit judgment.
+- [Test Sequencer](https://kim-hakseong.github.io/noktra-website/products/test-sequencer/): YAML test sequences → execution → pass/fail judgment → audit-ready HTML reports.
 
 ### Observe
-- [Telemetry Scope](https://kim-hakseong.github.io/noktra-website/products/telemetry-scope/): Channel-defined live strip charts with recording and timed replay — replay a test exactly as it happened. Source: https://github.com/Kim-Hakseong/NOKTRA-telemetry-scope
-- [Ch10 Viewer](https://kim-hakseong.github.io/noktra-website/products/ch10-viewer/): IRIG 106 Chapter 10 flight-test recording viewer — stream GB-class files, survive corruption, export channels. Source: https://github.com/Kim-Hakseong/NOKTRA-ch10-viewer
+- [Telemetry Scope](https://kim-hakseong.github.io/noktra-website/products/telemetry-scope/): Channel-defined live strip charts with recording and timed replay — replay a test exactly as it happened.
+- [Ch10 Viewer](https://kim-hakseong.github.io/noktra-website/products/ch10-viewer/): IRIG 106 Chapter 10 flight-test recording viewer — stream GB-class files, survive corruption, export channels.
 
 ### Connect
-- [Protocol Bridge](https://kim-hakseong.github.io/noktra-website/products/protocol-bridge/): Unattended channel mapping across Modbus, UDP, serial and MQTT — scale, deadband, reconnect, keep running. Source: https://github.com/Kim-Hakseong/NOKTRA-protocol-bridge
-- [SECS/GEM Workbench](https://kim-hakseong.github.io/noktra-website/products/secsgem-workbench/): Semiconductor equipment↔host protocol decoder and simulator — HSMS sessions, SECS-II trees, host or equipment role. Source: https://github.com/Kim-Hakseong/NOKTRA-secsgem-workbench
+- [Protocol Bridge](https://kim-hakseong.github.io/noktra-website/products/protocol-bridge/): Unattended channel mapping across Modbus, UDP, serial and MQTT — scale, deadband, reconnect, keep running.
+- [SECS/GEM Workbench](https://kim-hakseong.github.io/noktra-website/products/secsgem-workbench/): Semiconductor equipment↔host protocol decoder and simulator — HSMS sessions, SECS-II trees, host or equipment role.
 
 ### Assure
-- [RAM Toolkit](https://kim-hakseong.github.io/noktra-website/products/ram-toolkit/): Reliability prediction, RBD availability and FMECA with audit-grade math trails — every number shows its formula. Source: https://github.com/Kim-Hakseong/NOKTRA-ram-toolkit
-- [Local Test Copilot](https://kim-hakseong.github.io/noktra-website/products/local-test-copilot/): Air-gapped C unit-test generation — a local LLM proposes cases, gcc + gcov judge them, coverage gaps drive the loop. Source: https://github.com/Kim-Hakseong/NOKTRA-local-test-copilot
+- [RAM Toolkit](https://kim-hakseong.github.io/noktra-website/products/ram-toolkit/): Reliability prediction, RBD availability and FMECA with audit-grade math trails — every number shows its formula.
+- [Local Test Copilot](https://kim-hakseong.github.io/noktra-website/products/local-test-copilot/): Air-gapped C unit-test generation — a local LLM proposes cases, gcc + gcov judge them, coverage gaps drive the loop.
 
 ## Pages
 - [Products index](https://kim-hakseong.github.io/noktra-website/products/): every build, every state, one page

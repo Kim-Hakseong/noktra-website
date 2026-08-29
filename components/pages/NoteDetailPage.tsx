@@ -4,7 +4,7 @@ import Reveal from "@/components/Reveal";
 import JsonLd from "@/components/JsonLd";
 import { Tx, type Lang } from "@/lib/i18n";
 import { noteBySlug } from "@/content/notes";
-import { productBySlug, refOf, verbLabel, STATUS_CLASS, STATUS_LABEL } from "@/lib/products";
+import { productBySlug, refOf, verbLabel, STATUS_CLASS, STATUS_LABEL, REPOS_PUBLIC } from "@/lib/products";
 import { koOf } from "@/lib/ko";
 import { noteGraph } from "@/lib/seo";
 
@@ -52,14 +52,16 @@ export default function NoteDetailPage({
             {paras.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
-            <div className="note-cite">
-              <span className="t-label t-label--faint">
-                <Tx en="The code that makes this argument" ko="이 논지를 증명하는 코드" />
-              </span>
-              <a href={n.source} target="_blank" rel="noopener">
-                {n.source.replace("https://github.com/", "github.com/")}
-              </a>
-            </div>
+            {REPOS_PUBLIC && (
+              <div className="note-cite">
+                <span className="t-label t-label--faint">
+                  <Tx en="The code that makes this argument" ko="이 논지를 증명하는 코드" />
+                </span>
+                <a href={n.source} target="_blank" rel="noopener">
+                  {n.source.replace("https://github.com/", "github.com/")}
+                </a>
+              </div>
+            )}
           </Reveal>
 
           {rel ? (

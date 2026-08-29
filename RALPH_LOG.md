@@ -200,3 +200,21 @@
 - 헤더: 메뉴를 필(pill) 그룹으로 재스타일 — 활성 페이지는 화이트 필(라이트 모드는 토큰 반전).
 - 홈 한정 다크 크롬 강제(body.ob-on) + 별/레일 숨김 + 헤더 z-index 50 승격(캔버스 위).
 - 컨셉 탐색 이력(noktra-v3-sample): TERMINAL(픽) · DOSSIER(탈락) · KINETIC(픽) · ORBIT v8.2(최종 채택, E1 히어로).
+
+## 2026-08-29 — 저장소 비공개 전환 + 사이트 후속 정리
+- 비공개 전환 완료(14개): veristand-rs422-custom-device-starter, nexys-xgt-sim, flightsim-poc,
+  blockly-subroutine-app, flight-sim-fable5, NOKTRA-* 9종.
+  · noktra-website는 **공개 유지** — 무료 플랜에서 비공개 시 GitHub Pages가 중단되어 라이브 사이트가 죽기 때문(사용자 결정).
+  · flight-sim-fable5의 Pages 데모(https://kim-hakseong.github.io/flight-sim-fable5/)는 이로써 오프라인.
+- 후속 정리(공개 사이트에 죽은 링크가 남지 않도록):
+  · lib/products.ts에 `REPOS_PUBLIC = false` 플래그 신설 — products.json의 repo URL은 보존하고
+    노출만 게이팅. 공개로 되돌릴 때 이 한 줄만 true로 바꾸면 전부 복구된다.
+  · 게이팅 지점: 제품 상세 GitHub 버튼·SOURCE 행, VERIFIED 배지 링크(배지 사실은 유지, 링크만 제거),
+    노트 상세 출처 인용, seo.ts sameAs·소스 위치 FAQ·note citation, public/llms.txt의 Source 9건.
+  · FAQ 문구에서 "개발 과정은 저장소에 공개되어 있습니다" 삭제 — 사실과 어긋나므로.
+  · 검증: 빌드 산출물에 href로 걸린 비공개 저장소 링크 0건, sameAs는 브랜드 계정만 남음.
+- verify-status.yml(골든 벡터 배지 집계) 보호:
+  · 기본 GITHUB_TOKEN은 타 저장소의 private 저장소를 읽지 못해 수집이 0건이 된다.
+  · 토큰을 `secrets.VERIFY_TOKEN || github.token`으로 바꾸고, 수집 0건이면 기존 ci-status.json을
+    덮어쓰지 않도록 가드 추가 — 배지가 통째로 사라지는 대신 마지막 상태로 동결된다.
+  · 배지를 되살리려면 repo 스코프 PAT를 VERIFY_TOKEN 시크릿으로 등록하면 된다.

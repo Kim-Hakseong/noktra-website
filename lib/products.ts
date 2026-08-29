@@ -1,6 +1,11 @@
 // lib/products.ts — content/products.json 단일 진실 소비층 (문구 수정 금지)
 import data from "@/content/products.json";
 
+/** 제품 저장소 공개 여부. false면 사이트 어디에도 저장소 링크를 노출하지 않는다
+ *  (비공개 저장소 링크는 방문자에게 404가 되므로). products.json의 repo URL은
+ *  그대로 보존되며, 공개로 되돌릴 때 이 한 줄만 true로 바꾸면 복구된다. */
+export const REPOS_PUBLIC = false;
+
 export type ProductStatus = "available" | "beta" | "in-development";
 
 export interface Product {

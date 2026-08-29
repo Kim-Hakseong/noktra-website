@@ -1,5 +1,9 @@
 # 골든 벡터 라이브 배지 — 9개 제품 저장소의 Verify 결과를 매일 집계해
 # content/ci-status.json으로 커밋한다. 커밋이 생기면 Pages 배포가 자동으로 따라온다.
+#
+# 제품 저장소가 비공개가 된 뒤로는 기본 GITHUB_TOKEN으로 읽을 수 없다.
+# secrets.VERIFY_TOKEN(repo 스코프 PAT)을 등록하면 집계가 다시 동작하고,
+# 없으면 수집이 0건이 되어 기존 ci-status.json을 그대로 둔다(배지 동결).
 name: Collect verify status
 
 on:
@@ -17,7 +21,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Collect run conclusions
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.VERIFY_TOKEN || github.token }}
         run: |
           set -euo pipefail
           slugs="icd-refinery sil-runtime test-sequencer telemetry-scope ch10-viewer protocol-bridge secsgem-workbench ram-toolkit local-test-copilot"
@@ -37,8 +41,16 @@ jobs:
             echo ''
             echo '  }'
             echo '}'
-          } > content/ci-status.json
-          cat content/ci-status.json
+          } > /tmp/ci-status.json
+          cat /tmp/ci-status.json
+          # 수집 0건(권한 없음/전부 실패)이면 기존 배지 데이터를 덮어쓰지 않는다.
+          collected=$(python3 -c "import json;print(len(json.load(open('/tmp/ci-status.json'))['runs']))")
+          echo "collected=$collected"
+          if [ "$collected" -eq 0 ]; then
+            echo "::warning::수집 0건 — 기존 ci-status.json 유지. 비공개 저장소라면 secrets.VERIFY_TOKEN(repo 스코프 PAT)이 필요합니다."
+          else
+            cp /tmp/ci-status.json content/ci-status.json
+          fi
       - name: Commit if changed
         run: |
           if ! git diff --quiet content/ci-status.json; then
